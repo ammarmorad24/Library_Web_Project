@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library</title>
+</head>
+
+<body>
+  <header>
+    <a href="/home.html">logo</a>
+    <nav>
+      <a href="/about.html">about</a>
+    </nav>
+    <div>
+      <button><a href="/signIn.html">sign out</a></button>
+      <img src="https://placehold.co/100x100" alt="Placeholder image" />
+    </div>
+  </header>
+  <main>
+    <form action="">
+      <h1>Add book</h1>
+      <div class="add_image">
+        <label for="book_cover">
+          Cover
+          <img src="https://placehold.co/150x225" alt="Placeholder image" />
+        </label>
+        <input id="book_cover" type="file" name="cover" required />
+      </div>
+      <div class="add_book_form">
+        <div class="form_item">
+          <label for="book_title">Title:</label>
+          <input id="book_title" type="text" name="title" placeholder="title" required />
+        </div>
+        <div class="form_item">
+          <label for="book_auther">Auther:</label>
+          <input id="book_auther" type="text" name="auther" placeholder="auther" required />
+        </div>
+        <div class="categories">
+          <p>Categories</p>
+          <div class="checkbox_item">
+            <input id="fantasy" type="checkbox" name="categories" value="fantasy" />
+            <label for="fatasy">fantasy</label>
+          </div>
+          <div class="checkbox_item">
+            <input id="action" type="checkbox" name="categories" value="action" />
+            <label for="action">action</label>
+          </div>
+          <div class="checkbox_item">
+            <input id="historical" type="checkbox" name="categories" value="historical" />
+            <label for="historical">historical</label>
+          </div>
+        </div>
+        <div class="description">
+          <label for="description">Description</label>
+          <input id="description" type="text" name="description" placeholder="add some description to the book" />
+        </div>
+      </div>
+      <button type="submit" class="btn">submit</button>
+    </form>
+  </main>
+  <footer>
+    <p>Library &copy; 2024</p>
+  </footer>
+</body>
+
+</html>
