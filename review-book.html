@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+  </head>
+
+  <body>
+    <header>
+      <a href="./home.html">logo</a>
+      <nav>
+        <a href="./about.html">about</a>
+      </nav>
+    </header>
+    <main>
+      <div class="book-info">
+        <img src="https://shorturl.at/qxH12" height="350px" />
+        <p class="title">1984</p>
+        <p class="author">George Orwell</p>
+      </div>
+      <form>
+        <div class="score">
+          <label>Score</label>
+          <br />
+          <input
+            type="number"
+            name="score"
+            required
+            placeholder="1-5"
+            step="any"
+            min="1"
+            max="5"
+          />
+        </div>
+        <br />
+
+        <div class="review">
+          <label>Review</label>
+          <br />
+          <textarea
+            rows="5"
+            cols="50"
+            placeholder="Type what you think about the book..."
+          ></textarea>
+        </div>
+        <input type="submit" value="Submit Your Review" />
+        <!-- <button type = "submit" >Submit Your Review</button> -->
+      </form>
+    </main>
+    <footer>
+      <p>Library &copy; 2024</p>
+    </footer>
+  </body>
+</html>
