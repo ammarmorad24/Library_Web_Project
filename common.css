@@ -1,0 +1,26 @@
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 70px;
+  background-color: #935732;
+}
+
+* {
+  font-family: "Merriweather", serif;
+}
+
+body {
+  background-color: #e8d3bd;
+  margin: 0;
+}
+
+footer {
+  border-top: 1px solid black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

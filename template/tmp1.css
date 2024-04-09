@@ -5,11 +5,11 @@ header {
 }
 
 * {
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 
 body {
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   background-color: #e8d3bd;
   margin: 0;
 }
@@ -30,7 +30,7 @@ button {
 }
 
 .red {
-  background-color: #D10131;
+  background-color: #d10131;
 }
 
 .green {
@@ -63,8 +63,4 @@ footer {
   width: 100%;
   text-align: center;
   height: 40px;
-}
-
-footer p {
-
 }
