@@ -15,6 +15,9 @@ header {
 body {
   background-color: #e8d3bd;
   margin: 0;
+  font-family: Merriweather, Georgia, serif;
+  padding-top: 60px;
+  width: 940px;
 }
 
 footer {
@@ -23,4 +26,56 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+
+
+
+header nav {
+  float: left;
+  margin-left: 20px;
+}
+
+header nav a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+}
+
+header nav a.logo {
+  font-weight: bold;
+}
+
+header nav a:hover {
+  background-color: #A0522D;
+  /* Darker brown color on hover */
+}
+
+header div {
+  float: right;
+  margin-right: 20px;
+}
+
+header div a {
+  color: white;
+  text-decoration: none;
+}
+
+header div button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+header div button:hover {
+  background-color: #A0522D;
+  /* Darker brown color on hover */
+}
+
+/* Adjusted Styles for Sign Out Button */
+header div a.sign-out-btn {
+  display: inline-block;
+  margin-left: 20px;
 }
