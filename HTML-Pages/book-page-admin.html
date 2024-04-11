@@ -4,28 +4,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Library</title>
+  <title>4:50 from Paddington</title>
+
+  <link rel="stylesheet" href="/CSS/book-page.css">
+  <link rel="stylesheet" href="/common.css">
   <script src="/scripts/isAuth.js"></script>
 </head>
 
 <body>
   <header>
-    <nav>
-      <a class="logo" href="./home-page-admin.html">logo</a>
-      <br />
-      <a class="about" href="./about.html">about</a>
-      <br />
-      <a href="./add-book.html">add book</a>
+    <nav class="navBar">
+      <a class="logo" href="./home.html"><img src="/images/Logo.jpg" alt="logo" /></a>
+      <a class="navItem" href="./about.html">about</a>
+      <a class="navItem" href="./borrowed-books.html">borrowed books</a>
     </nav>
-    <div>
+    <div class="profileSection">
       <a href="./sign-in.html"><button>Sign Out</button></a>
-      <a href="./profile-admin.html"><img src="https://placehold.co/70x70" class="profile-picture"
-          alt="Placeholder image" /></a>
+      <a class="profilePic" href="./profile.html"><img src="https://placehold.co/70x70" class="profile-picture"
+          alt="profile picture" /></a>
     </div>
   </header>
   <main>
     <div class="book-cover">
-      <br />
+      
       <img src="https://rb.gy/0jocm4" width="236" height="363" valign="top" style="float: left" />
     </div>
     <div class="book-details">
@@ -34,52 +35,52 @@
           style="margin-left: 28px" class="rating">Rating: 5.0</span>
       </div>
       <div class="author">
-        <span style="margin-left: 12px"><b>Author : </b></span>
+        <span style="margin-left: 12px"><b>Author : </span>
         <span>Agatha Christie</span>
       </div>
-      <br />
+      
       <div class="story-description">
         <span style="margin-left: 12px"><b>Story :- </b></span>
-        <br />
+        
         <p class="story-paragraph" style="margin-left: 250px">
           For an instant the two trains ran together, going in the same
-          direction side by side.<br />
+          direction side by side.
           In that frozen moment, Elspeth, riding in the one train, witnessed a
-          murder in the other.<br />
+          murder in the other.
           Helplessly, she stared out her carriage window as a man
-          remorselessly tightened his grip around a woman’s throat.<br />
+          remorselessly tightened his grip around a woman’s throat.
           The body crumpled. Then the other train drew away.
         </p>
       </div>
-      <br />
+      
     </div>
     <div class="add-review">
       <a style="margin-left: 13px" href="./review-book.html" target="_blank"><button>Add Review</button></a>
     </div>
-    <br />
+    
     <div class="reviews">
       <span style="margin-left: 10px">Reviews</span>
-      <br />
+      
       <span class="username" style="margin-left: 15px">Eren Yeager : </span>
       <span class="rating" style="margin-left: 18px">Rating: 5.0/5.0</span>
-      <br />
+      
       <span class="user-review" style="margin-left: 15px">Best Book I've ever read fr fr</span>
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    
+    
+    
+    
+    
+    
     <a href="./edit-book.html"><button class="edit-button">Edit Book Details</button></a>
   </main>
   <footer>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    
+    
+    
+    
+    
+    
     <p>Library &copy; 2024</p>
   </footer>
 </body>

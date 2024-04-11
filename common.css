@@ -22,7 +22,7 @@ header {
   justify-content: space-between;
 }
 
-header > * {
+header>* {
   display: flex;
   align-items: center;
 }

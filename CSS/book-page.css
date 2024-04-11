@@ -1,0 +1,92 @@
+main {
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.book-cover img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.book-details {
+  margin-top: 20px;
+}
+
+.book-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.rating {
+  font-size: 16px;
+  color: #f39c12;
+}
+
+.author {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.story-description {
+  margin-top: 20px;
+}
+
+.story-paragraph {
+
+  margin-left: 300px;
+}
+
+.add-review {
+  margin-top: 20px;
+}
+
+.add-review button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.add-review button:hover {
+  background-color: #2980b9;
+}
+
+.reviews {
+  margin-top: 20px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.user-review {
+  margin-top: 5px;
+
+}
+
+.borrow-button ,.edit-book{
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.borrow-button button {
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.borrow-button button:hover {
+  background-color: #219e54;
+}
+
