@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Our Online Library!</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css" />
+  <script src="/scripts/isAuth.js"></script>
+</head>
+
+
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="./home.html">logo</a>
+      <a href="./borrowed-books.html">Borrowed Books</a>
+      <a class="about" href="./about.html">About</a>
+    </nav>
+
+    <div>
+      <a href="./sign-in.html"><button>Sign Out</button></a>
+      <a href="./profile.html"><img src="https://placehold.co/70x70" class="profile-picture"
+          alt="Placeholder image" /></a>
+    </div>
+  </header>
+  <main>
+    <div class="homepage-body">
+      <h1>Welcome to Our Online Library!</h1>
+      <p>Here are the books available for borrowing:</p>
+      <ul>
+        <li class="book">
+          <a href="./book-page-user.html">
+            <h2>Book Title 1</h2>
+            <img class="book-cover-image" src="https://placehold.co/150x225" alt="Placeholder image" />
+          </a>
+          <p>Author: Author Name</p>
+          <p>Published Year: 2022</p>
+          <p>Genre: Fiction</p>
+        </li>
+        <li class="book">
+          <a href="./book-page-user.html">
+            <h2>Book Title 2</h2>
+            <img class="book-cover-image" src="https://placehold.co/150x225" alt="Placeholder image" />
+          </a>
+          <p>Author: Another Author</p>
+          <p>Published Year: 2020</p>
+          <p>Genre: Mystery</p>
+        </li>
+        <li class="book">
+          <a href="./book-page-user.html">
+            <h2>Book Title 3</h2>
+            <img class="book-cover-image" src="https://placehold.co/150x225" alt="Placeholder image" />
+          </a>
+          <p>Author: Yet Another Author</p>
+          <p>Published Year: 2019</p>
+          <p>Genre: Science Fiction</p>
+        </li>
+      </ul>
+    </div>
+  </main>
+  <footer>
+    <p>Library &copy; 2024</p>
+  </footer>
+</body>
+
+</html>
