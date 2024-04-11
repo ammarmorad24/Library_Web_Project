@@ -1,13 +1,4 @@
-header {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  height: 70px;
-  background-color: #935732;
-}
-
+/* Common styles for all pages */
 * {
   font-family: "Merriweather", serif;
 }
@@ -17,6 +8,81 @@ body {
   margin: 0;
 }
 
+/* header section */
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 90px;
+  background-color: #935732;
+  display: flex;
+  justify-content: space-between;
+}
+
+header > * {
+  display: flex;
+  align-items: center;
+}
+
+.navBar a {
+  color: white;
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+.logo {
+  height: 86px;
+  width: 86px;
+  padding-right: 20px;
+}
+
+.logo img {
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
+.navItem {
+  font-size: 1.5em;
+  font-weight: 700;
+  border-left: 2px solid white;
+}
+
+.profileSection a {
+  padding: 0 10px;
+}
+
+.profileSection .profilePic {
+  height: 70px;
+  width: 70px;
+}
+
+.profilePic img {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.profileSection button {
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 1rem;
+  border: 2px solid #b96e1e;
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  background-color: #f39028;
+}
+
+/* main section */
+main {
+  margin-top: 90px;
+}
+
+/* footer section */
 footer {
   border-top: 1px solid black;
   position: absolute;
