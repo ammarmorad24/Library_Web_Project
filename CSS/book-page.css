@@ -1,7 +1,7 @@
 main {
   width: 80%;
   margin: 0 auto;
-  padding: 50px;
+  padding: 100px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -72,7 +72,8 @@ main {
 
 }
 
-.borrow-button ,.edit-book{
+.borrow-button,
+.edit-book {
   margin-top: 20px;
   margin-left: 50px;
 }
@@ -90,3 +91,18 @@ main {
   background-color: #219e54;
 }
 
+.edit-button {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.edit-button:hover {
+  background-color: #aaa;
+  /* Darker grey on hover */
+}
