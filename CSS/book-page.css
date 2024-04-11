@@ -3,6 +3,7 @@ main {
   justify-content: center;
   margin-top: 30px;
 }
+
 .container {
   width: 50%;
   padding: 50px;
@@ -83,7 +84,7 @@ main {
 
 }
 
-.borrowButton {
+.borrow-button {
   background-color: #27ae60;
   color: #fff;
   border: none;
@@ -93,7 +94,7 @@ main {
   width: 240px;
 }
 
-.borrowButton:hover {
+.borrow-button:hover {
   background-color: #219e54;
 }
 
