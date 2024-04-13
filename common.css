@@ -4,9 +4,12 @@
 }
 
 body {
+  min-height: 100vh;
+  box-sizing: border-box;
   background-color: #e8d3bd;
   margin: 0;
   padding: 90px 0 70px 0;
+  position: relative;
 }
 
 /* header section */
@@ -27,7 +30,7 @@ header > * {
   align-items: center;
 }
 
-.navBar a {
+.nav-bar a {
   color: white;
   text-decoration: none;
   padding: 0 10px;
@@ -45,28 +48,28 @@ header > * {
   border: 3px solid black;
 }
 
-.navItem {
+.nav-item {
   font-size: 1.5em;
   font-weight: 700;
   border-left: 2px solid white;
 }
 
-.profileSection a {
+.profile-section a {
   padding: 0 10px;
 }
 
-.profileSection .profilePic {
+.profile-section .profile-pic {
   height: 70px;
   width: 70px;
 }
 
-.profilePic img {
+.profile-pic img {
   height: 70px;
   width: 70px;
   border-radius: 50%;
 }
 
-.profileSection button {
+.profile-section button {
   width: 80px;
   height: 40px;
   border-radius: 20px;
