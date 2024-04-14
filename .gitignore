@@ -1,1 +1,12 @@
 git_update
+# Ignore a specific file
+style.txt
+
+# Ignore all .log files
+*.log
+
+# Ignore a directory and its contents
+/admin-pages/
+
+# Ignore all .txt files in a specific directory
+/docs/*.txt
