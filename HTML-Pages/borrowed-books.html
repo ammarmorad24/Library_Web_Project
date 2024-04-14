@@ -1,59 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Borrowed Books - Online Library</title>
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="../CSS/borrowed-books.css" />
+    <script src="../scripts/isAuth.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Borrowed Books - Online Library</title>
-  <link rel="stylesheet" href="/common.css" />
-  <link rel="stylesheet" href="/CSS/borrowed-books.css" />
-  <script src="/scripts/isAuth.js"></script>
-</head>
-
-<body>
-  <header>
-    <nav class="navBar">
-      <a class="logo" href="./home.html"><img src="/images/Logo.jpg" alt="logo" /></a>
-      <a class="navItem" href="./about.html">about</a>
-      <a class="navItem" href="./borrowed-books.html">borrowed books</a>
-    </nav>
-    <div class="profileSection">
-      <a href="./sign-in.html"><button>Sign Out</button></a>
-      <a class="profilePic" href="./profile.html"><img src="https://placehold.co/70x70" class="profile-picture"
-          alt="profile picture" /></a>
-    </div>
-  </header>
-  <main>
-    <h1>Borrowed Books</h1>
-    <div class="borrowed-books-container">
-      <div class="book">
-        <div class="wholeBook">
-          <img class="book-cover-image" src="https://placehold.co/120x180" alt="book cover" />
-          <div class="bookInfo">
-            <h2>Book Title 1</h2>
-            <p>Author: Author Name</p>
-            <p>Return Deadline: March 25, 2024</p>
-          </div>
-        </div>
-        <button class="return-button">Return</button>
+  <body>
+    <header>
+      <nav class="nav-bar">
+        <a class="logo" href="./home.html">
+          <img src="../images/Logo.jpg" alt="logo" />
+        </a>
+        <a class="nav-item" href="./about.html">about</a>
+        <a class="nav-item" href="./borrowed-books.html">borrowed books</a>
+      </nav>
+      <div class="profile-section">
+        <a href="./sign-in.html"><button>Sign Out</button></a>
+        <a class="profile-pic" href="./profile.html">
+          <img src="https://placehold.co/70x70" alt="profile picture" />
+        </a>
       </div>
-
-      <div class="book">
-        <div class="wholeBook">
-          <img class="book-cover-image" src="https://placehold.co/120x180" alt="book cover" />
-          <div class="bookInfo">
-            <h2>Book Title 2</h2>
-            <p>Author: Another Author</p>
-            <p>Return Deadline: April 5, 2024</p>
+    </header>
+    <main>
+      <h1>Borrowed Books</h1>
+      <div class="borrowed-books-container">
+        <div class="book-item">
+          <div class="book">
+            <img src="https://placehold.co/120x180" alt="book cover" />
+            <div class="book-info">
+              <h2>Book Title 1</h2>
+              <p>Author: Author Name</p>
+              <p>Return Deadline: March 25, 2024</p>
+            </div>
           </div>
+          <button class="return-button">Return</button>
         </div>
-        <button class="return-button">Return</button>
-      </div>
-    </div>
-  </main>
-  <footer>
-    <p>Library &copy; 2024</p>
-  </footer>
-</body>
 
+        <div class="book-item">
+          <div class="book">
+            <img src="https://placehold.co/120x180" alt="book cover" />
+            <div class="book-info">
+              <h2>Book Title 2</h2>
+              <p>Author: Another Author</p>
+              <p>Return Deadline: April 5, 2024</p>
+            </div>
+          </div>
+          <button class="return-button">Return</button>
+        </div>
+        <div class="book-item">
+          <div class="book">
+            <img src="https://placehold.co/120x180" alt="book cover" />
+            <div class="book-info">
+              <h2>Book Title 2</h2>
+              <p>Author: Another Author</p>
+              <p>Return Deadline: April 5, 2024</p>
+            </div>
+          </div>
+          <button class="return-button">Return</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Library &copy; 2024</p>
+    </footer>
+  </body>
 </html>
