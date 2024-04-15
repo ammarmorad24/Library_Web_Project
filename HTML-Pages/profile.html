@@ -2,18 +2,26 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Profile - Online Library</title>
-
+    <script src="/scripts/isAuth.js"></script>
 </head>
 
 <body>
     <header>
-        <a href="./home.html">logo</a>
         <nav>
-            <a href="./about">about</a>
+            <a class="logo" href="./home.html">logo</a>
+            <br />
+            <a href="./borrowed-books.html">Borrowed Books</a>
+            <a class="about" href="./about.html">about</a>
         </nav>
+
+        <div>
+            <a href="./sign-in.html"><button>Sign Out</button></a>
+            <a href="./profile.html"><img src="https://placehold.co/70x70" class="profile-picture"
+                    alt="Placeholder image" /></a>
+        </div>
     </header>
     <main>
         <div class="profile-container">
@@ -35,12 +43,14 @@
                 <p id="membership">Premium</p>
             </div>
             <div class="profile-info">
-                <label for="borrowed-books">Borrowed Books:</label>
-                <ul id="borrowed-books">
+                <label for="borrowed-books">Borrowed Books: 2</label>
+                <br />
+                <a href="./borrowed-books.html"><button>see all borrowed books</button></a>
+                <!-- <ul id="borrowed-books">
                     <li class="book-item">Book Title 1</li>
                     <li class="book-item">Book Title 2</li>
-                    <!-- TODO: Add more borrowed books if needed -->
-                </ul>
+                    TODO: Add more borrowed books if needed
+                </ul> -->
             </div>
         </div>
     </main>
