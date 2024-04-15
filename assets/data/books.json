@@ -1,0 +1,112 @@
+{
+    "books": [
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 1.0,
+            "image": "https://placehold.co/100x150",
+            "category": "adventure",
+            "date": 1712928583049,
+            "availability": true
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 0.0,
+            "image": "https://placehold.co/100x150",
+            "category": "mystery",
+            "date": 1712928550277,
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 0.5,
+            "image": "https://placehold.co/100x150",
+            "category": "mystery",
+            "date": 1712928550278,
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 2.0,
+            "image": "https://placehold.co/100x150",
+            "category": "mystery",
+            "date": 1712928550279,
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 1.0,
+            "image": "https://placehold.co/100x150",
+            "category": "adventure",
+            "date": 1712928583059,
+            "availability": true
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 4.0,
+            "image": "https://placehold.co/100x150",
+            "category": "mystery",
+            "date": 1712928550287,
+            "availability": false
+        },
+        {
+            "title": "atitle",
+            "author": "author",
+            "rating": 3.0,
+            "image": "https://placehold.co/100x150",
+            "category": "mystery",
+            "date": 1712928550298,
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 0.5,
+            "image": "https://placehold.co/100x150",
+            "category": "mystery",
+            "date": 1712928550278,
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 2.0,
+            "image": "https://placehold.co/100x150",
+            "category": "mystery",
+            "date": 1712928550279,
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 1.0,
+            "image": "https://placehold.co/100x150",
+            "category": "adventure",
+            "date": 1712928583059,
+            "availability": true
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 4.0,
+            "image": "https://placehold.co/100x150",
+            "category": "mystery",
+            "date": 1712928550287,
+            "availability": false
+        },
+        {
+            "title": "atitle",
+            "author": "author",
+            "rating": 3.0,
+            "image": "https://placehold.co/100x150",
+            "category": "mystery",
+            "date": 1712928550298,
+            "availability": false
+        }
+    ]
+}
