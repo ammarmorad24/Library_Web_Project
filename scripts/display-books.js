@@ -33,7 +33,7 @@ async function loadBooks() {
 function clearBooks() {
     let children = booksList.children;
     for (let i = 0; i < children.length; i++) {
-        if (children[i].className === "book-card") {
+        if (children[i].className === "book-card" || children[i].className === "not-found") {
             booksList.removeChild(children[i]);
             i--;
         }
@@ -51,6 +51,12 @@ function populateCategoryAndAvailabilityCount(book) {
 
     categoryAndAvailabilityCount["any-category"]["category-count"]++;
     categoryAndAvailabilityCount["any-category"]["available-count"] += book["availability"];
+}
+function displaySearchNotFound() {
+    let notFound = document.createElement("p");
+    notFound.innerHTML = "Woah...Seems you have reached the end"
+    notFound.className = "not-found"
+    booksList.appendChild(notFound);
 }
 
 
@@ -202,6 +208,7 @@ function pagination(motion) {
     const selectedCategory = categoriesMenu.value;
 
     let start = skip;
+    let bookCount = 0;
     if (isAvailabilityFilterOn) {
         pagesCount = Math.max(Math.ceil(categoryAndAvailabilityCount[selectedCategory]["available-count"] / skipValue),
             1);
@@ -220,6 +227,7 @@ function pagination(motion) {
 
         if (isAvailabilityMatching && isCategroyMatching) {
             booksList.appendChild(bookCards[start]["card"]);
+            bookCount++;
         }
         start++;
     }
@@ -233,6 +241,10 @@ function pagination(motion) {
         disableButton(previousButton);
     } else {
         enableButton(previousButton);
+    }
+
+    if (bookCount === 0) {
+        displaySearchNotFound();
     }
 }
 
@@ -256,19 +268,19 @@ availabilityCheckbox.addEventListener("change", function (event) {
     pagination(NONE);
 })
 
-nextButton.addEventListener("mousedown", function() {
+nextButton.addEventListener("mousedown", function () {
     nextButton.style.boxShadow = "none";
 })
 
-previousButton.addEventListener("mousedown", function() {
+previousButton.addEventListener("mousedown", function () {
     previousButton.style.boxShadow = "none";
 })
 
-document.documentElement.addEventListener("mouseup", function() {
-    if(currentPageNumber != pagesCount){
+document.documentElement.addEventListener("mouseup", function () {
+    if (currentPageNumber != pagesCount) {
         nextButton.style.boxShadow = "0px 1px black";
     }
-    if(currentPageNumber !== 1) {
+    if (currentPageNumber !== 1) {
         previousButton.style.boxShadow = "0px 1px black";
     }
 })
