@@ -81,6 +81,37 @@ header > * {
   background-color: #f39028;
 }
 
+.search {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50px;
+  height: 50px;
+  align-self: center;
+}
+
+.search-bar {
+  background-color: transparent;
+  border: none;
+  width: 500px;
+  font-size: 20px;
+  padding-left: 12px;
+}
+
+.search-bar:enabled {
+  outline: none;
+}
+
+.search-button {
+  z-index: 99;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  justify-self: flex-end;
+}
+
 /* footer section */
 footer {
   border-top: 1px solid black;
