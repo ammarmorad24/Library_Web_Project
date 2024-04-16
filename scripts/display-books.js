@@ -1,12 +1,17 @@
 const booksList = document.querySelector(".books");
+
 const sortByMenu = document.querySelector(".sort-by");
 const categoriesMenu = document.querySelector(".category-menu");
 const availabilityCheckbox = document.querySelector(".available input");
+
 const searchBar = document.querySelector(".search-bar");
 const searchForm = document.getElementsByTagName("form")[0];
+
 const pageNumber = document.querySelector(".page-number");
 const nextButton = document.querySelector(".next-button");
 const previousButton = document.querySelector(".previous-button");
+
+const loadingSpinner = document.querySelector(".loading-spinner");
 
 let bookCards;
 let books;
@@ -18,9 +23,9 @@ let currentPageNumber = 1;
 let pagesCount = 0;
 let categoryAndAvailabilityCount = {};
 
-const skipValue = 20;
+const skipValue = 21;
 let skip = 0;
-let lastViewableBookPosition = 0;
+let start = 0;
 let isAvailabilityFilterOn = false;
 let isCategroyFilterOn = false;
 
@@ -33,7 +38,8 @@ async function loadBooks() {
 function clearBooks() {
     let children = booksList.children;
     for (let i = 0; i < children.length; i++) {
-        if (children[i].className === "book-card" || children[i].className === "not-found") {
+        if (children[i].className !== "filters"
+            && children[i].className !== "next-previous-pages") {
             booksList.removeChild(children[i]);
             i--;
         }
@@ -58,7 +64,15 @@ function displaySearchNotFound() {
     notFound.className = "not-found"
     booksList.appendChild(notFound);
 }
-
+function scrollUp() {
+    document.documentElement.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+}
+function loadSpinner() {
+    booksList.appendChild(loadingSpinner);
+}
 
 function createBookCard(book) {
     const bookCard = document.createElement("div");
@@ -97,90 +111,37 @@ function compareByHighestRating(book1, book2) {
 }
 
 function compareByTitleAlphabetically(book1, book2) {
-    if (book1["book"]["title"] > book2["book"]["title2"]) {
-        return -1;
+    if (book1["book"]["title"] > book2["book"]["title"]) {
+        return 1;
     }
-    return 1;
+    return -1;
 }
 
 
 
-async function displaySortedBooks() {
-    const processedBookCards = await bookCards;
+function sortBooks() {
     const sortByType = sortByMenu.value;
 
     switch (sortByType) {
         case "date-latest":
-            processedBookCards.sort(compareByOldestDate);
+            bookCards.sort(compareByOldestDate);
             break;
         case "date-oldest":
-            processedBookCards.sort((book1, book2) => -compareByOldestDate(book1, book2));
+            bookCards.sort((book1, book2) => -compareByOldestDate(book1, book2));
             break;
         case "rating-highest":
-            processedBookCards.sort(compareByHighestRating);
+            bookCards.sort(compareByHighestRating);
             break;
         case "rating-lowest":
-            processedBookCards.sort((book1, book2) => -compareByHighestRating(book1, book2));
+            bookCards.sort((book1, book2) => -compareByHighestRating(book1, book2));
             break;
         case "title-a-to-z":
-            processedBookCards.sort(compareByTitleAlphabetically);
+            bookCards.sort(compareByTitleAlphabetically);
             break;
         case "title-z-to-a":
-            processedBookCards.sort((book1, book2) => -compareByTitleAlphabetically(book1, book2));
+            bookCards.sort((book1, book2) => -compareByTitleAlphabetically(book1, book2));
             break;
     }
-    processedBookCards.forEach(processedBookCard => booksList.prepend(processedBookCard["card"]));
-}
-
-function addBooksBasedOnCategory(processedBookCards, selectedCategory) {
-    for (let processedBookCard of processedBookCards) {
-        if (processedBookCard["book"]["category"] !== selectedCategory) {
-            booksList.removeChild(processedBookCard["card"]);
-        }
-    }
-}
-
-
-async function displayBasedOnCategory() {
-    const processedBookCards = await bookCards;
-    const selectedCategory = categoriesMenu.value;
-
-    if (selectedCategory === "any-category") {
-        processedBookCards.forEach(processedBookCard => booksList.prepend(processedBookCard["card"]));
-    } else {
-        addBooksBasedOnCategory(processedBookCards, selectedCategory);
-    }
-}
-
-function addBooksBasedOnAvailability(processedBookCards) {
-    for (let processedBookCard of processedBookCards) {
-        if (processedBookCard["book"]["availability"] === false) {
-            booksList.removeChild(processedBookCard["card"]);
-        }
-    }
-}
-
-async function displayBasedOnAvailability(isChecked) {
-    const processedBookCards = await bookCards;
-
-    if (isChecked === false) {
-        processedBookCards.forEach(processedBookCard => booksList.prepend(processedBookCard["card"]));
-    } else {
-        addBooksBasedOnAvailability(processedBookCards);
-    }
-}
-
-
-async function displayBooks() {
-    books = await loadBooks();
-
-    fillWithCategories();
-
-    bookCards = books["books"].map(function (book) {
-        populateCategoryAndAvailabilityCount(book);
-        return { "card": createBookCard(book), "book": book }
-    });
-    pagination(NONE);
 }
 
 function enableButton(button) {
@@ -192,46 +153,8 @@ function disableButton(button) {
     button.style.backgroundColor = "transparent";
     button.style.boxShadow = "none";
 }
-function pagination(motion) {
-    clearBooks();
 
-    if (motion === FORWARD) {
-        skip = Math.min(skip + skipValue, bookCards.length);
-        currentPageNumber++;
-    }
-    else if (motion === BACKWARD) {
-        skip = Math.max(skip - skipValue, 0);
-        currentPageNumber--;
-    }
-
-    lastViewableBookPosition = Math.min(skipValue + skip, bookCards.length);
-    const selectedCategory = categoriesMenu.value;
-
-    let start = skip;
-    let bookCount = 0;
-    if (isAvailabilityFilterOn) {
-        pagesCount = Math.max(Math.ceil(categoryAndAvailabilityCount[selectedCategory]["available-count"] / skipValue),
-            1);
-        pageNumber.innerHTML = `${currentPageNumber}/${pagesCount}`;
-    } else {
-        pagesCount = Math.max(Math.ceil(categoryAndAvailabilityCount[selectedCategory]["category-count"] / skipValue),
-            1);
-        pageNumber.innerHTML = `${currentPageNumber}/${pagesCount}`;
-    }
-    while (start < lastViewableBookPosition) {
-        const isAvailabilityMatching = isAvailabilityFilterOn === false ||
-            bookCards[start]["book"]["availability"] === true;
-
-        const isCategroyMatching = selectedCategory === "any-category" ||
-            bookCards[start]["book"]["category"] === selectedCategory;
-
-        if (isAvailabilityMatching && isCategroyMatching) {
-            booksList.appendChild(bookCards[start]["card"]);
-            bookCount++;
-        }
-        start++;
-    }
-
+function handleButtonsAvailability() {
     if (currentPageNumber === pagesCount) {
         disableButton(nextButton);
     } else {
@@ -242,19 +165,113 @@ function pagination(motion) {
     } else {
         enableButton(previousButton);
     }
+}
+
+function displayPageCount() {
+    const selectedCategory = categoriesMenu.value;
+    if (isAvailabilityFilterOn) {
+        pagesCount = Math.max(Math.ceil(categoryAndAvailabilityCount[selectedCategory]["available-count"] / skipValue),
+            1);
+        pageNumber.innerHTML = `${currentPageNumber}/${pagesCount}`;
+    } else {
+        pagesCount = Math.max(Math.ceil(categoryAndAvailabilityCount[selectedCategory]["category-count"] / skipValue),
+            1);
+        pageNumber.innerHTML = `${currentPageNumber}/${pagesCount}`;
+    }
+
+}
+
+function paginate(motion) {
+    clearBooks();
+
+    let bookCount = 0;
+    const selectedCategory = categoriesMenu.value;
+    while (start >= 0 && skip < bookCards.length) {
+        const isAvailabilityMatching = isAvailabilityFilterOn === false ||
+            bookCards[skip]["book"]["availability"] === true;
+
+        const isCategroyMatching = selectedCategory === "any-category" ||
+            bookCards[skip]["book"]["category"] === selectedCategory;
+
+        if (bookCount === skipValue) {
+            break;
+        }
+
+        if (motion === BACKWARD) {
+            if (isAvailabilityMatching && isCategroyMatching) {
+                booksList.prepend(bookCards[skip]["card"]);
+                bookCount++;
+            }
+            skip--;
+        } else {
+            if (isAvailabilityMatching && isCategroyMatching) {
+                booksList.appendChild(bookCards[skip]["card"]);
+                bookCount++;
+            }
+            skip++;
+        }
+    }
+
+    if (motion === BACKWARD) {
+        let tmp = Math.max(skip, 0);
+        skip = ++start;
+        start = tmp;
+    }
 
     if (bookCount === 0) {
         displaySearchNotFound();
     }
+
+}
+
+function pagination(motion) {
+    if (motion === FORWARD) {
+        start = skip;
+        currentPageNumber++;
+    }
+    else if (motion === BACKWARD) {
+        start--;
+        currentPageNumber--;
+    }
+
+    skip = start;
+
+    displayPageCount();
+
+    setTimeout(() => paginate(motion), 1000);
+
+    handleButtonsAvailability();
+}
+
+function loadingAndPagination(motion) {
+    clearBooks();
+    loadSpinner();
+    pagination(motion);
+}
+
+async function displayBooks() {
+    books = await loadBooks();
+
+    fillWithCategories();
+
+    bookCards = books["books"].map(function (book) {
+        populateCategoryAndAvailabilityCount(book);
+        return { "card": createBookCard(book), "book": book }
+    });
+    loadingAndPagination(NONE);
 }
 
 
 displayBooks();
-sortByMenu.addEventListener("change", displaySortedBooks);
+
+sortByMenu.addEventListener("change", function () {
+    sortBooks();
+    loadingAndPagination(NONE);
+});
 categoriesMenu.addEventListener("change", function () {
     skip = 0;
     currentPageNumber = 1;
-    pagination(NONE);
+    loadingAndPagination(NONE);
 });
 availabilityCheckbox.addEventListener("change", function (event) {
     const checkbox = event.target;
@@ -265,8 +282,21 @@ availabilityCheckbox.addEventListener("change", function (event) {
     }
     skip = 0;
     currentPageNumber = 1;
-    pagination(NONE);
+    loadingAndPagination(NONE);
 })
+
+nextButton.addEventListener("click", function () {
+    if (currentPageNumber < pagesCount) {
+        scrollUp();
+        loadingAndPagination(FORWARD);
+    }
+});
+previousButton.addEventListener("click", function () {
+    if (currentPageNumber !== 1) {
+        scrollUp();
+        loadingAndPagination(BACKWARD);
+    }
+});
 
 nextButton.addEventListener("mousedown", function () {
     nextButton.style.boxShadow = "none";
