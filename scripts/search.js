@@ -305,6 +305,7 @@ function startSearch() {
 
     changeURLWithNewQuery(newQuery);
 
+    start = 0;
     skip = 0;
     currentPageNumber = 1;
     displaySearchResults(newQuery);
@@ -328,6 +329,7 @@ sortByMenu.addEventListener("change", function () {
     loadingAndPagination(NONE);
 });
 categoriesMenu.addEventListener("change", function () {
+    start = 0;
     skip = 0;
     currentPageNumber = 1;
     loadingAndPagination(NONE);
@@ -339,6 +341,7 @@ availabilityCheckbox.addEventListener("change", function (event) {
     } else {
         isAvailabilityFilterOn = false;
     }
+    start = 0;
     skip = 0;
     currentPageNumber = 1;
     loadingAndPagination(NONE);
@@ -378,6 +381,7 @@ window.addEventListener("popstate", function () {
     let url = new URL(window.location.href);
     let previousQuery = url.searchParams.get("q");
 
+    start = 0;
     skip = 0;
     currentPageNumber = 1;
     searchBar.value = previousQuery;
