@@ -105,9 +105,9 @@ function compareByOldestDate(book1, book2) {
 
 function compareByHighestRating(book1, book2) {
     if (book1["book"]["rating"] > book2["book"]["rating"]) {
-        return 1;
+        return -1;
     }
-    return -1;
+    return 1;
 }
 
 function compareByTitleAlphabetically(book1, book2) {
@@ -270,6 +270,7 @@ sortByMenu.addEventListener("change", function () {
 });
 categoriesMenu.addEventListener("change", function () {
     skip = 0;
+    start = 0;
     currentPageNumber = 1;
     loadingAndPagination(NONE);
 });
@@ -281,6 +282,7 @@ availabilityCheckbox.addEventListener("change", function (event) {
         isAvailabilityFilterOn = false;
     }
     skip = 0;
+    start = 0;
     currentPageNumber = 1;
     loadingAndPagination(NONE);
 })
