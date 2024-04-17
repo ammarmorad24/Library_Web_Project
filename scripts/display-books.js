@@ -1,11 +1,8 @@
-const booksList = document.querySelector(".books");
+const books = document.querySelector(".books");
 
 const sortByMenu = document.querySelector(".sort-by");
 const categoriesMenu = document.querySelector(".category-menu");
 const availabilityCheckbox = document.querySelector(".available input");
-
-const searchBar = document.querySelector(".search-bar");
-const searchForm = document.getElementsByTagName("form")[0];
 
 const pageNumber = document.querySelector(".page-number");
 const nextButton = document.querySelector(".next-button");
@@ -14,7 +11,7 @@ const previousButton = document.querySelector(".previous-button");
 const loadingSpinner = document.querySelector(".loading-spinner");
 
 let bookCards;
-let books;
+let booksList;
 
 const NONE = 0;
 const FORWARD = 1;
@@ -36,11 +33,11 @@ async function loadBooks() {
     return response;
 }
 function clearBooks() {
-    let children = booksList.children;
+    let children = books.children;
     for (let i = 0; i < children.length; i++) {
         if (children[i].className !== "filters"
             && children[i].className !== "next-previous-pages") {
-            booksList.removeChild(children[i]);
+            books.removeChild(children[i]);
             i--;
         }
     }
@@ -62,7 +59,7 @@ function displaySearchNotFound() {
     let notFound = document.createElement("p");
     notFound.innerHTML = "Woah...Seems you have reached the end"
     notFound.className = "not-found"
-    booksList.appendChild(notFound);
+    books.appendChild(notFound);
 }
 function scrollUp() {
     document.documentElement.scrollTo({
@@ -71,7 +68,7 @@ function scrollUp() {
     });
 }
 function loadSpinner() {
-    booksList.appendChild(loadingSpinner);
+    books.appendChild(loadingSpinner);
 }
 
 function createBookCard(book) {
@@ -155,6 +152,7 @@ function disableButton(button) {
 }
 
 function handleButtonsAvailability() {
+    console.log(currentPageNumber);
     if (currentPageNumber === pagesCount) {
         disableButton(nextButton);
     } else {
@@ -199,13 +197,13 @@ function paginate(motion) {
 
         if (motion === BACKWARD) {
             if (isAvailabilityMatching && isCategroyMatching) {
-                booksList.prepend(bookCards[skip]["card"]);
+                books.prepend(bookCards[skip]["card"]);
                 bookCount++;
             }
             skip--;
         } else {
             if (isAvailabilityMatching && isCategroyMatching) {
-                booksList.appendChild(bookCards[skip]["card"]);
+                books.appendChild(bookCards[skip]["card"]);
                 bookCount++;
             }
             skip++;
@@ -250,11 +248,11 @@ function loadingAndPagination(motion) {
 }
 
 async function displayBooks() {
-    books = await loadBooks();
+    booksList = await loadBooks();
 
     fillWithCategories();
 
-    bookCards = books["books"].map(function (book) {
+    bookCards = booksList["books"].map(function (book) {
         populateCategoryAndAvailabilityCount(book);
         return { "card": createBookCard(book), "book": book }
     });
@@ -315,8 +313,4 @@ document.documentElement.addEventListener("mouseup", function () {
     if (currentPageNumber !== 1) {
         previousButton.style.boxShadow = "0px 1px black";
     }
-})
-
-searchForm.addEventListener("submit", function () {
-    searchBar.value = searchBar.value.trim().replace(/\s+/g, " ");
 })
