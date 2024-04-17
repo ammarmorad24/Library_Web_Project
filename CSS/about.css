@@ -9,15 +9,20 @@ rgb(82, 42, 1) font color
   font-family: "Montserrat";
   transition: color 0.3s ease-in-out;
 }
+
 .about-us:hover {
   color: rgb(84, 38, 1);
 }
+
 body {
   background-image: url("../images/background5.jpg");
-  background-size: 600px 750px; /* Cover the entire element */
-  background-position: right; /* Center the photo */
+  background-size: 600px 750px;
+  /* Cover the entire element */
+  background-position: right;
+  /* Center the photo */
   background-repeat: no-repeat;
 }
+
 /* body::before {
   content: "";
   position: absolute;

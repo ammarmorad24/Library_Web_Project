@@ -3,14 +3,18 @@ body {
   background-size: cover; */
   background-color: white;
 }
+
 /* header {
   background-color: rgb(0, 0, 0);
 } */
 .profile-container {
   display: inline-block;
-  width: 500px; /* Adjust the width of the rectangle block */
-  height: 500px; /* Adjust the height of the rectangle block */
-  background-color: beige; /* Set the background color */
+  width: 500px;
+  /* Adjust the width of the rectangle block */
+  height: 500px;
+  /* Adjust the height of the rectangle block */
+  background-color: beige;
+  /* Set the background color */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -20,6 +24,7 @@ body {
   padding-top: 40px;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
 }
+
 .profile-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -35,6 +40,7 @@ body {
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
   margin-top: 50px;
 }
+
 .overlay {
   display: inline-block;
   position: relative;
@@ -46,6 +52,7 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
+
 .overlay:hover {
   opacity: 1;
 }
@@ -56,19 +63,23 @@ body {
   color: rgb(140, 54, 0);
   transition: color 0.3s ease-in-out;
 }
+
 .profile-header:hover {
   color: rgb(84, 38, 1);
 }
+
 .data-titles {
   font-weight: bolder;
   color: rgb(45, 27, 2);
   font-size: larger;
 }
+
 .data {
   color: rgb(140, 54, 0);
   font-weight: bolder;
   font-size: large;
 }
+
 .borrowed-btn {
   margin-top: 135px;
   padding: 10px 30px;

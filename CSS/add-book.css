@@ -1,9 +1,11 @@
 body {
   background-image: url("../images/background13.jpg");
   background-size: 700px 100%;
-  background-position: right; /* Center the photo */
+  background-position: right;
+  /* Center the photo */
   background-repeat: no-repeat;
 }
+
 .login {
   color: #000;
   text-transform: uppercase;
@@ -12,14 +14,17 @@ body {
   font-weight: bold;
   font-size: x-large;
 }
+
 .add-book-header {
   font-weight: bolder;
   color: rgb(84, 38, 1);
   transition: color 0.3s ease-in-out;
 }
+
 .add-book-header:hover {
   color: rgb(67, 31, 1);
 }
+
 .add-book-form {
   margin-left: 150px;
   display: flex;
@@ -71,8 +76,8 @@ body {
   font-weight: bolder;
 }
 
-.form-item input:valid ~ span,
-.form-item input:focus ~ span {
+.form-item input:valid~span,
+.form-item input:focus~span {
   transform: translateX(113px) translateY(-15px);
   font-size: 0.8em;
   padding: 5px 10px;
@@ -88,9 +93,11 @@ body {
   border: 2px solid rgb(45, 27, 2);
   border-radius: 8px;
 }
+
 .category-select {
   margin-top: 30px;
 }
+
 .select-menu {
   margin-left: 10px;
   border: none;
@@ -99,10 +106,12 @@ body {
   text-align: center;
   color: rgb(45, 27, 2);
 }
+
 .select-menu:focus {
   outline: none;
   border: none;
 }
+
 .submit-button {
   height: 45px;
   width: 100px;
@@ -122,29 +131,35 @@ body {
   background-color: rgb(45, 27, 2);
   color: white;
 }
+
 .book-desc {
   border: none;
   border-radius: 12px;
   padding-left: 5px;
 }
+
 .book-desc:focus {
   border: none;
   outline: none;
 }
+
 .book-cover {
   margin-left: 33%;
 }
+
 .image-preview {
   margin-top: 30px;
   margin-left: 37px;
   max-width: 100px;
   max-height: 100px;
 }
+
 .upload-btn {
   border: none;
   outline: none;
   background-color: white;
 }
+
 .custom-file-upload {
   border: solid rgb(45, 27, 2) 1.7px;
   /* background-color: white; */
@@ -154,11 +169,13 @@ body {
   transition: 0.5s;
   font-weight: 500;
 }
+
 .custom-file-upload:hover {
   cursor: pointer;
   background-color: rgb(45, 27, 2);
   color: white;
 }
+
 .categories {
   letter-spacing: 2px;
   font-size: 13px;
