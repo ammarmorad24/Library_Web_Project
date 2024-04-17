@@ -159,14 +159,17 @@ function createBookCard(book) {
 }
 
 function search(newQuery) {
-    let searchResultsList = [];
+    let searchResultsList = bookList;
 
     let isValidSearch = newQuery !== null && newQuery !== '';
     if (isValidSearch) {
+        searchResultsList = [];
+
         searchQuery = newQuery;
         let pattern = new RegExp(`${newQuery}+`);
         for (let book of bookList) {
-            if (book["title"].match(pattern) || book["author"].match(pattern)) {
+
+            if (book["title"].toLowerCase().match(pattern) || book["author"].toLowerCase().match(pattern)) {
                 searchResultsList.push(book);
             }
         }
