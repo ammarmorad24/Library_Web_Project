@@ -142,6 +142,7 @@ function createBookCard(book) {
     const bookCard = document.createElement("div");
     bookCard.className = "book-card";
     bookCard.innerHTML = `
+        <a href="./book-page-user" class="book-card-link">
             <div class="book-item">
                 <div class="book">
                     <img src=${book["image"]} alt="book cover" />
@@ -151,8 +152,8 @@ function createBookCard(book) {
                         <p>rating: ${book["rating"]}/5</p>
                     </div>
                 </div>
-                <button class="quick-borrow-button">Borrow</button>
             </div>
+        </a>
     `;
     return bookCard;
 }
