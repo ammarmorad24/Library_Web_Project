@@ -1,0 +1,144 @@
+* {
+  font-family: "Merriweather", serif;
+}
+
+body {
+	display:flex;
+	justify-content:center;
+align-items:center;
+min-height:100vh;	
+
+ background-color: #e8d3bd;
+  margin: 0;
+  padding: 90px 0 70px 0;
+  position:relative;
+}
+
+/* header section */
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 90px;
+ background-color: #935732;
+  display: flex;
+  justify-content: space-between;
+}
+
+header>* {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+.logo {
+  height: 86px;
+  width: 86px;
+  padding-right: 20px;
+}
+
+.logo img {
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid black;
+  
+}
+
+nav {
+  font-size: 1.5em;
+  font-weight: 700;
+  border-left: 2px solid white;
+}
+
+.profileSection a {
+  padding: 0 10px;
+}
+
+.profileSection .profilePic {
+  height: 70px;
+  width: 70px;
+}
+
+.profilePic img {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.profileSection button {
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 1rem;
+  border: 2px solid #b96e1e;
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  background-color: #f39028;
+}
+
+/* footer section */
+footer {
+  border-top: 1px solid black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.wrapper{
+
+  width: 300px;
+  height: 350px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  
+	
+}
+.wrapper .input_box{
+	
+	position:relative;
+}
+.input_box input{
+	width:70%;
+	height:22px;
+	background: transparent;
+	border:none;
+	outline:none;
+	border: 2px solid rgba(0,0,0,.2);
+	border-radius:40px;
+}	
+.input_box i{
+	position :absolute;
+	right:50px;
+	top:50%;
+	transform: translateY(-50%);
+	font-size:12px;
+	
+	
+}
+.wrapper .btn{
+background-color: #e8d3bd;
+  color: #000;
+  border:none;
+  outline:none;
+  border: 15px solid rgba(0,0,0,.2);
+
+width: 100px;
+  height: 30px;
+  
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+font-size:15px;
+  font-weight: 700;
+  
+}
