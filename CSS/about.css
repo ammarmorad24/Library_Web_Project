@@ -1,0 +1,37 @@
+/* rgb(140, 54, 0) About Us color
+rgb(84, 38, 1) About us color transition
+rgb(45, 27, 2) Header color
+rgb(82, 42, 1) font color
+*/
+.about-us {
+  margin-left: 150px;
+  color: rgb(140, 54, 0);
+  font-family: "Montserrat";
+  transition: color 0.3s ease-in-out;
+}
+.about-us:hover {
+  color: rgb(84, 38, 1);
+}
+body {
+  background-image: url("../images/background5.jpg");
+  background-size: 600px 750px; /* Cover the entire element */
+  background-position: right; /* Center the photo */
+  background-repeat: no-repeat;
+}
+/* body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1036px;
+  width: 600px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+} */
+.about-para {
+  font-weight: bold;
+  font-size: larger;
+  max-width: 800px;
+  margin-left: 80px;
+  color: rgb(82, 42, 1);
+  font-family: "Montserrat";
+}

@@ -1,12 +1,11 @@
-/* Common styles for all pages */
 * {
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat";
 }
 
 body {
   min-height: 100vh;
   box-sizing: border-box;
-  background-color: #e8d3bd;
+  background-color: #ffffff;
   margin: 0;
   padding: 90px 0 70px 0;
   position: relative;
@@ -19,8 +18,8 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  height: 90px;
-  background-color: #935732;
+  height: 50px;
+  background-color: rgb(45, 27, 2);
   display: flex;
   justify-content: space-between;
 }
@@ -31,7 +30,7 @@ header > * {
 }
 
 .nav-bar a {
-  color: white;
+  color: rgb(239, 226, 208);
   text-decoration: none;
   padding: 0 10px;
 }
@@ -51,7 +50,7 @@ header > * {
 .nav-item {
   font-size: 1.5em;
   font-weight: 700;
-  border-left: 2px solid white;
+  border-left: 2px solid rgb(0, 0, 0);
 }
 
 .profile-section a {
@@ -73,43 +72,12 @@ header > * {
   width: 80px;
   height: 40px;
   border-radius: 20px;
-  font-size: 1rem;
+  font-size: 30;
   border: 2px solid #b96e1e;
   cursor: pointer;
-  color: white;
+  color: #642600;
   font-weight: 700;
-  background-color: #f39028;
-}
-
-.search {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 50px;
-  height: 50px;
-  align-self: center;
-}
-
-.search-bar {
-  background-color: transparent;
-  border: none;
-  width: 500px;
-  font-size: 20px;
-  padding-left: 12px;
-}
-
-.search-bar:enabled {
-  outline: none;
-}
-
-.search-button {
-  z-index: 99;
-  cursor: pointer;
-  font-size: 20px;
-  background-color: transparent;
-  border: none;
-  justify-self: flex-end;
+  background-color: #ffffff;
 }
 
 /* footer section */

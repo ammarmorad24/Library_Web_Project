@@ -1,62 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Profile - Online Library</title>
-    <script src="/scripts/isAuth.js"></script>
-</head>
+    <!-- <script src="/scripts/isAuth.js"></script> -->
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="../CSS/profile.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <header>
-        <nav>
-            <a class="logo" href="./home.html">logo</a>
-            <br />
-            <a href="./borrowed-books.html">Borrowed Books</a>
-            <a class="about" href="./about.html">about</a>
-        </nav>
-
-        <div>
-            <a href="./sign-in.html"><button>Sign Out</button></a>
-            <a href="./profile.html"><img src="https://placehold.co/70x70" class="profile-picture"
-                    alt="Placeholder image" /></a>
-        </div>
+      <nav class="nav-bar">
+        <a class="logo" href="./home.html">
+          <img src="../images/Logo.jpg" alt="logo" />
+        </a>
+        <a class="nav-item" href="./about.html">about</a>
+        <a class="nav-item" href="./borrowed-books.html">borrowed books</a>
+      </nav>
+      <div class="profile-section">
+        <a href="./sign-in.html"><button>Sign Out</button></a>
+        <a class="profile-pic" href="./profile.html">
+          <img src="https://placehold.co/70x70" alt="profile picture" />
+        </a>
+      </div>
     </header>
     <main>
-        <div class="profile-container">
-            <h1>User Profile</h1>
-            <div class="profile-info">
-                <label for="username">Username:</label>
-                <p id="username">johndoe123</p>
-            </div>
-            <div class="profile-info">
-                <label for="fullname">Full Name:</label>
-                <p id="fullname">John Doe</p>
-            </div>
-            <div class="profile-info">
-                <label for="email">Email:</label>
-                <p id="email">johndoe@example.com</p>
-            </div>
-            <div class="profile-info">
-                <label for="membership">Membership Type:</label>
-                <p id="membership">Premium</p>
-            </div>
-            <div class="profile-info">
-                <label for="borrowed-books">Borrowed Books: 2</label>
-                <br />
-                <a href="./borrowed-books.html"><button>see all borrowed books</button></a>
-                <!-- <ul id="borrowed-books">
-                    <li class="book-item">Book Title 1</li>
-                    <li class="book-item">Book Title 2</li>
-                    TODO: Add more borrowed books if needed
-                </ul> -->
-            </div>
+      <div class="profile-container">
+        <div class="profile-details">
+          <h1 class="profile-header">User Profile</h1>
+          <div class="profile-info">
+            <label for="username" class="data-titles">Username:</label>
+            <p id="username" class="data">Xxfounding_titanxX</p>
+          </div>
+          <div class="profile-info">
+            <label for="fullname" class="data-titles">Full Name:</label>
+            <p id="fullname" class="data">Eren Yeager</p>
+          </div>
+          <div class="profile-info">
+            <label for="email" class="data-titles">Email:</label>
+            <p id="email" class="data">eren_mikasa@gmail.com</p>
+          </div>
+          <div class="profile-info">
+            <label for="membership" class="data-titles">Membership Type:</label>
+            <p id="membership" class="data">Premium</p>
+          </div>
+          <div class="profile-info">
+            <label class="data-titles" for="borrowed-books"
+              >Borrowed Books: 2</label
+            >
+            <!-- <ul id="borrowed-books">
+                        <li class="book-item">Book Title 1</li>
+                        <li class="book-item">Book Title 2</li>
+                        TODO: Add more borrowed books if needed
+                    </ul> -->
+          </div>
         </div>
+        <div class="image-container">
+          <img class="profile-picture" src="../images/ErenYeager.jpg" />
+          <div class="overlay"></div>
+          <a href="./borrowed-books.html"
+            ><button class="borrowed-btn">Borrowed Books</button></a
+          >
+        </div>
+      </div>
     </main>
     <footer>
-        <p>Library &copy; 2024</p>
+      <p>Library &copy; 2024</p>
     </footer>
-</body>
-
+  </body>
 </html>

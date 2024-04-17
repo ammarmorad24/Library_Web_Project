@@ -1,77 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <script src="/scripts/isAuth.js"></script>
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="../CSS/edit-book.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Library</title>
-  <script src="/scripts/isAuth.js"></script>
-</head>
+  <body>
+    <header>
+      <nav class="nav-bar">
+        <a class="logo" href="./home.html">
+          <img src="../images/Logo.jpg" alt="logo" />
+        </a>
+        <a class="nav-item" href="./about.html">about</a>
+        <a class="nav-item" href="./borrowed-books.html">borrowed books</a>
+      </nav>
+      <div class="profile-section">
+        <a href="./sign-in.html"><button>Sign Out</button></a>
+        <a class="profile-pic" href="./profile.html">
+          <img src="https://placehold.co/70x70" alt="profile picture" />
+        </a>
+      </div>
+    </header>
+    <main>
+      <form class="add-book-form" action="">
+        <h1 class="add-book-header">Edit Book Details</h1>
+        <div class="form-item">
+          <input
+            id="book-title"
+            type="text"
+            name="title"
+            value="Current Title"
+            required
+          />
+          <span>Title</span>
+        </div>
 
-<body>
-  <header>
-    <nav>
-      <a class="logo" href="./home-page-admin.html">logo</a>
-      <br />
-      <a class="about" href="./about.html">about</a>
-      <br />
-      <a href="./add-book.html">add book</a>
-    </nav>
-    <div>
-      <a href="./sign-in.html"><button>Sign Out</button></a>
-      <a href="./profile-admin.html"><img src="https://placehold.co/70x70" class="profile-picture"
-          alt="Placeholder image" /></a>
-    </div>
-  </header>
-  <main>
-    <form class="edit-book-form" action="">
-      <h1 class="edit-book-header">Edit Book Details</h1>
-
-      <div class="edit-image">
-        <label for="book-cover">
-          <p class="book-cover-text">Cover</p>
-          <img class="book-cover-image" src="https://placehold.co/150x225" alt="Placeholder image" />
+        <div class="form-item">
+          <input
+            id="book-author"
+            type="text"
+            name="author"
+            value="Current Author"
+            required
+          />
+          <span>Author</span>
+        </div>
+        <label class="category-select">
+          <span class="categories">CATEGORIES : </span>
+          <select id="categories-drop-down-menu" class="select-menu">
+            <option class="book-categroy" value="fantasy">Fantasy</option>
+            <option class="book-categroy" value="action">Action</option>
+            <option class="book-categroy" value="historical">Historical</option>
+          </select>
         </label>
-        <input id="book-cover-input" type="file" name="cover" />
-      </div>
-
-      <br />
-
-      <div class="edit-book-form-inputs">
-        <div class="form-item">
-          <label for="book-title">Title:</label>
-          <input id="book-title" type="text" name="title" value="Current Title" required />
+        <textarea
+          name="description"
+          rows="5"
+          cols="35"
+          style="resize: none"
+          class="book-desc"
+        >
+Current Book Description...</textarea
+        >
+        <div class="add-image">
+          <!-- <label for="book-cover" class="book-cover">
+            <img
+              class="book-cover-image"
+              src="https://placehold.co/150x225"
+              alt="Placeholder image"
+            />
+          </label> -->
+          <label for="book-cover-input" class="custom-file-upload">
+            Upload Book Cover
+          </label>
+          <input
+            id="book-cover-input"
+            type="file"
+            name="cover"
+            required
+            accept="image/*"
+            class="upload-btn"
+            style="display: none"
+          />
+          <br />
+          <img id="image-preview" class="image-preview" />
         </div>
+        <button type="submit" class="submit-button">submit</button>
+      </form>
+      <script>
+        const fileInput = document.getElementById("book-cover-input");
+        const imagePreview = document.getElementById("image-preview");
 
-        <br />
+        fileInput.addEventListener("change", function () {
+          const file = this.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function () {
+              imagePreview.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+          } else {
+            imagePreview.src = "";
+          }
+        });
+      </script>
+    </main>
 
-        <div class="form-item">
-          <label for="book-author">Author:</label>
-          <input id="book-author" type="text" name="author" value="Current Author" required />
-        </div>
-
-        <p>Categories</p>
-        <select id="categories-drop-down-menu">
-          <option class="book-categroy" value="fantasy">Fantasy</option>
-          <option class="book-categroy" value="action">Action</option>
-          <option class="book-categroy" value="historical">Historical</option>
-        </select>
-
-        <br />
-        <br />
-
-        <textarea name="description" rows="15" cols="35" style="resize: none">
-Current description of the book...</textarea>
-        <br />
-
-        <button type="submit" class="sumbit-button">Confirm Changes</button>
-      </div>
-    </form>
-  </main>
-
-  <footer>
-    <p>Library &copy; 2024</p>
-  </footer>
-</body>
-
+    <footer>
+      <p>Library &copy; 2024</p>
+    </footer>
+  </body>
 </html>
