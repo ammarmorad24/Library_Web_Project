@@ -1,6 +1,7 @@
 git_update
 # Ignore a specific file
 style.txt
+bookPage.js
 
 # Ignore all .log files
 *.log
