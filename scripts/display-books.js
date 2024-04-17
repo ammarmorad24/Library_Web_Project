@@ -70,10 +70,16 @@ function scrollUp() {
 function loadSpinner() {
     books.appendChild(loadingSpinner);
 }
+function getDatePublished(book) {
+    let date = new Date(book["date-published"]);
+    let dayMonthYearFormat = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    return dayMonthYearFormat;
+}
 
 function createBookCard(book) {
     const bookCard = document.createElement("div");
     bookCard.className = "book-card"
+    let datePublished = getDatePublished(book);
     bookCard.innerHTML = `
         <a href="./book-page-admin" class="book-link">
             <div class="book">
@@ -85,6 +91,9 @@ function createBookCard(book) {
                     <li>
                         <p>${book["author"]}</p>
                     </li> 
+                    <li>
+                        <p>Date Published: ${datePublished}</p>
+                    </li>
                 </ul>
                 <p class="book-rating">rating: ${book["rating"]}/5</p>
             </div>
@@ -93,11 +102,18 @@ function createBookCard(book) {
     return bookCard;
 }
 
-function compareByOldestDate(book1, book2) {
-    if (book1["book"]["date"] > book2["book"]["date"]) {
-        return -1;
+function compareByOldestDateAdded(book1, book2) {
+    if (book1["book"]["date-added"] > book2["book"]["date-added"]) {
+        return 1;
     }
-    return 1;
+    return -1;
+}
+
+function compareByOldestDatePublished(book1, book2) {
+    if (book1["book"]["date-published"] > book2["book"]["date-published"]) {
+        return 1;
+    }
+    return -1;
 }
 
 function compareByHighestRating(book1, book2) {
@@ -114,17 +130,21 @@ function compareByTitleAlphabetically(book1, book2) {
     return -1;
 }
 
-
-
 function sortBooks() {
     const sortByType = sortByMenu.value;
 
     switch (sortByType) {
-        case "date-latest":
-            bookCards.sort(compareByOldestDate);
+        case "date-added-newest":
+            bookCards.sort(compareByOldestDateAdded);
             break;
-        case "date-oldest":
-            bookCards.sort((book1, book2) => -compareByOldestDate(book1, book2));
+        case "date-added-oldest":
+            bookCards.sort((book1, book2) => -compareByOldestDateAdded(book1, book2));
+            break;
+        case "date-published-oldest":
+            bookCards.sort(compareByOldestDatePublished);
+            break;
+        case "date-published-recently":
+            bookCards.sort((book1, book2) => -compareByOldestDatePublished(book1, book2));
             break;
         case "rating-highest":
             bookCards.sort(compareByHighestRating);
@@ -152,7 +172,6 @@ function disableButton(button) {
 }
 
 function handleButtonsAvailability() {
-    console.log(currentPageNumber);
     if (currentPageNumber === pagesCount) {
         disableButton(nextButton);
     } else {
