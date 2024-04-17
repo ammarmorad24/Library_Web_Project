@@ -1,6 +1,8 @@
 const books = document.querySelector(".books");
+
 const searchButton = document.querySelector(".fa-magnifying-glass")
 const searchBar = document.querySelector(".search-bar");
+
 const nextButton = document.querySelector(".next-button");
 const previousButton = document.querySelector(".previous-button");
 const pageNumber = document.querySelector(".page-number");
