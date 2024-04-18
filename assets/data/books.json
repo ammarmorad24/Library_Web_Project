@@ -1,0 +1,160 @@
+{
+    "books": [
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 1.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "adventure",
+                "fantasy"
+            ],
+            "date-added": 1712928583049,
+            "date-published": "2024-04-17T20:47:29.277Z",
+            "availability": true
+        },
+        {
+            "title": "atitle",
+            "author": "author",
+            "rating": 0.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "mystery",
+                "horror"
+            ],
+            "date-added": 1712928550277,
+            "date-published": "2024-01-17T20:47:29.277Z",
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 0.5,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "mystery",
+                "horror"
+            ],
+            "date-added": 1712928550278,
+            "date-published": "2024-04-17T20:47:29.277Z",
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 2.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "mystery",
+                "horror"
+            ],
+            "date-added": 1712928550279,
+            "date-published": "2024-03-17T20:47:29.277Z",
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 1.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "adventure",
+                "fantasy"
+            ],
+            "date-added": 1712928583059,
+            "date-published": "2024-02-17T20:47:29.277Z",
+            "availability": true
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 4.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "mystery",
+                "horror"
+            ],
+            "date-added": 1712928550287,
+            "date-published": "2024-01-17T20:47:29.277Z",
+            "availability": false
+        },
+        {
+            "title": "atitle",
+            "author": "author",
+            "rating": 3.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "mystery",
+                "horror"
+            ],
+            "date-added": 1712928550298,
+            "date-published": "2023-04-17T20:47:29.277Z",
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 0.5,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "mystery",
+                "horror"
+            ],
+            "date-added": 1712928550278,
+            "date-published": "2023-03-17T20:47:29.277Z",
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 2.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "mystery",
+                "horror"
+            ],
+            "date-added": 1712928550279,
+            "date-published": "2023-02-17T20:47:29.277Z",
+            "availability": false
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 1.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "adventure",
+                "fantasy"
+            ],
+            "date-added": 1712928583059,
+            "date-published": "2023-01-17T20:47:29.277Z",
+            "availability": true
+        },
+        {
+            "title": "title",
+            "author": "author",
+            "rating": 4.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "mystery",
+                "horror"
+            ],
+            "date-added": 1712928550287,
+            "date-published": "2022-04-17T20:47:29.277Z",
+            "availability": false
+        },
+        {
+            "title": "atitle",
+            "author": "author",
+            "rating": 3.0,
+            "image": "https://placehold.co/100x150",
+            "categories": [
+                "mystery",
+                "horror"
+            ],
+            "date-added": 1712928550298,
+            "date-published": "2022-03-17T20:47:29.277Z",
+            "availability": false
+        }
+    ]
+}
