@@ -49,8 +49,10 @@ function fillWithCategories() {
     }
 }
 function populateCategoryAndAvailabilityCount(book) {
-    categoryAndAvailabilityCount[book["category"]]["available-count"] += book["availability"];
-    categoryAndAvailabilityCount[book["category"]]["category-count"]++;
+    for (let category of book["categories"]) {
+        categoryAndAvailabilityCount[category]["available-count"] += book["availability"];
+        categoryAndAvailabilityCount[category]["category-count"]++;
+    }
 
     categoryAndAvailabilityCount["any-category"]["category-count"]++;
     categoryAndAvailabilityCount["any-category"]["available-count"] += book["availability"];
@@ -68,6 +70,8 @@ function scrollUp() {
     });
 }
 function loadSpinner() {
+    let divToAddMargin = document.createElement("div");
+    books.appendChild(divToAddMargin);
     books.appendChild(loadingSpinner);
 }
 function getDatePublished(book) {
@@ -208,7 +212,7 @@ function paginate(motion) {
             bookCards[skip]["book"]["availability"] === true;
 
         const isCategroyMatching = selectedCategory === "any-category" ||
-            bookCards[skip]["book"]["category"] === selectedCategory;
+            bookCards[skip]["book"]["categories"].indexOf(selectedCategory) !== -1;
 
         if (bookCount === skipValue) {
             break;
