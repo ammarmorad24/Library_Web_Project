@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library</title>
+  <script src="/scripts/isAuth.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="./home-page-admin.html">logo</a>
+      <br />
+      <a class="about" href="./about.html">about</a>
+      <br />
+      <a href="./add-book.html">add book</a>
+    </nav>
+    <div>
+      <a href="./sign-in.html"><button>Sign Out</button></a>
+      <a href="./profile-admin.html"><img src="https://placehold.co/70x70" class="profile-picture"
+          alt="Placeholder image" /></a>
+    </div>
+  </header>
+  <main>
+    <form class="add-book-form" action="">
+      <h1 class="add-book-header">Add Book</h1>
+
+      <div class="add-image">
+        <label for="book-cover">
+          <p class="book-cover-text">Cover</p>
+          <img class="book-cover-image" src="https://placehold.co/150x225" alt="Placeholder image" />
+        </label>
+        <input id="book-cover-input" type="file" name="cover" required />
+      </div>
+
+      <br />
+
+      <div class="add-book-form-inputs">
+        <div class="form-item">
+          <label for="book-title">Title:</label>
+          <input id="book-title" type="text" name="title" placeholder="title" required />
+        </div>
+
+        <br />
+
+        <div class="form-item">
+          <label for="book-author">Author:</label>
+          <input id="book-author" type="text" name="author" placeholder="author" required />
+        </div>
+
+        <p>Categories</p>
+        <select id="categories-drop-down-menu">
+          <option class="book-categroy" value="fantasy">Fantasy</option>
+          <option class="book-categroy" value="action">Action</option>
+          <option class="book-categroy" value="historical">Historical</option>
+        </select>
+
+        <br />
+        <br />
+
+        <textarea name="description" rows="15" cols="35" style="resize: none"
+          placeholder="Add some description to the book..."></textarea>
+        <br />
+
+        <button type="submit" class="sumbit-button">submit</button>
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    <p>Library &copy; 2024</p>
+  </footer>
+</body>
+
+</html>
