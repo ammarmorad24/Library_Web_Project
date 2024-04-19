@@ -37,13 +37,15 @@ let searchQuery = new URLSearchParams(window.location.search.toString());
 searchBar.value = searchQuery.get("q");
 
 async function loadBooksData() {
-    const promise = await fetch("../assets/data/books.json");
-    const response = promise.json();
-    return response;
+    const books = localStorage.getItem("books");
+    return JSON.parse(books);
+    // const promise = await fetch("../assets/data/books.json");
+    // const response = promise.json();
+    // return response;
 }
 async function loadBooks() {
     const booksData = await loadBooksData();
-    bookList = booksData["books"];
+    bookList = booksData;
 }
 function clearBooks() {
     let children = books.children;
