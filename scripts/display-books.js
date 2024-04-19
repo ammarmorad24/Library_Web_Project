@@ -87,7 +87,7 @@ function createBookCard(book) {
     bookCard.className = "book-card"
     let datePublished = getDatePublished(book);
     bookCard.innerHTML = `
-        <a href="./book-page-admin" class="book-link">
+        <a href="./book-page.html" class="book-link">
             <div class="book">
                 <img class="book-cover-image" src=${book["image"]} alt="Placeholder image" />
                 <ul class="book-info">

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../common.css" />
     <link rel="stylesheet" href="../CSS/search-results.css" />
 
-    <!-- <script src="../scripts/isAuth.js"></script> -->
+    <script src="../scripts/isAuth.js"></script>
     <script src="/scripts/extra-books.js"></script>
   </head>
 
@@ -29,7 +29,7 @@
           <img src="/images/Logo.jpg" alt="logo" />
         </a>
         <a class="nav-item" href="./home.html">Home</a>
-        <a class="nav-item" href="./borrowed-books.html">Borrowed Books</a>
+        <a id="add-borrowed" class="nav-item" href="./borrowed-books.html">Borrowed Books</a>
         <a class="nav-item" href="./about.html">About</a>
       </nav>
 
@@ -43,8 +43,8 @@
       </div>
 
       <div class="profile-section">
-        <a href="./sign-in.html">
-          <button>Sign Out</button>
+        <a href="../index.html">
+          <button id="sign-out">Sign Out</button>
         </a>
         <a class="profile-pic" href="./profile.html">
           <img
@@ -101,6 +101,8 @@
     <footer>
       <p>Library &copy; 2024</p>
     </footer>
+    <script src="../scripts/is-admin.js"></script>
     <script src="../scripts/search.js"></script>
+    <script src="../scripts/sign-out.js"></script>
   </body>
 </html>
