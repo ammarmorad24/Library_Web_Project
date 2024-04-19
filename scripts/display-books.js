@@ -28,9 +28,11 @@ let isCategroyFilterOn = false;
 
 
 async function loadBooks() {
-    const promise = await fetch("../assets/data/books.json");
-    const response = promise.json();
-    return response;
+    const books = localStorage.getItem("books");
+    return JSON.parse(books);
+    // const promise = await fetch("../assets/data/books.json");
+    // const response = promise.json();
+    // return response;
 }
 function clearBooks() {
     let children = books.children;
@@ -275,7 +277,7 @@ async function displayBooks() {
 
     fillWithCategories();
 
-    bookCards = booksList["books"].map(function (book) {
+    bookCards = booksList.map(function (book) {
         populateCategoryAndAvailabilityCount(book);
         return { "card": createBookCard(book), "book": book }
     });

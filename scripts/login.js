@@ -27,7 +27,7 @@ document.getElementById("loginForm").onsubmit = async (event) => {
     sessionStorage.setItem("id", user.id);
     sessionStorage.setItem("userName", user.userName);
     sessionStorage.setItem("role", user.role);
-    wwindow.location.replace("/HTML-Pages/home.html");
+    window.location.replace("/HTML-Pages/home.html");
   }
 
   emailElement.disabled = false;
