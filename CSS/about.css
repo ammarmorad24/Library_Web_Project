@@ -15,7 +15,6 @@ rgb(82, 42, 1) font color
 }
 
 body {
-  background-image: url("../images/background5.jpg");
   background-size: 600px 750px;
   /* Cover the entire element */
   background-position: right;
@@ -39,4 +38,17 @@ body {
   margin-left: 80px;
   color: rgb(82, 42, 1);
   font-family: "Montserrat";
+}
+
+.image {
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media (max-width: 1550px) {
+  .image {
+    display: none;
+  }
 }

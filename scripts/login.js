@@ -1,7 +1,4 @@
-const users = [
-  { id: "1", userName: "ahmed", email: "user@example.com", password: "12345678", role: "user", },
-  { id: "2", userName: "george", email: "admin@example.com", password: "12345678", role: "admin", },
-];
+const users = JSON.parse(localStorage.getItem("users")) || [];
 
 const emailElement = document.getElementById("email");
 const passwordElement = document.getElementById("password");

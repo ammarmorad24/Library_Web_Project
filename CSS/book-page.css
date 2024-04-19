@@ -81,7 +81,6 @@ main {
 
 .user-review {
   margin-top: 5px;
-
 }
 
 .borrow-button {
@@ -116,21 +115,20 @@ main {
   /* Darker grey on hover */
 }
 
-ul li{
+ul li {
   list-style: none;
   background-color: rgb(255, 220, 155);
   border-radius: 20px;
   margin-right: 10px;
   padding: 5px;
   border: solid 1px;
-
 }
 
-.category ul{
+.category ul {
   display: flex;
   padding-left: 13px;
 }
 
-.category p{
+.category p {
   padding-left: 13px;
 }
