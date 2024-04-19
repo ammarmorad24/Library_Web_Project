@@ -21,9 +21,7 @@ document.getElementById("loginForm").onsubmit = async (event) => {
     errorElement.innerText = "wrong password";
     errorElement.style.display = "inline-block";
   } else {
-    sessionStorage.setItem("id", user.id);
-    sessionStorage.setItem("userName", user.userName);
-    sessionStorage.setItem("role", user.role);
+    sessionStorage.setItem("user", JSON.stringify(user));
     window.location.replace("/HTML-Pages/home.html");
   }
 
