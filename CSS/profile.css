@@ -1,0 +1,108 @@
+body {
+  /* background-image: url("./background6.jpg");
+  background-size: cover; */
+  background-color: white;
+}
+
+/* header {
+  background-color: rgb(0, 0, 0);
+} */
+.profile-container {
+  display: inline-block;
+  width: 500px;
+  /* Adjust the width of the rectangle block */
+  height: 500px;
+  /* Adjust the height of the rectangle block */
+  background-color: beige;
+  /* Set the background color */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100px;
+  padding-left: 40px;
+  padding-top: 40px;
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 35px;
+}
+
+.profile-picture {
+  display: inline-block;
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
+  margin-top: 50px;
+}
+
+.overlay {
+  display: inline-block;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 200px;
+  width: 200px;
+  margin-top: 50px;
+  border-radius: 100px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.overlay:hover {
+  opacity: 1;
+}
+
+.profile-header {
+  font-weight: bolder;
+  /* color: rgb(45, 27, 2); */
+  color: rgb(140, 54, 0);
+  transition: color 0.3s ease-in-out;
+}
+
+.profile-header:hover {
+  color: rgb(84, 38, 1);
+}
+
+.data-titles {
+  font-weight: bolder;
+  color: rgb(45, 27, 2);
+  font-size: larger;
+}
+
+.data {
+  color: rgb(140, 54, 0);
+  font-weight: bolder;
+  font-size: large;
+}
+
+.borrowed-btn {
+  margin-top: 135px;
+  padding: 10px 30px;
+  border-radius: 10px;
+  border: 0;
+  background-color: beige;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+  font-weight: bolder;
+  transition: all 0.3s ease;
+  box-shadow: rgb(140, 54, 0) 0px 10px 0px 0px;
+  color: rgb(140, 54, 0);
+  cursor: pointer;
+}
+
+.borrowed-btn:hover {
+  box-shadow: rgb(45, 27, 2) 0px 7px 0px 0px;
+}
+
+.borrowed-btn:active {
+  background-color: rgb(199, 199, 133);
+  /*50, 168, 80*/
+  box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+  transform: translateY(5px);
+  transition: 200ms;
+}
