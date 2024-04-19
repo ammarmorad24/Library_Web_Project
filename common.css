@@ -2,10 +2,14 @@
   font-family: "Montserrat";
 }
 
+p {
+  font-weight: 500;
+}
+
 body {
   min-height: 100vh;
   box-sizing: border-box;
-  background-color: #af8555;
+  background-color: #e5d3b3;
   margin: 0;
   padding: 90px 0 70px 0;
   position: relative;
@@ -19,7 +23,7 @@ header {
   width: 100%;
   z-index: 1000;
   height: 60px;
-  background-color: rgb(45, 27, 2);
+  background-color: #2f1b12;
   display: flex;
   justify-content: space-between;
 }

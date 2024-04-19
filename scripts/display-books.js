@@ -92,7 +92,7 @@ function createBookCard(book) {
                 <img class="book-cover-image" src=${book["image"]} alt="Placeholder image" />
                 <ul class="book-info">
                     <li>
-                        <p>${book["title"]}</p>
+                        <h3>${book["title"]}</h3>
                     </li> 
                     <li>
                         <p>${book["author"]}</p>
