@@ -75,12 +75,6 @@ function populateCategoryAndAvailabilityCount(book) {
     categoryAndAvailabilityCount["any-category"]["category-count"]++;
     categoryAndAvailabilityCount["any-category"]["available-count"] += book["availability"];
 }
-function scrollUp() {
-    document.documentElement.scrollTo({
-        top: 0,
-        behavior: "smooth",
-    });
-}
 function loadSpinner() {
     books.appendChild(loadingSpinner);
 }
@@ -347,7 +341,6 @@ function startSearch() {
 
 initialSearchResultsDisplay();
 
-
 searchButton.addEventListener("click", function () {
     startSearch();
 });
@@ -383,7 +376,6 @@ availabilityCheckbox.addEventListener("change", function (event) {
 
 nextButton.addEventListener("click", function () {
     if (currentPageNumber < pagesCount) {
-        scrollUp();
         loadingAndPagination(FORWARD);
     }
 });
@@ -393,7 +385,6 @@ nextButton.addEventListener("mousedown", function () {
 
 previousButton.addEventListener("click", function () {
     if (currentPageNumber !== 1) {
-        scrollUp();
         loadingAndPagination(BACKWARD);
     }
 });
