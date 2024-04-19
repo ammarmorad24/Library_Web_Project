@@ -6,6 +6,7 @@
     <title>User Profile - Online Library</title>
     <script src="/scripts/isAuth.js"></script>
     <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="../temp.css" />
     <link rel="stylesheet" href="../CSS/profile.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,18 +37,24 @@
     </header>
     <main>
       <div class="profile-container">
-        <h1>User Profile</h1>
-        <div class="profile-info">
-          <label for="username">Username:</label>
-          <p id="username">johndoe123</p>
+        <div class="profile-details">
+          <h1 class="profile-header">User Profile</h1>
+          <div class="profile-info">
+            <label for="username" class="data-titles">Username:</label>
+            <p id="username" class="data">Xxfounding_titanxX</p>
+          </div>
+          <div class="profile-info">
+            <label for="fullname" class="data-titles">Full Name:</label>
+            <p id="fullname" class="data">Eren Yeager</p>
+          </div>
+          <div class="profile-info">
+            <label for="email" class="data-titles">Email:</label>
+            <p id="email" class="data">eren_mikasa@gmail.com</p>
+          </div>
         </div>
-        <div class="profile-info">
-          <label for="fullname">Full Name:</label>
-          <p id="fullname">John Doe</p>
-        </div>
-        <div class="profile-info">
-          <label for="email">Email:</label>
-          <p id="email">johndoe@example.com</p>
+        <div class="image-container">
+          <img class="profile-picture" src="../images/ErenYeager.jpg" />
+          <div class="overlay"></div>
         </div>
       </div>
     </main>
