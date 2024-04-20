@@ -2,8 +2,11 @@ let url = new URL(window.location.href);
 let bookId = url.searchParams.get("id");
 const allBooks = JSON.parse(localStorage.getItem("books"));
 const book = allBooks.find((book) => book.id == bookId);
-console.log(book);
-console.log(bookId);
+
+const coverElement = document.querySelector(".image");
+coverElement.src = book.image;
+const titleElement = document.querySelector(".title");
+titleElement.innerText = book.title;
 
 const scoreElement = document.getElementById("score");
 const reviewContentElement = document.getElementById("review-content");
