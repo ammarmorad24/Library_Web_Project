@@ -1,11 +1,12 @@
 body {
-  background-image: url("../images/background13.jpg");
-  background-size: 700px 100%;
-  background-position: right;
-  /* Center the photo */
-  background-repeat: no-repeat;
+  display: flex;
 }
-
+.image {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .login {
   color: #000;
   text-transform: uppercase;
@@ -26,7 +27,7 @@ body {
 }
 
 .add-book-form {
-  margin-left: 150px;
+  margin-left: 16vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,8 +35,8 @@ body {
   width: 450px;
   flex-direction: column;
   gap: 35px;
-  background: beige;
-  box-shadow: 16px 16px 32px #c8c8c8, -16px -16px 32px #fefefe;
+  background: rgb(255, 255, 255);
+  box-shadow: rgb(45, 27, 2) 2px 2px 0px 0px;
   border-radius: 8px;
   padding-bottom: 20px;
 }
@@ -100,17 +101,17 @@ body {
 
 .select-menu {
   margin-left: 10px;
-  border: none;
+  border: rgb(45, 27, 2) 1px solid;
   border-radius: 10px;
   width: 150px;
   text-align: center;
   color: rgb(45, 27, 2);
 }
 
-.select-menu:focus {
+/* .select-menu:focus {
   outline: none;
   border: none;
-}
+} */
 
 .submit-button {
   height: 45px;
@@ -133,15 +134,17 @@ body {
 }
 
 .book-desc {
-  border: none;
+  border: rgb(45, 27, 2) 2px solid;
   border-radius: 12px;
-  padding-left: 5px;
+  padding-left: 10px;
+  text-align: left;
+  margin-left: 10px;
 }
 
-.book-desc:focus {
+/* .book-desc:focus {
   border: none;
   outline: none;
-}
+} */
 
 .book-cover {
   margin-left: 33%;
@@ -177,8 +180,52 @@ body {
 }
 
 .categories {
+  margin-top: 20px;
   letter-spacing: 2px;
   font-size: 13px;
   color: rgb(45, 27, 2);
   font-weight: bolder;
+}
+.input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgb(45, 27, 2);
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.custom-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: rgb(45, 27, 2);
+  border: 2px solid rgb(45, 27, 2);
+  border-radius: 3px;
+  opacity: 0;
+}
+
+.input[type="checkbox"]:checked + .custom-checkbox::after {
+  opacity: 1;
+}
+@media (max-width: 1350px) {
+  body {
+    justify-content: center;
+  }
+  .add-book-form {
+    margin: auto;
+  }
+  .image {
+    display: none;
+  }
 }

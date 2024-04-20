@@ -27,10 +27,6 @@ main {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.book-details {
-  margin-top: 20px;
-}
-
 .book-name {
   font-size: 24px;
   font-weight: bold;
@@ -48,10 +44,6 @@ main {
 
 .story-description {
   margin-top: 20px;
-}
-
-.story-paragraph {
-  margin-left: 12px;
 }
 
 .add-review {
@@ -72,18 +64,36 @@ main {
 }
 
 .reviews {
-  margin-top: 20px;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow: auto;
+  border-top: 1px solid #ccc;
+  padding: 5px;
+  padding-bottom: 0;
+}
+
+.reviews-word{
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 0;
+
 }
 
 .username {
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 17px;
+}
+.review-content {
+  margin-top: 5px;
 }
 
 .user-review {
   margin-top: 5px;
 }
 
-.borrow-button {
+.borrow-button, .delete-button {
   background-color: #27ae60;
   color: #fff;
   border: none;
@@ -95,6 +105,14 @@ main {
 
 .borrow-button:hover {
   background-color: #219e54;
+}
+
+.delete-button {
+  background-color: #d62727;
+}
+
+.delete-button:hover {
+  background-color: #b62020;
 }
 
 .edit-button {
@@ -115,7 +133,7 @@ main {
   /* Darker grey on hover */
 }
 
-ul li {
+.category li {
   list-style: none;
   background-color: rgb(255, 220, 155);
   border-radius: 20px;
@@ -126,9 +144,5 @@ ul li {
 
 .category ul {
   display: flex;
-  padding-left: 13px;
-}
-
-.category p {
-  padding-left: 13px;
+  padding-left: 0;
 }

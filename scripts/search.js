@@ -165,7 +165,7 @@ function createBookCard(book) {
     let datePublished = getDatePublished(book);
     let genresList = makeGenresList(book);
     bookCard.innerHTML = `
-        <a href="./book-page.html" class="book-card-link">
+        <a href="./book-page.html?id=${book["id"]}" class="book-card-link">
             <div class="book-item">
                 <div class="book">
                     <img src=${book["image"]} alt="book cover" />

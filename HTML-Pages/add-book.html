@@ -58,6 +58,7 @@
       </div>
     </header>
     <main>
+      <img class="image" src="../images/background13.jpg" alt="" />
       <form class="add-book-form" action="">
         <h1 class="add-book-header">Add Book</h1>
         <div class="form-item">
@@ -69,17 +70,44 @@
           <input id="book-author" type="text" name="author" required />
           <span>Author</span>
         </div>
-        <label class="category-select">
-          <span class="categories">CATEGORIES : </span>
-          <select id="categories-drop-down-menu" class="select-menu">
-            <option class="book-categroy" value="fantasy">Fantasy</option>
-            <option class="book-categroy" value="action">Action</option>
-            <option class="book-categroy" value="historical">Historical</option>
-          </select>
+        <span class="categories">CATEGORIES : </span>
+        <label>
+          <input
+            type="checkbox"
+            id="action"
+            class="input"
+            name="options"
+            value="action"
+          />
+          <span class="custom-checkbox"></span>
+          <span>Action</span>
         </label>
+        <label>
+          <input
+            type="checkbox"
+            id="fantasy"
+            class="input"
+            name="options"
+            value="fantasy"
+          />
+          <span class="custom-checkbox"></span>
+          <span> Fantasy</span>
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            id="historical"
+            class="input"
+            name="options"
+            value="historical"
+          />
+          <span class="custom-checkbox"></span>
+          <span>Historical</span>
+        </label>
+
         <textarea
           name="description"
-          rows="5"
+          rows="10"
           cols="35"
           style="resize: none"
           placeholder="Add some description to the book..."
