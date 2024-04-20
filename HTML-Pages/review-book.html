@@ -1,98 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library</title>
-    <script src="/scripts/isAuth.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-  </head>
 
-  <body>
-    <header>
-      <nav class="nav-bar">
-        <a class="logo" href="./home.html">
-          <img src="/images/Logo.jpg" alt="logo" />
-        </a>
-        <a class="nav-item" href="./home.html">Home</a>
-        <a class="nav-item" href="./borrowed-books.html">Borrowed Books</a>
-        <a class="nav-item" href="./about.html">About</a>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library</title>
+  <script src="/scripts/isAuth.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="../CSS/review-book.css">
 
-      <form
-        id="search-container"
-        action="./search-results.html"
-        method="get"
-        autocomplete="off"
-      >
-        <div class="search">
-          <input class="search-bar" name="q" />
-          <button class="search-button">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
-      </form>
+</head>
 
-      <div class="profile-section">
-        <a href="../index.html">
-          <button id="sign-out">Sign Out</button>
-        </a>
-        <a class="profile-pic" href="./profile.html">
-          <img
-            src="https://placehold.co/50x50"
-            class="profile-picture"
-            alt="profile picture"
-          />
-        </a>
+<body>
+  <header>
+    <nav class="nav-bar">
+      <a class="logo" href="./home.html">
+        <img src="/images/Logo.jpg" alt="logo" />
+      </a>
+      <a class="nav-item" href="./home.html">Home</a>
+      <a class="nav-item" href="./borrowed-books.html">Borrowed Books</a>
+      <a class="nav-item" href="./about.html">About</a>
+    </nav>
+
+    <form id="search-container" action="./search-results.html" method="get" autocomplete="off">
+      <div class="search">
+        <input class="search-bar" name="q" />
+        <button class="search-button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
-    </header>
-    <main>
-      <div class="book-info">
-        <img src="https://shorturl.at/qxH12" height="350px" />
-        <p class="title">1984</p>
-        <p class="author">George Orwell</p>
-      </div>
-      <form>
+    </form>
+
+    <div class="profile-section">
+      <a href="../index.html">
+        <button id="sign-out">Sign Out</button>
+      </a>
+      <a class="profile-pic" href="./profile.html">
+        <img src="https://placehold.co/50x50" class="profile-picture" alt="profile picture" />
+      </a>
+    </div>
+  </header>
+  <main>
+    <div class="book-info">
+      <img src="https://shorturl.at/qxH12" height="350px" class="image" />
+
+    </div>
+    <form>
+      <div class="review-container">
         <div class="score">
-          <label>Score</label>
+          <input type=" number " class="input1" name="score" required placeholder="score:1-5" step="any" min="1"
+            max="5" />
           <br />
-          <input
-            type="number"
-            name="score"
-            required
-            placeholder="1-5"
-            step="any"
-            min="1"
-            max="5"
-          />
         </div>
-        <br />
-
         <div class="review">
-          <label>Review</label>
+
           <br />
-          <textarea
-            rows="5"
-            cols="50"
-            placeholder="Type what you think about the book..."
-          ></textarea>
-        </div>
-        <input type="submit" value="Submit Your Review" />
+          <textarea rows=" 5" cols="50" class="input2" placeholder="Type what you think about the book..."></textarea>
+        </div><a href="../HTML-Pages/book-page.html">
+          <input type="submit" class="submit
+        " value="Submit Your Review" /></a>
         <!-- <button type = "submit" >Submit Your Review</button> -->
-      </form>
-    </main>
-    <footer>
-      <p>Library &copy; 2024</p>
-    </footer>
-    <script src="../scripts/sign-out.js"></script>
-  </body>
+      </div>
+    </form>
+  </main>
+  <footer>
+    <p>Library &copy; 2024</p>
+  </footer>
+  <script src="../scripts/sign-out.js"></script>
+</body>
+
 </html>
