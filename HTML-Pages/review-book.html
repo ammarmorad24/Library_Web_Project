@@ -50,17 +50,17 @@
       <img src="https://shorturl.at/qxH12" height="350px" class="image" />
 
     </div>
-    <form>
+    <form id="reviewForm">
       <div class="review-container">
         <div class="score">
-          <input type=" number " class="input1" name="score" required placeholder="score:1-5" step="any" min="1"
+          <input id="score" type=" number " class="input1" name="score" required placeholder="score:1-5" step="any" min="1"
             max="5" />
           <br />
         </div>
         <div class="review">
 
           <br />
-          <textarea rows=" 5" cols="50" class="input2" placeholder="Type what you think about the book..."></textarea>
+          <textarea id="review-content" rows=" 5" cols="50" class="input2" placeholder="Type what you think about the book..."></textarea>
         </div><a href="../HTML-Pages/book-page.html">
           <input type="submit" class="submit
         " value="Submit Your Review" /></a>
@@ -72,6 +72,7 @@
     <p>Library &copy; 2024</p>
   </footer>
   <script src="../scripts/sign-out.js"></script>
+  <script src="../scripts/review.js"></script>
 </body>
 
 
