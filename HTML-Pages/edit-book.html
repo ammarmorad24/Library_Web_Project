@@ -17,6 +17,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <script>
+      function toggleCheckbox(id) {
+        var checkbox = document.getElementById(id);
+        checkbox.checked = !checkbox.checked;
+      }
+    </script>
   </head>
 
   <body>
@@ -83,39 +89,80 @@
           <span>Author</span>
         </div>
         <span class="categories">CATEGORIES : </span>
-        <label>
-          <input
-            type="checkbox"
-            id="action"
-            class="input"
-            name="options"
-            value="action"
-          />
-          <span class="custom-checkbox"></span>
-          <span>Action</span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            id="fantasy"
-            class="input"
-            name="options"
-            value="fantasy"
-          />
-          <span class="custom-checkbox"></span>
-          <span> Fantasy</span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            id="historical"
-            class="input"
-            name="options"
-            value="historical"
-          />
-          <span class="custom-checkbox"></span>
-          <span>Historical</span>
-        </label>
+        <div class="category-inputs">
+          <div class="category-item">
+            <input
+              type="checkbox"
+              id="adventure"
+              class="input"
+              name="options"
+              value="adventure"
+            />
+            <div class="custom-checkbox" onclick="toggleCheckbox('adventure')">
+              Adventure
+            </div>
+          </div>
+          <div class="category-item">
+            <input
+              type="checkbox"
+              id="fantasy"
+              class="input"
+              name="options"
+              value="fantasy"
+            />
+            <div class="custom-checkbox" onclick="toggleCheckbox('fantasy')">
+              Fantasy
+            </div>
+          </div>
+          <div class="category-item">
+            <input
+              type="checkbox"
+              id="horror"
+              class="input"
+              name="options"
+              value="horror"
+            />
+            <div class="custom-checkbox" onclick="toggleCheckbox('horror')">
+              Horror
+            </div>
+          </div>
+          <div class="category-item">
+            <input
+              type="checkbox"
+              id="mystery"
+              class="input"
+              name="options"
+              value="mystery"
+            />
+            <div class="custom-checkbox" onclick="toggleCheckbox('mystery')">
+              Mystery
+            </div>
+          </div>
+          <div class="category-item">
+            <input
+              type="checkbox"
+              id="self-help"
+              class="input"
+              name="options"
+              value="self-help"
+            />
+            <div class="custom-checkbox" onclick="toggleCheckbox('self-help')">
+              Self-help
+            </div>
+          </div>
+          <div class="category-item">
+            <input
+              type="checkbox"
+              id="philosophy"
+              class="input"
+              name="options"
+              value="philosophy"
+            />
+            <div class="custom-checkbox" onclick="toggleCheckbox('philosophy')">
+              Philosophy
+            </div>
+          </div>
+        </div>
 
         <textarea
           name="description"
