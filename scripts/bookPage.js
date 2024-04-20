@@ -15,3 +15,5 @@ if (user.role === "admin") {
 } else {
     editButton.remove();
 }
+
+//TODO: retrieve reviews from the database and display them on the page
