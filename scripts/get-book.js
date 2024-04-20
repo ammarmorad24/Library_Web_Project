@@ -1,11 +1,7 @@
 let url = new URL(window.location.href);
 let bookId = url.searchParams.get("id");
-console.log(bookId);
-console.log(typeof bookId);
 const allBooks = JSON.parse(localStorage.getItem("books"));
-console.log(allBooks);
 const book = allBooks.find((book) => book.id == bookId);
-console.log(book);
 
 let categories = "";
 book.categories.forEach((category) => {
@@ -13,18 +9,21 @@ book.categories.forEach((category) => {
 });
 
 const bookDetails = document.querySelector(".book-details");
+const bookCover = document.querySelector(".book-cover img");
+bookCover.src = book.image;
+
 const data = `
 <div class="book-name-rating">
-<span style="margin-left: 12px" class="book-name"><b>${book.title}</b></span><span
+<span class="book-name"><b>${book.title}</b></span><span
   style="margin-left: 28px" class="rating">Rating: ${book.rating}</span>
 </div>
 <div class="author">
-<span style="margin-left: 12px"><b>Author : </b></span>
-<span>${book.author}</span>
+<b>Author : </b>
+${book.author}
 </div>
 
 <div class="story-description">
-<span style="margin-left: 12px"><b>Story: </b></span>
+<b>Story: </b>
 
 <p class="story-paragraph">
     ${book.story}
