@@ -1,128 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4:50 from Paddington</title>
-    <link rel="stylesheet" href="../CSS/book-page.css" />
-    <link rel="stylesheet" href="../common.css" />
-    <script src="/scripts/isAuth.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-  </head>
 
-  <body>
-    <header>
-      <nav class="nav-bar">
-        <a class="logo" href="./home.html">
-          <img src="/images/Logo.jpg" alt="logo" />
-        </a>
-        <a class="nav-item" href="./home.html">Home</a>
-        <a id="add-borrowed" class="nav-item" href="./borrowed-books.html">Borrowed Books</a>
-        <a class="nav-item" href="./about.html">About</a>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4:50 from Paddington</title>
+  <link rel="stylesheet" href="../CSS/book-page.css" />
+  <link rel="stylesheet" href="../common.css" />
+  <script src="/scripts/isAuth.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
 
-      <form
-        id="search-container"
-        action="./search-results.html"
-        method="get"
-        autocomplete="off"
-      >
-        <div class="search">
-          <input class="search-bar" name="q" />
-          <button class="search-button">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
-      </form>
+<body>
+  <header>
+    <nav class="nav-bar">
+      <a class="logo" href="./home.html">
+        <img src="/images/Logo.jpg" alt="logo" />
+      </a>
+      <a class="nav-item" href="./home.html">Home</a>
+      <a id="add-borrowed" class="nav-item" href="./borrowed-books.html">Borrowed Books</a>
+      <a class="nav-item" href="./about.html">About</a>
+    </nav>
 
-      <div class="profile-section">
-        <a href="../index.html">
-          <button id="sign-out">Sign Out</button>
-        </a>
-        <a class="profile-pic" href="./profile.html">
-          <img
-            src="https://placehold.co/50x50"
-            class="profile-picture"
-            alt="profile picture"
-          />
-        </a>
+    <form id="search-container" action="./search-results.html" method="get" autocomplete="off">
+      <div class="search">
+        <input class="search-bar" name="q" />
+        <button class="search-button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
-    </header>
-    <main>
-      <div class="book-cover">
-        <img
-          src="https://rb.gy/0jocm4"
-          width="236"
-          height="363"
-          valign="top"
-          style="float: left"
-        />
-        <button class="borrow-button">Borrow</button>
+    </form>
+
+    <div class="profile-section">
+      <a href="../index.html">
+        <button id="sign-out">Sign Out</button>
+      </a>
+      <a class="profile-pic" href="./profile.html">
+        <img src="https://placehold.co/50x50" class="profile-picture" alt="profile picture" />
+      </a>
+    </div>
+  </header>
+  <main>
+    <div class="book-cover">
+      <img src="https://rb.gy/0jocm4" width="236" height="363" valign="top" style="float: left" />
+      <button id="borrow-button" class="borrow-button">Borrow</button>
+    </div>
+    <div class="container">
+      <div class="book-details">
+        <div class="book-name-rating">
+          <span style="margin-left: 12px" class="book-name"><b>4:50 from Paddington</b> </span><span
+            style="margin-left: 28px" class="rating">Rating: 5.0</span>
+        </div>
+        <div class="author">
+          <span style="margin-left: 12px"><b>Author : </b></span>
+          <span>Agatha Christie</span>
+        </div>
+
+        <div class="story-description">
+          <span style="margin-left: 12px"><b>Story: </b></span>
+
+          <p class="story-paragraph">
+            For an instant the two trains ran together, going in the same
+            direction side by side. In that frozen moment, Elspeth, riding in
+            the one train, witnessed a murder in the other. Helplessly, she
+            stared out her carriage window as a man remorselessly tightened
+            his grip around a woman's throat. The body crumpled. Then the
+            other train drew away.
+          </p>
+        </div>
+        <div class="category">
+          <p>Categories:</p>
+          <ul>
+            <li>Mystery</li>
+            <li>Adventure</li>
+          </ul>
+        </div>
       </div>
-      <div class="container">
-        <div class="book-details">
-          <div class="book-name-rating">
-            <span style="margin-left: 12px" class="book-name"
-              ><b>4:50 from Paddington</b> </span
-            ><span style="margin-left: 28px" class="rating">Rating: 5.0</span>
-          </div>
-          <div class="author">
-            <span style="margin-left: 12px"><b>Author : </b></span>
-            <span>Agatha Christie</span>
-          </div>
-
-          <div class="story-description">
-            <span style="margin-left: 12px"><b>Story: </b></span>
-
-            <p class="story-paragraph">
-              For an instant the two trains ran together, going in the same
-              direction side by side. In that frozen moment, Elspeth, riding in
-              the one train, witnessed a murder in the other. Helplessly, she
-              stared out her carriage window as a man remorselessly tightened
-              his grip around a woman's throat. The body crumpled. Then the
-              other train drew away.
-            </p>
-          </div>
-          <div class="category">
-            <p>Categories:</p>
-            <ul>
-              <li>Mystery</li>
-              <li>Adventure</li>
-            </ul>
-          </div>
-        </div>
-        <div class="add-review">
-          <a style="margin-left: 13px" href="./review-book.html" target="_blank"
-            ><button>Add Review</button></a
-          >
-        </div>
-
-        <div class="reviews">
-          <span style="margin-left: 10px">Reviews</span>
-          <br />
-          <span class="username" style="margin-left: 15px">Eren Yeager : </span>
-          <span class="rating" style="margin-left: 18px">Rating: 5.0/5.0</span>
-
-          <span class="user-review">Best Book I've ever read fr fr</span>
-        </div>
-        <a href="./edit-book.html"
-          ><button class="edit-button">Edit Book Details</button></a
-        >
+      <div class="add-review">
+        <a style="margin-left: 13px" href="./review-book.html" target="_blank"><button>Add Review</button></a>
       </div>
-    </main>
-    <footer>
-      <p>Library &copy; 2024</p>
-    </footer>
-    <script src="../scripts/is-admin.js"></script>
-    <script src="../scripts/sign-out.js"></script>
-  </body>
+
+      <div class="reviews">
+        <span style="margin-left: 10px">Reviews</span>
+        <br />
+        <span class="username" style="margin-left: 15px">Eren Yeager : </span>
+        <span class="rating" style="margin-left: 18px">Rating: 5.0/5.0</span>
+
+        <span class="user-review">Best Book I've ever read fr fr</span>
+      </div>
+      <a href="./edit-book.html"><button id="edit-button" class="edit-button">Edit Book Details</button></a>
+    </div>
+  </main>
+  <footer>
+    <p>Library &copy; 2024</p>
+  </footer>
+  <script src="../scripts/is-admin.js"></script>
+  <script src="../scripts/sign-out.js"></script>
+  <script src="../scripts/bookPage.js"></script>
+</body>
+
 </html>
