@@ -24,6 +24,12 @@ document.getElementById("add-book-form").onsubmit = (event) => {
     categories.push(category.value);
   });
   book.categories = categories;
-  localStorage.setItem("books", JSON.stringify(allBooks));
-  window.location.href = `/HTML-Pages/book-page.html?id=${book.id}`;
+  const reader = new FileReader();
+  reader.onload = () => {
+      const imageUrl = reader.result;
+      book.image = imageUrl;
+      localStorage.setItem("books", JSON.stringify(allBooks));
+      window.location.href = `/HTML-Pages/book-page.html?id=${book.id}`;
+  };
+  reader.readAsDataURL(document.getElementById("book-cover-input").files[0]);
 };

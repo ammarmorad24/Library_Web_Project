@@ -46,6 +46,8 @@
   position: relative;
   left: 10px;
   top: 25px;
+  width: 100px;
+  height: 150px;
 }
 
 .book-info {

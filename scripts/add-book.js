@@ -10,7 +10,6 @@ document.getElementById("add-book-form").onsubmit = (event) => {
     book[input.name] = input.value;
   });
   book.story = document.querySelector(".book-desc").value;
-  book.image = "https://placehold.co/100x150";
   book.availability = true;
   book.reviews = [];
   book["date-added"] = Date.now();
@@ -22,7 +21,13 @@ document.getElementById("add-book-form").onsubmit = (event) => {
     categories.push(category.value);
   });
   book.categories = categories;
-  allBooks.push(book);
-  localStorage.setItem("books", JSON.stringify(allBooks));
-  window.location.href = "/HTML-Pages/home.html";
+  const reader = new FileReader();
+  reader.onload = () => {
+      const imageUrl = reader.result;
+      book.image = imageUrl;
+      allBooks.push(book);
+      localStorage.setItem("books", JSON.stringify(allBooks));
+      window.location.href = "/HTML-Pages/home.html";
+  };
+  reader.readAsDataURL(document.getElementById("book-cover-input").files[0]);
 };
