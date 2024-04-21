@@ -1,16 +1,23 @@
+let url = new URL(window.location.href);
+let bookId = url.searchParams.get("id");
+const allBooks = JSON.parse(localStorage.getItem("books"));
+const book = allBooks.find((book) => book.id == bookId);
+
 const borrowButton = document.getElementById("borrow-button");
 const editButton = document.getElementById("edit-button");
 if (user.role === "admin") {
   borrowButton.innerText = "Delete";
   borrowButton.className = "delete-button";
+  editButton.href = `/HTML-Pages/edit-book.html?id=${book.id}`;
 } else {
   editButton.remove();
+  if (!book.availability) {
+    borrowButton.innerText = "Unavailable";
+    borrowButton.disabled = true;
+    borrowButton.style.backgroundColor = "gray";
+    borrowButton.style.cursor = "auto";
+  }
 }
-
-let url = new URL(window.location.href);
-let bookId = url.searchParams.get("id");
-const allBooks = JSON.parse(localStorage.getItem("books"));
-const book = allBooks.find((book) => book.id == bookId);
 
 const addReviewElement = document.querySelector(".add-review a");
 addReviewElement.href = `/HTML-Pages/review-book.html?id=${book.id}`;
@@ -51,12 +58,11 @@ ${book.author}
 
 bookDetails.innerHTML = data;
 
-
 const reviewsElement = document.querySelector(".reviews");
 
 let reviews = "";
 book.reviews.forEach((review) => {
-    reviews += `
+  reviews += `
     <div class="review">
         <span class="username">${review.userName}:</span>
         <span class="rating">Rating: ${review.score}/5</span>
@@ -65,3 +71,38 @@ book.reviews.forEach((review) => {
     `;
 });
 reviewsElement.innerHTML = reviews;
+
+const errorElement = document.getElementById("error");
+borrowButton.onclick = () => {
+  if (user.role === "admin") {
+    const newBooks = allBooks.filter((book) => book.id != bookId);
+    localStorage.setItem("books", JSON.stringify(newBooks));
+    window.location.href = "/HTML-Pages/home.html";
+  } else if (user.borrowedBooks.some((bookObj) => bookObj.id === book.id)) {
+    errorElement.innerText = "You already borrowed this book";
+    errorElement.style.display = "inline-block";
+  } else if (user.borrowedBooks.length === 5) {
+    errorElement.innerText = "You can't borrow more than 5 books";
+    errorElement.style.display = "inline-block";
+  } else {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 30);
+    const borrowedBook = {
+      id: book.id,
+      date: currentDate.toISOString().slice(0, 10),
+    };
+    user.borrowedBooks.push(borrowedBook);
+    sessionStorage.setItem("user", JSON.stringify(user));
+    const users = JSON.parse(localStorage.getItem("users"));
+    const userObj = users.find((u) => u.id === user.id);
+    userObj.borrowedBooks.push(borrowedBook);
+    localStorage.setItem("users", JSON.stringify(users));
+    window.location.href = "/HTML-Pages/borrowed-books.html";
+  }
+}
+if (user.borrowedBooks.some((bookObj) => bookObj.id === book.id)) {
+  borrowButton.innerText = "Borrowed";
+  borrowButton.style.backgroundColor = "gray";
+  borrowButton.disabled = true;
+  borrowButton.style.cursor = "auto";
+};

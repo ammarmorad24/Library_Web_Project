@@ -43,6 +43,7 @@ document.getElementById("registerForm").onsubmit = async (event) => {
       email: emailElement.value,
       password: passwordElement.value,
       role: roleElement.value,
+      borrowedBooks: [],
     };
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));

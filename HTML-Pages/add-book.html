@@ -56,7 +56,7 @@
         </a>
         <a class="profile-pic" href="./profile.html">
           <img
-            src="https://placehold.co/50x50"
+            src="../images/proiflePic.jpg"
             class="profile-picture"
             alt="profile picture"
           />
@@ -65,16 +65,24 @@
     </header>
     <main>
       <img class="image" src="../images/background13.jpg" alt="" />
-      <form class="add-book-form" action="">
+      <form id="add-book-form">
         <h1 class="add-book-header">Add Book</h1>
         <div class="form-item">
-          <input id="book-title" type="text" name="title" required />
+          <input class="normal-input" type="text" name="title" required />
           <span>Title</span>
         </div>
 
         <div class="form-item">
-          <input id="book-author" type="text" name="author" required />
+          <input class="normal-input" type="text" name="author" required />
           <span>Author</span>
+        </div>
+        <div class="form-item">
+          <input class="normal-input" type="date" name="date-published" required />
+          <span>Publishing Date</span>
+        </div>
+        <div class="form-item">
+          <input class="normal-input" type="number" name="rating" min="1" max="5" step="any" required />
+          <span>Global Rating</span>
         </div>
         <span class="categories">CATEGORIES : </span>
         <div class="category-inputs">
@@ -207,5 +215,7 @@
       <p>Library &copy; 2024</p>
     </footer>
     <script src="../scripts/sign-out.js"></script>
+    <script src="../scripts/add-book.js"></script>
+    <script src="../scripts/general-search-bar.js"></script>
   </body>
 </html>
