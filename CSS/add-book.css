@@ -131,6 +131,8 @@ body {
 .submit-button:hover {
   background-color: rgb(45, 27, 2);
   color: white;
+  width: 120px;
+  height: 55px;
 }
 
 .book-desc {
@@ -140,11 +142,6 @@ body {
   text-align: left;
   margin-left: 10px;
 }
-
-/* .book-desc:focus {
-  border: none;
-  outline: none;
-} */
 
 .book-cover {
   margin-left: 33%;
@@ -186,38 +183,36 @@ body {
   color: rgb(45, 27, 2);
   font-weight: bolder;
 }
+.category-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
+  grid-gap: 10px; /* Gap between grid items */
+}
+
 .input[type="checkbox"] {
   display: none;
 }
 
 .custom-checkbox {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border: 2px solid rgb(45, 27, 2);
-  border-radius: 4px;
-  position: relative;
+  background-color: white;
+  border: solid rgb(45, 27, 2) 1.7px;
+  color: rgb(45, 27, 2);
   cursor: pointer;
-  margin-right: 8px;
+  text-align: center;
+  padding: 5px;
+  font-weight: bolder;
+  border-radius: 20px;
+  font-size: 12px;
+  transition: 0.5s;
 }
-
-.custom-checkbox::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 10px;
-  height: 10px;
+.custom-checkbox:hover {
+  background-color: beige;
+}
+.input[type="checkbox"]:checked ~ .custom-checkbox {
   background-color: rgb(45, 27, 2);
-  border: 2px solid rgb(45, 27, 2);
-  border-radius: 3px;
-  opacity: 0;
+  color: white;
 }
 
-.input[type="checkbox"]:checked + .custom-checkbox::after {
-  opacity: 1;
-}
 @media (max-width: 1350px) {
   body {
     justify-content: center;
