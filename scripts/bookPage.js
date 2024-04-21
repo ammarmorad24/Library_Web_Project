@@ -79,8 +79,10 @@ borrowButton.onclick = () => {
     localStorage.setItem("books", JSON.stringify(newBooks));
     window.location.href = "/HTML-Pages/home.html";
   } else if (user.borrowedBooks.some((bookObj) => bookObj.id === book.id)) {
-    errorElement.innerText = "You already borrowed this book";
-    errorElement.style.display = "inline-block";
+    borrowButton.innerText = "Borrowed";
+    borrowButton.style.backgroundColor = "gray";
+    borrowButton.disabled = true;
+    borrowButton.style.cursor = "auto";
   } else if (user.borrowedBooks.length === 5) {
     errorElement.innerText = "You can't borrow more than 5 books";
     errorElement.style.display = "inline-block";
