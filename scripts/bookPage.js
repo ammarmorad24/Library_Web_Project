@@ -8,6 +8,7 @@ const editButton = document.getElementById("edit-button");
 if (user.role === "admin") {
   borrowButton.innerText = "Delete";
   borrowButton.className = "delete-button";
+  editButton.href = `/HTML-Pages/edit-book.html?id=${book.id}`;
 } else {
   editButton.remove();
   if (!book.availability) {

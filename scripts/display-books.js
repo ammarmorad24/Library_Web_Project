@@ -110,9 +110,9 @@ function createBookCard(book) {
 
 function compareByOldestDateAdded(book1, book2) {
     if (book1["book"]["date-added"] > book2["book"]["date-added"]) {
-        return 1;
+        return -1;
     }
-    return -1;
+    return 1;
 }
 
 function compareByOldestDatePublished(book1, book2) {
@@ -281,9 +281,9 @@ async function displayBooks() {
         populateCategoryAndAvailabilityCount(book);
         return { "card": createBookCard(book), "book": book }
     });
+    sortBooks();
     loadingAndPagination(NONE);
 }
-
 
 displayBooks();
 

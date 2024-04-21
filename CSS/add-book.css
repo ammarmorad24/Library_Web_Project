@@ -26,7 +26,7 @@ body {
   color: rgb(67, 31, 1);
 }
 
-.add-book-form {
+#add-book-form {
   margin-left: 16vw;
   display: flex;
   justify-content: center;
@@ -217,7 +217,7 @@ body {
   body {
     justify-content: center;
   }
-  .add-book-form {
+  #add-book-form {
     margin: auto;
   }
   .image {

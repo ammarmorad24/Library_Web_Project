@@ -28,7 +28,7 @@ body {
   color: rgb(67, 31, 1);
 }
 
-.add-book-form {
+#add-book-form {
   margin-right: 16vw;
   margin-left: auto;
   display: flex;
@@ -228,7 +228,7 @@ body {
   .image {
     display: none;
   }
-  .add-book-form {
+  #add-book-form {
     margin: auto;
   }
 }
