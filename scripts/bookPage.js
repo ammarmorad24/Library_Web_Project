@@ -79,10 +79,8 @@ borrowButton.onclick = () => {
     localStorage.setItem("books", JSON.stringify(newBooks));
     window.location.href = "/HTML-Pages/home.html";
   } else if (user.borrowedBooks.some((bookObj) => bookObj.id === book.id)) {
-    borrowButton.innerText = "Borrowed";
-    borrowButton.style.backgroundColor = "gray";
-    borrowButton.disabled = true;
-    borrowButton.style.cursor = "auto";
+    errorElement.innerText = "You already borrowed this book";
+    errorElement.style.display = "inline-block";
   } else if (user.borrowedBooks.length === 5) {
     errorElement.innerText = "You can't borrow more than 5 books";
     errorElement.style.display = "inline-block";
@@ -101,4 +99,10 @@ borrowButton.onclick = () => {
     localStorage.setItem("users", JSON.stringify(users));
     window.location.href = "/HTML-Pages/borrowed-books.html";
   }
+}
+if (user.borrowedBooks.some((bookObj) => bookObj.id === book.id)) {
+  borrowButton.innerText = "Borrowed";
+  borrowButton.style.backgroundColor = "gray";
+  borrowButton.disabled = true;
+  borrowButton.style.cursor = "auto";
 };
