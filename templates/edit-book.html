@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Edit Book
+{% endblock %}
+
+{% block css_js %}
+  <link rel="stylesheet" href="{% static 'css/edit-book.css' %}" />
+
+  <script>
+    function toggleCheckbox(id) {
+      var checkbox = document.getElementById(id);
+      checkbox.checked = !checkbox.checked;
+    }
+  </script>
+{% endblock %}
+
+{% block content %}
+  <img class="image" src="../images/background15.jpg" alt="" />
+  <form id="add-book-form">
+    <h1 class="add-book-header">Edit Book Details</h1>
+    <div class="form-item">
+      <input
+        class="normal-input"
+        type="text"
+        name="title"
+        value="Current Title"
+      />
+      <span>Title</span>
+    </div>
+
+    <div class="form-item">
+      <input
+        class="normal-input"
+        type="text"
+        name="author"
+        value="Current Author"
+      />
+      <span>Author</span>
+    </div>
+    <div class="form-item">
+      <input class="normal-input" type="date" name="date-published" />
+      <span>Publishing Date</span>
+    </div>
+    <div class="form-item">
+      <input
+        class="normal-input"
+        type="number"
+        name="rating"
+        min="1"
+        max="5"
+        step="any"
+      />
+      <span>Global Rating</span>
+    </div>
+    <span class="categories">CATEGORIES : </span>
+    <div class="category-inputs">
+      <div class="category-item">
+        <input
+          type="checkbox"
+          id="adventure"
+          class="input"
+          name="options"
+          value="adventure"
+        />
+        <div class="custom-checkbox" onclick="toggleCheckbox('adventure')">
+          Adventure
+        </div>
+      </div>
+      <div class="category-item">
+        <input
+          type="checkbox"
+          id="fantasy"
+          class="input"
+          name="options"
+          value="fantasy"
+        />
+        <div class="custom-checkbox" onclick="toggleCheckbox('fantasy')">
+          Fantasy
+        </div>
+      </div>
+      <div class="category-item">
+        <input
+          type="checkbox"
+          id="horror"
+          class="input"
+          name="options"
+          value="horror"
+        />
+        <div class="custom-checkbox" onclick="toggleCheckbox('horror')">
+          Horror
+        </div>
+      </div>
+      <div class="category-item">
+        <input
+          type="checkbox"
+          id="mystery"
+          class="input"
+          name="options"
+          value="mystery"
+        />
+        <div class="custom-checkbox" onclick="toggleCheckbox('mystery')">
+          Mystery
+        </div>
+      </div>
+      <div class="category-item">
+        <input
+          type="checkbox"
+          id="self-help"
+          class="input"
+          name="options"
+          value="self-help"
+        />
+        <div class="custom-checkbox" onclick="toggleCheckbox('self-help')">
+          Self-help
+        </div>
+      </div>
+      <div class="category-item">
+        <input
+          type="checkbox"
+          id="philosophy"
+          class="input"
+          name="options"
+          value="philosophy"
+        />
+        <div class="custom-checkbox" onclick="toggleCheckbox('philosophy')">
+          Philosophy
+        </div>
+      </div>
+    </div>
+
+    <textarea
+      name="description"
+      rows="10"
+      cols="35"
+      style="resize: none"
+      class="book-desc"
+    >
+      Current Book Description...
+    </textarea>
+    <div class="add-image">
+      <label for="book-cover-input" class="custom-file-upload">
+        Upload Book Cover
+      </label>
+      <input
+        id="book-cover-input"
+        type="file"
+        name="cover"
+        accept="image/*"
+        class="upload-btn"
+        style="display: none"
+      />
+      <br />
+      <img id="image-preview" class="image-preview" />
+    </div>
+    <button type="submit" class="submit-button">submit</button>
+  </form>
+  <script>
+    const fileInput = document.getElementById("book-cover-input");
+    const imagePreview = document.getElementById("image-preview");
+
+    fileInput.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          imagePreview.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        imagePreview.src = "";
+      }
+    });
+  </script>
+{% endblock %}
