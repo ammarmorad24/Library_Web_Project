@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Book Page
+{% endblock %}
+
+{% block css_js %}
+  <link rel="stylesheet" href="{% static 'css/book-page.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="book-cover">
+    <img
+      src="https://rb.gy/0jocm4"
+      width="236"
+      height="363"
+      valign="top"
+      style="float: left"
+    />
+    <button id="borrow-button" class="borrow-button">Borrow</button>
+    <p id="error"></p>
+  </div>
+  <div class="container">
+    <div class="book-details"></div>
+    <div class="add-review">
+      <a href=""><button>Add Review</button></a>
+    </div>
+
+    <h2 class="reviews-word">Reviews</h2>
+    <div class="reviews"></div>
+    <a id="edit-button" href="./edit-book.html"
+      ><button class="edit-button">Edit Book Details</button></a
+    >
+  </div>
+{% endblock %}

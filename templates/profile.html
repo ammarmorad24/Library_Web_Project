@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Profile
+{% endblock %}
+
+{% block css_js %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="profile-container">
+    <div class="profile-details"></div>
+    <div class="image-container">
+      <img class="user-profile-picture" src="../images/proiflePic.jpg" />
+      <div class="overlay"></div>
+      <a href="./borrowed-books.html"
+        ><button class="borrowed-btn">Borrowed Books</button></a
+      >
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Landing Page
+{% endblock %}
+
+{% block css_js %}
+  <link rel="stylesheet" href="{% static 'css/landing-page.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <img src="{% static 'images/R.jpg' %}" alt="background" />
+  <a href="./HTML-Pages/sign-in.html"><button>Sign in</button></a>
+  <a href="./HTML-Pages/register.html"><button>Sign up</button></a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Borrowed Books
+{% endblock %}
+
+{% block css_js %}
+  <link rel="stylesheet" href="{% static 'css/borrowed-books.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <h1>Borrowed Books</h1>
+  <div class="borrowed-books-container"></div>
+{% endblock %}

@@ -1,0 +1,167 @@
+.books {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 90px 30px;
+  padding: 8px;
+}
+
+.book-card {
+  position: relative;
+  border: 1px solid black;
+  border-radius: 25px;
+  justify-self: center;
+  background-color: white;
+  width: 90%;
+  height: 200px;
+  margin: 10px;
+  box-shadow: 1.5px 1px black;
+  cursor: pointer;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.book-link {
+  text-decoration: none;
+  color: black;
+}
+
+.book {
+  display: flex;
+  flex-direction: row;
+}
+
+.book img {
+  position: relative;
+  left: 10px;
+  top: 25px;
+  width: 100px;
+  height: 150px;
+}
+
+.book-info {
+  position: relative;
+  top: 35px;
+  list-style: none;
+}
+
+.book-rating {
+  position: absolute;
+  display: inline-block;
+  white-space: nowrap;
+  right: 10px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: 25px;
+  top: -25px;
+}
+
+.filters > * {
+  margin-right: 30px;
+}
+
+.drop-down {
+  border: 2px solid black;
+  border-bottom: 0;
+  border-radius: 8px 8px 4px 4px;
+  width: 200px;
+  height: 25px;
+  text-align: center;
+}
+
+.drop-down:enabled {
+  outline: none;
+}
+
+.available input {
+  width: 20px;
+  height: 20px;
+}
+
+.available .available-label {
+  display: inline-block;
+  white-space: nowrap;
+  position: relative;
+  top: -3px;
+}
+
+.next-previous-pages {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-self: center;
+  bottom: -65px;
+}
+
+.page-number {
+  margin: 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+.change-page-buttons > * {
+  border: 1px solid black;
+  border-radius: 50px;
+  width: 120px;
+  font-size: 25px;
+  background-color: #fae1ba;
+  box-shadow: 0px 1px black;
+}
+
+.change-page-buttons > *:active {
+  filter: brightness(93%);
+}
+
+.next-button {
+  margin-left: 20px;
+}
+
+.previous-button {
+  margin-right: 20px;
+}
+
+.not-found {
+  position: relative;
+  color: brown;
+  padding: 50px;
+  font-weight: bold;
+  font-size: 30px;
+  text-wrap: nowrap;
+  left: 290px;
+}
+
+.loading-spinner {
+  margin: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: 5px solid grey;
+  border-top-color: black;
+  justify-self: center;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Review Book
+{% endblock %}
+
+{% block css_js %}
+  <link rel="stylesheet" href="{% static 'css/review-book.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <img src="https://shorturl.at/qxH12" class="image" />
+  <form id="reviewForm" class="review-container">
+    <h2 class="title">Title</h2>
+    <div class="score">
+      <input
+        id="score"
+        type="number"
+        class="input1"
+        name="score"
+        required
+        placeholder="score:1-5"
+        step="any"
+        min="1"
+        max="5"
+        required
+      />
+    </div>
+    <div class="review">
+      <textarea
+        id="review-content"
+        rows="5"
+        cols="50"
+        class="input2"
+        placeholder="Type what you think about the book..."
+        minlength="1"
+        required
+      ></textarea>
+    </div>
+    <input type="submit" class="submit" value="Submit Your Review" />
+  </form>
+{% endblock %}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Our Online Library!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="../CSS/home.css" />
+
+    <script src="../scripts/isAuth.js"></script>
+    <script src="/scripts/extra-books.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="nav-bar">
+        <a class="logo" href="./home.html">
+          <img src="/images/Logo.jpg" alt="logo" />
+        </a>
+        <a class="nav-item" href="./home.html">Home</a>
+        <a id="add-borrowed" class="nav-item" href="./borrowed-books.html">Borrowed Books</a>
+        <a class="nav-item" href="./about.html">About</a>
+      </nav>
+
+      <form
+        id="search-container"
+        action="./search-results.html"
+        method="get"
+        autocomplete="off"
+      >
+        <div class="search">
+          <input class="search-bar" name="q" />
+          <button class="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </form>
+
+      <div class="profile-section">
+        <a href="../index.html">
+          <button id="sign-out">Sign Out</button>
+        </a>
+        <a class="profile-pic" href="./profile.html">
+          <img
+            src="../images/proiflePic.jpg"
+            class="profile-picture"
+            alt="profile picture"
+          />
+        </a>
+      </div>
+    </header>
+    <main>
+      <div class="books">
+        <div class="loading-spinner"></div>
+        <div class="filters">
+          <div class="available">
+            <input type="checkbox" />
+            <label for="available" class="available-label"
+              >Available Only</label
+            >
+          </div>
+
+          <select class="category-menu drop-down">
+            <option value="any-category">Any Categroy</option>
+            <option value="adventure">Adventure</option>
+            <option value="horror">Horror</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="mystery">Mystery</option>
+            <option value="philosophy">Philosophy</option>
+            <option value="self-help">Self-help</option>
+          </select>
+
+          <select class="sort-by drop-down">
+            <option value="date-added-newest">Date Added (Newest)</option>
+            <option value="date-added-oldest">Date Added (Oldest)</option>
+            <option value="date-published-recently">
+              Date Published (Recently)
+            </option>
+            <option value="date-published-oldest">
+              Date Published (Oldest)
+            </option>
+            <option value="rating-highest">Rating (Highest)</option>
+            <option value="rating-lowest">Rating (Lowest)</option>
+            <option value="title-a-to-z">Title (A to Z)</option>
+            <option value="title-z-to-a">Title (Z to A)</option>
+          </select>
+        </div>
+        <div class="next-previous-pages">
+          <p class="page-number"></p>
+          <div class="change-page-buttons">
+            <button class="previous-button">previous</button>
+            <button class="next-button">next</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Library &copy; 2024</p>
+    </footer>
+    <script src="../scripts/is-admin.js"></script>
+    <script src="../scripts/display-books.js"></script>
+    <script src="../scripts/general-search-bar.js"></script>
+    <script src="../scripts/sign-out.js"></script>
+  </body>
+</html>
