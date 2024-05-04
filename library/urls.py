@@ -23,4 +23,5 @@ urlpatterns = [
     path('', views.landingPage),
     path('home/', views.home),
     path('about/', views.about),
+    path('book/<int:book_id>/', views.bookDetails),  
 ]
