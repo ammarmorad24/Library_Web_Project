@@ -10,23 +10,20 @@
 {% endblock %}
 
 {% block content %}
-  <form id="loginForm">
+  <form id="loginForm" action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
     <h1>Sign in</h1>
     <div class="input_box">
+      {{form.username.errors}}
       <label><i class="bx bxs-envelope"></i></label>
 
-      <input type="email" id="email" placeholder="Email" required />
+      {{form.username}}
     </div>
 
     <div class="input_box">
+      {{form.password.errors}}
       <label><i class="bx bxs-lock-alt"></i></label>
-      <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        min="8"
-        required
-      />
+      {{form.password}}
     </div>
 
     <div class="remember-forgot">
@@ -38,7 +35,7 @@
     <button type="submit" class="btn" id="submitButton">Sign in</button>
 
     <div class="register-link">
-      <p>don't have an accout?<a href="register.html"> Register here</a></p>
+      <p>don't have an accout?<a href="/register"> Register here</a></p>
     </div>
   </form>
 {% endblock %}
