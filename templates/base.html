@@ -33,7 +33,7 @@
                 <a class="nav-item" href="./borrowed-books.html">Borrowed Books</a>
             {% endif %}
         {% else %}
-            <a class="logo" href="./home.html">
+            <a class="logo" href="/">
             <img src="{% static 'images/Logo.jpg' %}" alt="logo" />
             </a>
         {% endif %}
@@ -57,9 +57,10 @@
       {% endblock %}
 
       <div class="profile-section">
-        <a href="../index.html">
+        <form action="{% url 'sign-out' %}" method="POST">
+          {% csrf_token %} 
           <button id="sign-out">Sign Out</button>
-        </a>
+        </form>
         <a class="profile-pic" href="./profile.html">
           <img
             src="{% static 'images/proiflePic.jpg' %}"
