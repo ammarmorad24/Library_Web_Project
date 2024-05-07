@@ -8,21 +8,25 @@ const pageNumber = document.querySelector(".page-number");
 const nextButton = document.querySelector(".next-button");
 const previousButton = document.querySelector(".previous-button");
 
-const loadingSpinner = document.querySelector(".loading-spinner");
-
 let data = null;
 let currentPageNumber = 1;
 let numberOfPages = 0;
 
 function clearBooks() {
     let children = books.children;
-    for (let i = 0; i < children.length; i++) {
-        if (children[i].className !== "filters"
-            && children[i].className !== "next-previous-pages") {
-            books.removeChild(children[i]);
-            i--;
-        }
+    for (let i = 2; i < children.length; i++) {
+        books.removeChild(children[i]);
+        i--;
     }
+}
+
+const divToAddMargin = document.createElement("div");
+const loadingSpinner = document.createElement("div");
+loadingSpinner.className = "loading-spinner";
+
+function loadSpinner() {
+    books.appendChild(divToAddMargin);
+    books.appendChild(loadingSpinner);
 }
 
 function createBookCard(book) {
@@ -89,13 +93,15 @@ function displaySearchNotFound() {
     books.appendChild(notFound);
 }
 
-async function fetchData(sortingMethod, category, availableOnly = false) {
+async function fetchData() {
+    clearBooks();
+    loadSpinner();
 
     const baseUrl = 'http://127.0.0.1:8000/api/books/';
 
-    let queryString = `?ordering=${sortingMethod}`;
-    if (category !== "any-category") queryString += `&category=${category}`;
-    if (availableOnly) queryString += `&available_only=${availableOnly}`;
+    let queryString = `?ordering=${sortByMenu.value}`;
+    if (categoriesMenu.value !== "any-category") queryString += `&category=${categoriesMenu.value}`;
+    if (availabilityCheckbox.checked) queryString += `&available_only=true`;
 
     try {
         const response = await fetch(baseUrl + queryString);
@@ -119,32 +125,21 @@ async function fetchData(sortingMethod, category, availableOnly = false) {
     }
 }
 
-fetchData(sortByMenu.value, categoriesMenu.value, availabilityCheckbox.checked);
-
-function loadSpinner() {
-    let divToAddMargin = document.createElement("div");
-    books.appendChild(divToAddMargin);
-    books.appendChild(loadingSpinner);
-}
-
-function newQuery() {
-    clearBooks();
-    loadSpinner();
-    fetchData(sortByMenu.value, categoriesMenu.value, availabilityCheckbox.checked);
-}
+fetchData();
 
 sortByMenu.addEventListener("change", function () {
-    newQuery();
+    fetchData();
 });
 
 categoriesMenu.addEventListener("change", function () {
-    newQuery();
+    fetchData();
 });
-availabilityCheckbox.addEventListener("change", function (event) {
-    newQuery();
+
+availabilityCheckbox.addEventListener("change", function () {
+    fetchData();
 })
 
-async function handleNextPrev(motion = 1) {
+async function handleNextPrev(motion) {
     clearBooks();
     loadSpinner();
     if (motion === 1) {
@@ -161,6 +156,7 @@ async function handleNextPrev(motion = 1) {
 nextButton.addEventListener("click", function () {
     handleNextPrev(1);
 });
+
 previousButton.addEventListener("click", function () {
     handleNextPrev(-1);
 });
