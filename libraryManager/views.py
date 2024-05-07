@@ -31,6 +31,10 @@ def home(request):
     categories = Category.objects.all()
     return render(request, 'home.html', {'categories': categories})
 
+def search(request):
+    categories = Category.objects.all()
+    return render(request, 'search-results.html', {'categories': categories})
+
 def bookDetails(request, book_id):
     book = Book.objects.get(id=book_id)
     return render(request, 'book-page.html', {'book': book})

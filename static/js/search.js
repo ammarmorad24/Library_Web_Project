@@ -1,5 +1,8 @@
 const books = document.querySelector(".books");
 
+const searchButton = document.querySelector(".fa-magnifying-glass")
+const searchBar = document.querySelector(".search-bar");
+
 const sortByMenu = document.querySelector(".sort-by");
 const categoriesMenu = document.querySelector(".category-menu");
 const availabilityCheckbox = document.querySelector(".available input");
@@ -12,6 +15,15 @@ let data = null;
 let currentPageNumber = 1;
 let numberOfPages = 0;
 
+let searchQuery = new URLSearchParams(window.location.search.toString());
+searchBar.value = searchQuery.get("q");
+
+function trimQuery() {
+    searchBar.value = searchBar.value.trim().replace(/ +(?= )/g, '');
+}
+
+trimQuery();
+
 function clearBooks() {
     let children = books.children;
     for (let i = 2; i < children.length; i++) {
@@ -20,39 +32,46 @@ function clearBooks() {
     }
 }
 
-const divToAddMargin = document.createElement("div");
 const loadingSpinner = document.createElement("div");
 loadingSpinner.className = "loading-spinner";
 
 function loadSpinner() {
-    books.appendChild(divToAddMargin);
     books.appendChild(loadingSpinner);
+}
+
+function makeGenresList(book) {
+    let genres = book["categories"];
+    let genresList = "";
+    for (let i = 0; i < genres.length; i++) {
+        genresList += `<li>${genres[i]}</li>`;
+    }
+    return genresList;
 }
 
 function createBookCard(book) {
     const bookCard = document.createElement("div");
     bookCard.className = "book-card";
+    const genresList = makeGenresList(book);
     bookCard.innerHTML = `
-        <a href="/book/${book.id}" class="book-link">
-            <div class="book">
-                <img class="book-cover-image" src=${book.cover} alt="book cover" />
-                <ul class="book-info">
-                    <li>
-                        <h3>${book.title}</h3>
-                    </li> 
-                    <li>
-                        <p>${book.author}</p>
-                    </li> 
-                    <li>
-                        <p>Date Published: ${book.datePublished}</p>
-                    </li>
-                </ul>
-                <p class="book-rating">rating: ${book.rating}/5</p>
+        <a href="/book/${book.id}" class="book-card-link">
+            <div class="book-item">
+                <div class="book">
+                    <img src=${book.cover} alt="book cover" />
+                    <div class="book-info">
+                        <h2>${book.title}</h2>
+                        <p>Author: ${book.author}</p>
+                        <p>rating: ${book.rating}/5</p>
+                        <p class='book-publishing-date'>Date Published: ${book.datePublished}</p>
+                        <ul class='book-categories-list'>Genres: ${genresList}</ul>
+                    </div>
+                </div>
             </div>
-        <a>
-    `
+        </a>
+    `;
     return bookCard;
 }
+
+
 
 function enableButton(button) {
     button.style.backgroundColor = "#fae1ba";
@@ -91,7 +110,7 @@ function displayBooks(bookList) {
 
 function displaySearchNotFound() {
     let notFound = document.createElement("p");
-    notFound.innerHTML = "Woah...Seems you have reached the end"
+    notFound.innerHTML = "Oops... We don't seem to have your book"
     notFound.className = "not-found"
     books.appendChild(notFound);
 }
@@ -103,6 +122,7 @@ async function fetchData() {
     const baseUrl = 'http://127.0.0.1:8000/api/books/';
 
     let queryString = `?ordering=${sortByMenu.value}`;
+    if (searchBar.value !== "") queryString += `&search=${encodeURIComponent(searchBar.value)}`;
     if (categoriesMenu.value !== "any-category") queryString += `&category=${categoriesMenu.value}`;
     if (availabilityCheckbox.checked) queryString += `&available_only=true`;
 
@@ -130,15 +150,36 @@ async function fetchData() {
 
 fetchData();
 
+function changeURLWithNewQuery() {
+    let url = new URL(window.location.href);
+    url.searchParams.set("q", searchBar.value);
+    window.history.pushState(null, '', url.href);
+}
+
+function startSearch() {
+    trimQuery();
+    changeURLWithNewQuery();
+    fetchData();
+}
+
+
+searchButton.addEventListener("click", function () {
+    startSearch();
+});
+
+searchBar.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        startSearch();
+    }
+})
+
 sortByMenu.addEventListener("change", function () {
     fetchData();
 });
-
 categoriesMenu.addEventListener("change", function () {
     fetchData();
 });
-
-availabilityCheckbox.addEventListener("change", function () {
+availabilityCheckbox.addEventListener("change", function (event) {
     fetchData();
 })
 
@@ -180,3 +221,9 @@ document.documentElement.addEventListener("mouseup", function () {
         previousButton.style.boxShadow = "0px 1px black";
     }
 })
+
+window.addEventListener("popstate", function () {
+    let url = new URL(window.location.href);
+    searchBar.value = url.searchParams.get("q");
+    fetchData();
+});
