@@ -1,0 +1,183 @@
+const books = document.querySelector(".books");
+
+const sortByMenu = document.querySelector(".sort-by");
+const categoriesMenu = document.querySelector(".category-menu");
+const availabilityCheckbox = document.querySelector(".available input");
+
+const pageNumber = document.querySelector(".page-number");
+const nextButton = document.querySelector(".next-button");
+const previousButton = document.querySelector(".previous-button");
+
+const loadingSpinner = document.querySelector(".loading-spinner");
+
+let data = null;
+let currentPageNumber = 1;
+let numberOfPages = 0;
+
+function clearBooks() {
+    let children = books.children;
+    for (let i = 0; i < children.length; i++) {
+        if (children[i].className !== "filters"
+            && children[i].className !== "next-previous-pages") {
+            books.removeChild(children[i]);
+            i--;
+        }
+    }
+}
+
+function createBookCard(book) {
+    const bookCard = document.createElement("div");
+    bookCard.className = "book-card";
+    bookCard.innerHTML = `
+        <a href="/book/${book.id}" class="book-link">
+            <div class="book">
+                <img class="book-cover-image" src=${book.cover} alt="book cover" />
+                <ul class="book-info">
+                    <li>
+                        <h3>${book.title}</h3>
+                    </li> 
+                    <li>
+                        <p>${book.author}</p>
+                    </li> 
+                    <li>
+                        <p>Date Published: ${book.datePublished}</p>
+                    </li>
+                </ul>
+                <p class="book-rating">rating: ${book.rating}/5</p>
+            </div>
+        <a>
+    `
+    return bookCard;
+}
+
+function enableButton(button) {
+    button.style.backgroundColor = "#fae1ba";
+    button.style.boxShadow = "0px 1px black";
+}
+
+function disableButton(button) {
+    button.style.backgroundColor = "transparent";
+    button.style.boxShadow = "none";
+}
+
+function handleButtonsAvailability() {
+    if (currentPageNumber === numberOfPages) {
+        disableButton(nextButton);
+    } else {
+        enableButton(nextButton);
+    }
+    if (currentPageNumber === 1) {
+        disableButton(previousButton);
+    } else {
+        enableButton(previousButton);
+    }
+}
+
+function displayBooks(bookList) {
+    clearBooks();
+    bookList.forEach(book => {
+        const bookCard = createBookCard(book);
+        books.appendChild(bookCard);
+    });
+    handleButtonsAvailability();
+}
+
+function displaySearchNotFound() {
+    let notFound = document.createElement("p");
+    notFound.innerHTML = "Woah...Seems you have reached the end"
+    notFound.className = "not-found"
+    books.appendChild(notFound);
+}
+
+async function fetchData(sortingMethod, category, availableOnly = false) {
+
+    const baseUrl = 'http://127.0.0.1:8000/api/books/';
+
+    let queryString = `?ordering=${sortingMethod}`;
+    if (category !== "any-category") queryString += `&category=${category}`;
+    if (availableOnly) queryString += `&available_only=${availableOnly}`;
+
+    try {
+        const response = await fetch(baseUrl + queryString);
+
+        if (!response.ok) {
+            console.log('There was a problem with the fetch operation:', response);
+            return null;
+        }
+
+        data = await response.json();
+        if (data.count === 0) {
+            displaySearchNotFound();
+            return null;
+        }
+        currentPageNumber = 1;
+        numberOfPages = Math.ceil(data.count / 21);
+        pageNumber.innerHTML = `${currentPageNumber}/${numberOfPages}`;
+        displayBooks(data.results);
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+fetchData(sortByMenu.value, categoriesMenu.value, availabilityCheckbox.checked);
+
+function loadSpinner() {
+    let divToAddMargin = document.createElement("div");
+    books.appendChild(divToAddMargin);
+    books.appendChild(loadingSpinner);
+}
+
+function newQuery() {
+    clearBooks();
+    loadSpinner();
+    fetchData(sortByMenu.value, categoriesMenu.value, availabilityCheckbox.checked);
+}
+
+sortByMenu.addEventListener("change", function () {
+    newQuery();
+});
+
+categoriesMenu.addEventListener("change", function () {
+    newQuery();
+});
+availabilityCheckbox.addEventListener("change", function (event) {
+    newQuery();
+})
+
+async function handleNextPrev(motion = 1) {
+    clearBooks();
+    loadSpinner();
+    if (motion === 1) {
+        data = await fetch(data.next).then(response => response.json());
+    }
+    else {
+        data = await fetch(data.previous).then(response => response.json());
+    }
+    currentPageNumber += motion;
+    pageNumber.innerHTML = `${currentPageNumber}/${numberOfPages}`;
+    displayBooks(data.results);
+}
+
+nextButton.addEventListener("click", function () {
+    handleNextPrev(1);
+});
+previousButton.addEventListener("click", function () {
+    handleNextPrev(-1);
+});
+
+nextButton.addEventListener("mousedown", function () {
+    nextButton.style.boxShadow = "none";
+})
+
+previousButton.addEventListener("mousedown", function () {
+    previousButton.style.boxShadow = "none";
+})
+
+document.documentElement.addEventListener("mouseup", function () {
+    if (currentPageNumber != pagesCount) {
+        nextButton.style.boxShadow = "0px 1px black";
+    }
+    if (currentPageNumber !== 1) {
+        previousButton.style.boxShadow = "0px 1px black";
+    }
+})

@@ -7,11 +7,11 @@
 
 {% block css_js %}
   <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  <script src="{% static 'js/display-books.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
   <div class="books">
-    <div class="loading-spinner"></div>
     <div class="filters">
       <div class="available">
         <input type="checkbox" />
@@ -20,23 +20,20 @@
 
       <select class="category-menu drop-down">
         <option value="any-category">Any Categroy</option>
-        <option value="adventure">Adventure</option>
-        <option value="horror">Horror</option>
-        <option value="fantasy">Fantasy</option>
-        <option value="mystery">Mystery</option>
-        <option value="philosophy">Philosophy</option>
-        <option value="self-help">Self-help</option>
+        {% for category in categories %}
+          <option value="{{ category }}">{{ category }}</option>
+        {% endfor %}
       </select>
 
       <select class="sort-by drop-down">
-        <option value="date-added-newest">Date Added (Newest)</option>
-        <option value="date-added-oldest">Date Added (Oldest)</option>
-        <option value="date-published-recently">Date Published (Recently)</option>
-        <option value="date-published-oldest">Date Published (Oldest)</option>
-        <option value="rating-highest">Rating (Highest)</option>
-        <option value="rating-lowest">Rating (Lowest)</option>
-        <option value="title-a-to-z">Title (A to Z)</option>
-        <option value="title-z-to-a">Title (Z to A)</option>
+        <option value="-dateAdded">Date Added (Newest)</option>
+        <option value="dateAdded">Date Added (Oldest)</option>
+        <option value="-datePublished">Date Published (Recently)</option>
+        <option value="datePublished">Date Published (Oldest)</option>
+        <option value="-rating">Rating (Highest)</option>
+        <option value="rating">Rating (Lowest)</option>
+        <option value="title">Title (A to Z)</option>
+        <option value="-title">Title (Z to A)</option>
       </select>
     </div>
     <div class="next-previous-pages">
@@ -46,5 +43,7 @@
         <button class="next-button">next</button>
       </div>
     </div>
+    <div></div>
+    <div class="loading-spinner"></div>
   </div>
 {% endblock %}

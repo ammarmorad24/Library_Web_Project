@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Book
+from .models import Book, Category
 from django.db.models import F
 from rest_framework import generics
 from rest_framework import filters
@@ -28,7 +28,8 @@ class BookList(generics.ListAPIView):
 
 
 def home(request):
-    return render(request, 'home.html')
+    categories = Category.objects.all()
+    return render(request, 'home.html', {'categories': categories})
 
 def bookDetails(request, book_id):
     book = Book.objects.get(id=book_id)
