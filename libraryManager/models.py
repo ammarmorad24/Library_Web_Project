@@ -21,7 +21,7 @@ class Book(models.Model):
     datePublished = models.DateField()
     cover = models.ImageField(upload_to='covers/')
     numCopies = models.PositiveIntegerField()
-    numBorrowedCopies = models.PositiveIntegerField(default=0)
+    numBorrowedCopies = models.PositiveIntegerField(default=0, editable=False)
 
     def __str__(self):
         return self.title

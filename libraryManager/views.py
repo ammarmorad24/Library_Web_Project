@@ -1,7 +1,32 @@
 from django.shortcuts import render
 from .models import Book
+from django.db.models import F
+from rest_framework import generics
+from rest_framework import filters
+from .serializers import BookSerializer
+from rest_framework.pagination import PageNumberPagination
 
 # Create your views here.
+class BookList(generics.ListAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering_fields = ['title', 'rating', 'dateAdded', 'datePublished']
+    search_fields = ['title', 'author']
+    pagination_class = PageNumberPagination
+    pagination_class.page_size = 21
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        category = self.request.query_params.get('category', None)
+        if category:
+            queryset = queryset.filter(categories__name=category)
+
+        if self.request.query_params.get('available_only', None):
+            queryset = queryset.filter(numBorrowedCopies__lt=F('numCopies'))
+        return queryset
+
+
 def home(request):
     return render(request, 'home.html')
 

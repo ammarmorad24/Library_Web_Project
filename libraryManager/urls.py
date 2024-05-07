@@ -7,5 +7,5 @@ urlpatterns = [
     path('add-book/', views.addBook),
     path('edit-book/<int:book_id>/', views.editBook),
     path('delete-book/<int:book_id>/', views.deleteBook),
-    
+    path('api/books/', views.BookList.as_view()),
 ]
