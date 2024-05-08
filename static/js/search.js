@@ -109,10 +109,12 @@ function displayBooks(bookList) {
 }
 
 function displaySearchNotFound() {
+    clearBooks();
     let notFound = document.createElement("p");
     notFound.innerHTML = "Oops... We don't seem to have your book"
     notFound.className = "not-found"
     books.appendChild(notFound);
+    handleButtonsAvailability();
 }
 
 async function fetchData() {
@@ -122,7 +124,7 @@ async function fetchData() {
     const baseUrl = 'http://127.0.0.1:8000/api/books/';
 
     let queryString = `?ordering=${sortByMenu.value}`;
-    if (searchBar.value !== "") queryString += `&search=${encodeURIComponent(searchBar.value)}`;
+    if (searchBar.value !== "") queryString += `&search="${encodeURIComponent(searchBar.value)}"`;
     if (categoriesMenu.value !== "any-category") queryString += `&category=${categoriesMenu.value}`;
     if (availabilityCheckbox.checked) queryString += `&available_only=true`;
 
@@ -135,11 +137,13 @@ async function fetchData() {
         }
 
         data = await response.json();
-        if (data.count === 0) {
-            displaySearchNotFound();
-            return null;
-        }
         currentPageNumber = 1;
+        if (data.count === 0) {
+            numberOfPages = 1;
+            pageNumber.innerHTML = `${currentPageNumber}/${numberOfPages}`;
+            displaySearchNotFound();
+            return;
+        }
         numberOfPages = Math.ceil(data.count / 21);
         pageNumber.innerHTML = `${currentPageNumber}/${numberOfPages}`;
         displayBooks(data.results);
@@ -214,7 +218,7 @@ previousButton.addEventListener("mousedown", function () {
 })
 
 document.documentElement.addEventListener("mouseup", function () {
-    if (currentPageNumber != pagesCount) {
+    if (currentPageNumber != numberOfPages) {
         nextButton.style.boxShadow = "0px 1px black";
     }
     if (currentPageNumber !== 1) {
