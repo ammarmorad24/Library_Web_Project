@@ -155,3 +155,9 @@ main {
   color: red;
   margin: 0;
 }
+
+.unavailable{
+  background-color: gray;
+  cursor: auto;
+  
+}

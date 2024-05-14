@@ -2,35 +2,67 @@
 {% load static %}
 
 {% block title %}
-  Book Page
+Book Page
 {% endblock %}
 
 {% block css_js %}
-  <link rel="stylesheet" href="{% static 'css/book-page.css' %}" />
+<link rel="stylesheet" href="{% static 'css/book-page.css' %}" />
 {% endblock %}
 
 {% block content %}
-  <div class="book-cover">
-    <img
-      src="{{ book.cover.url }}"
-      width="236"
-      height="363"
-      valign="top"
-      style="float: left"
-    />
-    <button id="borrow-button" class="borrow-button">Borrow</button>
-    <p id="error"></p>
-  </div>
-  <div class="container">
-    <div class="book-details"></div>
-    <div class="add-review">
-      <a href=""><button>Add Review</button></a>
+<div class="book-cover">
+  <img src="{{ book.cover.url }}" width="236" height="363" valign="top" style="float: left" />
+  {% if user.is_superuser %}
+  <button id="delete-button" class="delete-button">Delete</button>
+  {% else %}
+    {% if book.isAvailable %}
+      <button id="borrow-button" class="borrow-button">Borrow</button>
+    {% else %}
+      <button class="unavailable" disabled>Unavailable</button>
+    {% endif %}
+    
+
+  
+  {% endif %}
+
+  <p id="error"></p>
+</div>
+<div class="container">
+  <div class="book-details">
+
+    <div class="book-name-rating">
+      <span class="book-name"><b>{{book.title}}</b></span><span style="margin-left: 28px" class="rating">Rating:
+        {{book.rating}}</span>
+    </div>
+    <div class="author">
+      <b>Author : </b>
+      {{book.author}}
     </div>
 
-    <h2 class="reviews-word">Reviews</h2>
-    <div class="reviews"></div>
-    <a id="edit-button" href="./edit-book.html"
-      ><button class="edit-button">Edit Book Details</button></a
-    >
+    <div class="story-description">
+      <b>Story: </b>
+
+      <p class="story-paragraph">
+        {{book.story}}
+      </p>
+    </div>
+    <div class="category">
+      <p>Categories:</p>
+      <ul>
+        {% for category in book.categories.all %}
+        <li>{{ category.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
+  <div class="add-review">
+    <a href=""><button>Add Review</button></a>
+  </div>
+
+  <h2 class="reviews-word">Reviews</h2>
+  <div class="reviews"></div>
+  {% if user.is_superuser %}
+  <a id="edit-button" href="./edit-book.html"><button class="edit-button">Edit Book Details</button></a>
+  {% endif %}
+</div>
 {% endblock %}
