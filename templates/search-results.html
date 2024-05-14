@@ -12,10 +12,16 @@
 {% block search %}
   <div id="search-container">
     <div class="search">
-      <input class="search-bar" />
       <button class="search-button">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
+      <input class="search-bar" />
+      <select class="search-by-menu">
+        <option value="all">All</option>
+        <option value="author-name">Author Name</option>
+        <option value="book-name">Book Name</option>
+        <option value="book-name">Category Name</option>
+      </select> 
     </div>
   </div>
 {% endblock %}
