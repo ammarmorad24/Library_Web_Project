@@ -2,6 +2,7 @@ const books = document.querySelector(".books");
 
 const searchButton = document.querySelector(".fa-magnifying-glass")
 const searchBar = document.querySelector(".search-bar");
+const searchByMenu = document.querySelector(".search-by-menu");
 
 const sortByMenu = document.querySelector(".sort-by");
 const categoriesMenu = document.querySelector(".category-menu");
@@ -124,6 +125,7 @@ async function fetchData() {
     const baseUrl = 'http://127.0.0.1:8000/api/books/';
 
     let queryString = `?ordering=${sortByMenu.value}&isAvailable=${availabilityCheckbox.checked}`;
+    if (searchByMenu.value !== "all") queryString += `&search_by=${searchByMenu.value}`;
     if (searchBar.value !== "") queryString += `&search="${encodeURIComponent(searchBar.value)}"`;
     if (categoriesMenu.value !== "any-category") queryString += `&categories__name=${categoriesMenu.value}`;
 
@@ -182,7 +184,10 @@ sortByMenu.addEventListener("change", function () {
 categoriesMenu.addEventListener("change", function () {
     fetchData();
 });
-availabilityCheckbox.addEventListener("change", function (event) {
+availabilityCheckbox.addEventListener("change", function () {
+    fetchData();
+})
+searchByMenu.addEventListener("change", function () {
     fetchData();
 })
 
