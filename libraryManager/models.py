@@ -20,8 +20,7 @@ class Book(models.Model):
     dateAdded = models.DateTimeField(auto_now_add=True)
     datePublished = models.DateField()
     cover = models.ImageField(upload_to='covers/')
-    numCopies = models.PositiveIntegerField()
-    numBorrowedCopies = models.PositiveIntegerField(default=0, editable=False)
+    isAvailable = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

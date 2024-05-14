@@ -21,8 +21,7 @@ def create_fake_books(num_books):
         story = fake.paragraph()
         date_published = fake.date_between(start_date='-10y', end_date='today')
         cover = "covers/fake_cover.jpg"
-        num_copies = random.randint(10, 50)
-        num_borrowed_copies = random.randint(0, num_copies)
+        isAvailable = random.choice([True, False])
 
         book = Book.objects.create(
             title=title,
@@ -31,8 +30,7 @@ def create_fake_books(num_books):
             story=story,
             datePublished=date_published,
             cover=cover,
-            numCopies=num_copies,
-            numBorrowedCopies=num_borrowed_copies
+            isAvailable=isAvailable
         )
 
         # Add random categories to the book

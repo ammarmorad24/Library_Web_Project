@@ -104,9 +104,8 @@ async function fetchData() {
 
     const baseUrl = 'http://127.0.0.1:8000/api/books/';
 
-    let queryString = `?ordering=${sortByMenu.value}`;
-    if (categoriesMenu.value !== "any-category") queryString += `&category=${categoriesMenu.value}`;
-    if (availabilityCheckbox.checked) queryString += `&available_only=true`;
+    let queryString = `?ordering=${sortByMenu.value}&isAvailable=${availabilityCheckbox.checked}`;
+    if (categoriesMenu.value !== "any-category") queryString += `&categories__name=${categoriesMenu.value}`;
 
     try {
         const response = await fetch(baseUrl + queryString);

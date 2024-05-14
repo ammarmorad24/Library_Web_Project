@@ -1,30 +1,26 @@
 from django.shortcuts import render
 from .models import Book, Category
-from django.db.models import F
-from rest_framework import generics
-from rest_framework import filters
 from .serializers import BookSerializer
-from rest_framework.pagination import PageNumberPagination
+from rest_framework import generics, filters, pagination
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
+class DynamicSearchFilter(filters.SearchFilter):
+    def get_search_fields(self, view, request):
+        search_by = request.query_params.get('search_by')
+        if search_by:
+            return [search_by]
+        return getattr(view, 'search_fields', None)
+
 class BookList(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    filter_backends = [filters.OrderingFilter, DynamicSearchFilter, DjangoFilterBackend]
     ordering_fields = ['title', 'rating', 'dateAdded', 'datePublished']
-    search_fields = ['title', 'author']
-    pagination_class = PageNumberPagination
+    search_fields = ['title', 'author', 'categories__name']
+    filterset_fields = ['isAvailable', 'categories__name']
+    pagination_class = pagination.PageNumberPagination
     pagination_class.page_size = 21
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        category = self.request.query_params.get('category', None)
-        if category:
-            queryset = queryset.filter(categories__name=category)
-
-        if self.request.query_params.get('available_only', None):
-            queryset = queryset.filter(numBorrowedCopies__lt=F('numCopies'))
-        return queryset
 
 
 def home(request):
