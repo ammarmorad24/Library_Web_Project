@@ -48,10 +48,16 @@
         autocomplete="off"
       >
         <div class="search">
-          <input class="search-bar" name="q" />
           <button class="search-button">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
+          <input class="search-bar" name="q" />
+         <select class="search-by-menu">
+          <option value="all">All</option>
+          <option value="author-name">Author Name</option>
+          <option value="book-name">Book Name</option>
+          <option value="book-name">Category Name</option>
+         </select> 
         </div>
       </form>
       {% endblock %}
