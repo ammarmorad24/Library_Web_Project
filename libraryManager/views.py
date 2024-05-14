@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Book, Category
+from django.shortcuts import render , redirect
+from django.http import JsonResponse
+from .models import Book, Category , BorrowedBook
 from .serializers import BookSerializer
 from rest_framework import generics, filters, pagination
 from django_filters.rest_framework import DjangoFilterBackend
@@ -47,4 +48,11 @@ def editBook(request, book_id):
 def deleteBook(request, book_id):
     book = Book.objects.get(id=book_id)
     book.delete()
-    return render(request, 'delete-book.html', {'book': book})
+    return redirect('/home')
+
+def borrowBook(request, book_id):
+    book = Book.objects.get(id=book_id)
+    book.isAvailable = False
+    book.save()
+    BorrowedBook.objects.create(book=book, user=request.user)
+    return redirect(f'/book/{book_id}/')

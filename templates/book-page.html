@@ -7,22 +7,30 @@ Book Page
 
 {% block css_js %}
 <link rel="stylesheet" href="{% static 'css/book-page.css' %}" />
+<script src="{% static 'js/bookPage.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
 <div class="book-cover">
   <img src="{{ book.cover.url }}" width="236" height="363" valign="top" style="float: left" />
   {% if user.is_superuser %}
-  <button id="delete-button" class="delete-button">Delete</button>
-  {% else %}
-    {% if book.isAvailable %}
-      <button id="borrow-button" class="borrow-button">Borrow</button>
-    {% else %}
-      <button class="unavailable" disabled>Unavailable</button>
-    {% endif %}
-    
-
+  <form id="delete-form" action="/delete/{{ book.id }}/" method="DELETE">
+    {% csrf_token %}
+    <button class="delete-button">Delete</button>
+  </form>
   
+  {% else %}
+  {% if book.isAvailable %}
+  <form action="/borrow/{{ book.id }}/" method="POST">
+    {% csrf_token %}
+    <button id="borrow-button" class="borrow-button">Borrow</button>
+  </form>
+  {% else %}
+  <button class="unavailable" disabled>Unavailable</button>
+  {% endif %}
+
+
+
   {% endif %}
 
   <p id="error"></p>
