@@ -41,7 +41,7 @@ def make_return_date():
 class BorrowedBook(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    returnDate = models.DateTimeField(default=make_return_date)
+    returnDate = models.DateField(default=make_return_date)
 
     def __str__(self):
         return f"{self.user} borrowed {self.book}"

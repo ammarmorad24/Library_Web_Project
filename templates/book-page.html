@@ -40,7 +40,7 @@ Book Page
 
     <div class="book-name-rating">
       <span class="book-name"><b>{{book.title}}</b></span><span style="margin-left: 28px" class="rating">Rating:
-        {{book.rating}}</span>
+        {{ book.rating.normalize }}</span>
     </div>
     <div class="author">
       <b>Author : </b>
@@ -64,11 +64,19 @@ Book Page
     </div>
   </div>
   <div class="add-review">
-    <a href=""><button>Add Review</button></a>
+    <a href="/review/{{ book.id }}/"><button>Add Review</button></a>
   </div>
 
   <h2 class="reviews-word">Reviews</h2>
-  <div class="reviews"></div>
+  <div class="reviews">
+    {% for review in reviews %}
+    <div class="review">
+      <span class="username">{{ review.user }}:</span>
+      <span class="rating">Rating: {{ review.rating.normalize }}/5</span>
+      <p class="review-content">{{ review.review }}</p>
+    </div>
+    {% endfor %}
+  </div>
   {% if user.is_superuser %}
   <a id="edit-button" href="./edit-book.html"><button class="edit-button">Edit Book Details</button></a>
   {% endif %}
