@@ -35,7 +35,10 @@
           </div>
         </div>
         <div class="return">
-          <button class="return-button">Return</button>
+          <form action="/return/{{ borrowedBook.id }}/" method="DELETE">
+            {% csrf_token %}
+            <button class="return-button">Return</button>
+          </form>
           <p>Return Deadline: {{ borrowedBook.returnDate|date:"Y-m-d" }}</p>
         </div>
       </div>

@@ -63,6 +63,13 @@ def borrowBooksList(request):
     borrowedBooks = BorrowedBook.objects.filter(user=request.user).order_by('returnDate')
     return render(request, 'borrowed-books.html', {'borrowedBooks': borrowedBooks})
 
+def returnBook(request, borrowed_book_id):
+    borrowedBook = BorrowedBook.objects.get(id=borrowed_book_id)
+    borrowedBook.book.isAvailable = True
+    borrowedBook.book.save()
+    borrowedBook.delete()
+    return redirect('/borrowed-books/')
+
 def review(request, book_id):
     book = Book.objects.get(id=book_id)
     if request.method == 'POST':
