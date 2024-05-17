@@ -1,66 +1,5 @@
-.books {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  position: relative;
-  border: 1px solid black;
-  border-radius: 15px;
-  margin: 90px 30px;
-  padding: 8px;
-}
-
-.book-card {
-  position: relative;
-  border: 1px solid black;
-  border-radius: 25px;
-  justify-self: center;
-  background-color: white;
-  width: 90%;
-  height: 200px;
-  margin: 10px;
-  box-shadow: 1.5px 1px black;
-  cursor: pointer;
-  animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.book-link {
-  text-decoration: none;
-  color: black;
-}
-
 .book {
   display: flex;
-  flex-direction: row;
-}
-
-.book img {
-  position: relative;
-  left: 10px;
-  top: 25px;
-  width: 100px;
-  height: 150px;
-}
-
-.book-info {
-  position: relative;
-  top: 35px;
-  list-style: none;
-}
-
-.book-rating {
-  position: absolute;
-  display: inline-block;
-  white-space: nowrap;
-  right: 10px;
 }
 
 .filters {
@@ -104,6 +43,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
+  align-self: center;
   justify-self: center;
   bottom: -65px;
 }

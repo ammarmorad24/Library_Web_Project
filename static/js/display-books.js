@@ -1,5 +1,7 @@
 const books = document.querySelector(".books");
 
+const isAdmin = document.querySelector("script[is-admin]").getAttribute("is-admin");
+
 const sortByMenu = document.querySelector(".sort-by");
 const categoriesMenu = document.querySelector(".category-menu");
 const availabilityCheckbox = document.querySelector(".available input");
@@ -29,10 +31,21 @@ function loadSpinner() {
     books.appendChild(loadingSpinner);
 }
 
+function deleteBook() {
+    document.addEventListener("submit", (event) => {
+        event.target = document.getElementById("delete-form");
+        event.preventDefault();
+        if (window.confirm("Are you sure you want to delete this book?")) {
+            event.target.submit();
+        }
+    })
+}
+
 function createBookCard(book) {
     const bookCard = document.createElement("div");
     bookCard.className = "book-card";
-    bookCard.innerHTML = `
+    if (!isAdmin) {
+        bookCard.innerHTML = `
         <a href="/book/${book.id}" class="book-link">
             <div class="book">
                 <img class="book-cover-image" src=${book.cover} alt="book cover" />
@@ -50,7 +63,40 @@ function createBookCard(book) {
                 <p class="book-rating">rating: ${book.rating}/5</p>
             </div>
         <a>
-    `
+    `;
+    }
+    else {
+        bookCard.innerHTML = `
+            <div class="book">
+                <ul class="book-info">
+                    <li>
+                        <a href="/book/${book.id}" class="book-link">
+                            <h3>${book.title}</h3>
+                        </a>
+                    </li> 
+                    <li>
+                        <p>${book.author}</p>
+                    </li> 
+                    <li>
+                        <p>${book.datePublished}</p>
+                    </li>
+                    <li>
+                        <p class="book-rating">${book.rating}/5</p>
+                    </li>
+                    <li>
+                        <a href="/edit-book/${book.id}">
+                            <button class="book-button edit-button">Edit</button>
+                        </a>
+                    </li>
+                    <li>
+                        <form id="delete-form" action="/delete-book/${book.id}" onsubmit = 'deleteBook()' method='DELETE'>
+                            <button class="book-button delete-button">Delete</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+    `;
+    }
     return bookCard;
 }
 
@@ -183,3 +229,4 @@ document.documentElement.addEventListener("mouseup", function () {
         previousButton.style.boxShadow = "0px 1px black";
     }
 })
+

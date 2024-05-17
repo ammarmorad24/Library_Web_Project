@@ -7,7 +7,12 @@
 
 {% block css_js %}
   <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-  <script src="{% static 'js/display-books.js' %}" defer></script>
+  {% if user.is_superuser %}
+    <link rel="stylesheet" href="{% static 'css/admin-books.css' %}" />
+  {% else %}
+    <link rel="stylesheet" href="{% static 'css/user-books.css' %}" />
+  {% endif %}
+  <script src="{% static 'js/display-books.js' %}" is-admin="{{ user.is_superuser }}" defer></script>
 {% endblock %}
 
 {% block content %}

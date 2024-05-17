@@ -1,0 +1,93 @@
+.books {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid black;
+    margin: 90px 30px;
+    border-radius: 15px;
+    padding: 8px;
+}
+
+.book-card {
+    background-color: rgba(255, 255, 255, 0.541);
+    border: 1px solid black;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin-bottom: 5px;
+    box-shadow: 2.5px 2px black;
+    animation: fadeIn 1s ease;
+}
+
+.book-card:last-child {
+    border-bottom: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.book-link {
+    text-decoration: none;
+}
+
+.book-link:visited {
+    color: blue;
+}
+
+.book-info {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    text-align: center;
+}
+
+.book-info>* {
+    align-self: center;
+    width: 100%;
+    margin-right: 20px;
+}
+
+.book-button {
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+    box-shadow: 0 2.5px black;
+}
+
+.delete-button {
+    background-color: #d10132;
+}
+
+.delete-button:hover {
+    background-color: #a80027;
+}
+
+.delete-button:active {
+    box-shadow: none;
+    background-color: #a80027;
+}
+
+.edit-button {
+    background-color: rgb(87, 87, 245);
+}
+
+.edit-button:hover {
+    background-color: rgb(64, 64, 172);
+}
+
+.edit-button:active {
+    box-shadow: none;
+    background-color: rgb(64, 64, 172);
+}
