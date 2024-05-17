@@ -94,6 +94,14 @@
     const imagePreview = document.getElementById("image-preview");
     const addBookForm = document.getElementById("add-book-form");
 
+    const datePublishedPicker = document.querySelector(".date-picker")
+    const today = new Date().toISOString().split('T')[0];
+    datePublishedPicker.setAttribute('max', today);
+
+    const rating = document.querySelector(".rating");
+
+    const preventedCharcaters = ['+', '-', 'e', 'E'];
+
     fileInput.addEventListener("change", function () {
       const file = this.files[0];
       if (file) {
@@ -107,5 +115,11 @@
       }
     });
     addBookForm.addEventListener("submit", () => alert("Your book has been added!!") );
+     
+    rating.addEventListener("keypress", (event) => {
+      if(preventedCharcaters.includes(event.key)){
+        event.preventDefault();
+      }
+    })
   </script>
 {% endblock %}
