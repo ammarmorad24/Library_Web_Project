@@ -39,8 +39,22 @@ def bookDetails(request, book_id):
     return render(request, 'book-page.html', data)
 
 def addBook(request):
-    
+    if request.method == "POST":
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        date_published = request.POST.get('date-published')
+        rating = request.POST.get('rating')
+        categories = request.POST.getlist("options")
+        desc = request.POST.get('description')
+        image = request.POST.get('cover')
+        book = Book.objects.create(title=title, author = author, datePublished = date_published, rating=rating, cover = image, story = desc)
+        for category_name in categories:
+            category, created = Category.objects.get_or_create(name=category_name)
+            book.categories.add(category)
+        book.save()
+        return redirect(home)
     return render(request, 'add-book.html')
+
 
 def editBook(request, book_id):
     book = Book.objects.get(id=book_id)
