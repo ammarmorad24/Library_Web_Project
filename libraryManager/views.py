@@ -76,7 +76,7 @@ def editBook(request, book_id):
             category = Category.objects.get(name=category_name)
             book.categories.add(category)
         book.save()
-        return redirect('/home')
+        return redirect(f'/book/{book_id}')
     categories = Category.objects.all()
     data = {'book': book, 'categories': categories}
     return render(request, 'edit-book.html', data)
