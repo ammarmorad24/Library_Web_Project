@@ -54,7 +54,7 @@ def addBook(request):
             category = Category.objects.get(name=category_name)
             book.categories.add(category)
         book.save()
-        return redirect('/home')
+        return redirect('/add-book')
     categories = Category.objects.all()
     return render(request, 'add-book.html', {'categories': categories})
 
