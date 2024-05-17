@@ -36,7 +36,6 @@ def search(request):
 @never_cache
 def bookDetails(request, book_id):
     book = Book.objects.get(id=book_id)
-    book = Book.objects.get(id=book_id)
     reviews = Review.objects.filter(book=book)
     data = {'book': book, 'reviews': reviews}
     return render(request, 'book-page.html', data)
