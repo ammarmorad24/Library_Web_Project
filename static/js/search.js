@@ -1,5 +1,7 @@
 const books = document.querySelector(".books");
 
+const isAdmin = document.querySelector("script[is-admin]").getAttribute("is-admin") === "True";
+
 const searchButton = document.querySelector(".fa-magnifying-glass")
 const searchBar = document.querySelector(".search-bar");
 const searchByMenu = document.querySelector(".search-by-menu");
@@ -49,11 +51,36 @@ function makeGenresList(book) {
     return genresList;
 }
 
+function deleteBook() {
+    document.addEventListener("submit", (event) => {
+        event.target = document.getElementById("delete-form");
+        event.preventDefault();
+        if (window.confirm("Are you sure you want to delete this book?")) {
+            event.target.submit();
+        }
+    })
+}
+
+function createDeleteButton(book) {
+    let deleteButton = "";
+    if (book.isAvailable) {
+        deleteButton = `<form id="delete-form" action="/delete/${book.id}" onsubmit='deleteBook()' method='DELETE'>
+                            <button class="book-button delete-button">Delete</button> 
+                        </form>`;
+    }
+    else {
+        deleteButton = `<button class="book-button disabled-delete-button">Delete</button>`;
+    }
+    return deleteButton;
+}
+
 function createBookCard(book) {
     const bookCard = document.createElement("div");
     bookCard.className = "book-card";
     const genresList = makeGenresList(book);
-    bookCard.innerHTML = `
+    const deleteButton = createDeleteButton(book);
+    if (!isAdmin) {
+        bookCard.innerHTML = `
         <a href="/book/${book.id}" class="book-card-link">
             <div class="book-item">
                 <div class="book">
@@ -69,6 +96,37 @@ function createBookCard(book) {
             </div>
         </a>
     `;
+    }
+    else {
+        bookCard.innerHTML = `
+            <div class="book">
+                <ul class="book-info">
+                    <li>
+                        <a href="/book/${book.id}" class="book-link">
+                            <h3>${book.title}</h3>
+                        </a>
+                    </li> 
+                    <li>
+                        <p>${book.author}</p>
+                    </li> 
+                    <li>
+                        <p>${book.datePublished}</p>
+                    </li>
+                    <li>
+                        <p class="book-rating">${book.rating}/5</p>
+                    </li>
+                    <li>
+                        <a href="/edit-book/${book.id}">
+                            <button class="book-button edit-button">Edit</button>
+                        </a>
+                    </li>
+                    <li>
+                        ${deleteButton}
+                    </li>
+                </ul>
+            </div>
+    `;
+    }
     return bookCard;
 }
 
