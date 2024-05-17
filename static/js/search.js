@@ -20,6 +20,10 @@ let numberOfPages = 0;
 
 let searchQuery = new URLSearchParams(window.location.search.toString());
 searchBar.value = searchQuery.get("q");
+let searchBy = searchQuery.get("search_by");
+if (searchBy) {
+    searchByMenu.value = searchBy;
+}
 
 function trimQuery() {
     searchBar.value = searchBar.value.trim().replace(/ +(?= )/g, '');
@@ -216,6 +220,7 @@ fetchData();
 function changeURLWithNewQuery() {
     let url = new URL(window.location.href);
     url.searchParams.set("q", searchBar.value);
+    url.searchParams.delete("search_by");
     window.history.pushState(null, '', url.href);
 }
 

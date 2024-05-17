@@ -4,6 +4,7 @@ from .serializers import BookSerializer
 from rest_framework import generics, filters, pagination
 from django_filters.rest_framework import DjangoFilterBackend
 from .forms import ReviewForm
+from django.views.decorators.cache import never_cache
 
 # Create your views here.
 class DynamicSearchFilter(filters.SearchFilter):
@@ -32,11 +33,16 @@ def search(request):
     categories = Category.objects.all()
     return render(request, 'search-results.html', {'categories': categories})
 
+@never_cache
 def bookDetails(request, book_id):
-    book = Book.objects.get(id=book_id)
-    reviews = Review.objects.filter(book=book)
-    data = {'book': book, 'reviews': reviews}
-    return render(request, 'book-page.html', data)
+    try:
+        book = Book.objects.get(id=book_id)
+        book = Book.objects.get(id=book_id)
+        reviews = Review.objects.filter(book=book)
+        data = {'book': book, 'reviews': reviews}
+        return render(request, 'book-page.html', data)
+    except:
+        return render(request, 'error.html')
 
 def addBook(request):
     
@@ -48,9 +54,12 @@ def editBook(request, book_id):
 
 
 def deleteBook(request, book_id):
-    book = Book.objects.get(id=book_id)
-    book.delete()
-    return redirect('/home')
+    try:
+        book = Book.objects.get(id=book_id)
+        book.delete()
+        return redirect('/home')
+    except:
+        return redirect('/home')
 
 def borrowBook(request, book_id):
     book = Book.objects.get(id=book_id)
