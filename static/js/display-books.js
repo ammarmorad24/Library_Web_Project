@@ -14,6 +14,10 @@ let data = null;
 let currentPageNumber = 1;
 let numberOfPages = 0;
 
+if (sessionStorage.getItem("checked") === "true") {
+    availabilityCheckbox.checked = true;
+}
+
 function clearBooks() {
     let children = books.children;
     for (let i = 2; i < children.length; i++) {
@@ -188,6 +192,7 @@ categoriesMenu.addEventListener("change", function () {
 });
 
 availabilityCheckbox.addEventListener("change", function () {
+    sessionStorage.setItem("checked", availabilityCheckbox.checked);
     fetchData();
 })
 

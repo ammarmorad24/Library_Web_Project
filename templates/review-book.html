@@ -10,33 +10,27 @@
 {% endblock %}
 
 {% block content %}
-  <img src="https://shorturl.at/qxH12" class="image" />
-  <form id="reviewForm" class="review-container">
-    <h2 class="title">Title</h2>
+  <img src="{{ book.cover.url }}" class="image" />
+  <form class="review-container" action="/review/{{ book.id }}/" method="POST">
+    {% csrf_token %}
+    <h2 class="title">{{ book.title }}</h2>
+    {% if form.errors %}
+      <div class="error">
+        <p>There was an error with your review:</p>
+        <ul>
+          {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+              <li>{{ field }}: {{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
     <div class="score">
-      <input
-        id="score"
-        type="number"
-        class="input1"
-        name="score"
-        required
-        placeholder="score:1-5"
-        step="any"
-        min="1"
-        max="5"
-        required
-      />
+      {{ form.rating }}
     </div>
     <div class="review">
-      <textarea
-        id="review-content"
-        rows="5"
-        cols="50"
-        class="input2"
-        placeholder="Type what you think about the book..."
-        minlength="1"
-        required
-      ></textarea>
+      {{ form.review }}
     </div>
     <input type="submit" class="submit" value="Submit Your Review" />
   </form>

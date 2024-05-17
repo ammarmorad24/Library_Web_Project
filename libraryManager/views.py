@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from .models import Book, Category
+from django.shortcuts import render , redirect
+from .models import Book, Category , BorrowedBook, Review
 from .serializers import BookSerializer
 from rest_framework import generics, filters, pagination
 from django_filters.rest_framework import DjangoFilterBackend
+from .forms import ReviewForm
 
 # Create your views here.
 class DynamicSearchFilter(filters.SearchFilter):
@@ -33,7 +34,9 @@ def search(request):
 
 def bookDetails(request, book_id):
     book = Book.objects.get(id=book_id)
-    return render(request, 'book-page.html', {'book': book})
+    reviews = Review.objects.filter(book=book)
+    data = {'book': book, 'reviews': reviews}
+    return render(request, 'book-page.html', data)
 
 def addBook(request):
     
@@ -47,4 +50,37 @@ def editBook(request, book_id):
 def deleteBook(request, book_id):
     book = Book.objects.get(id=book_id)
     book.delete()
-    return render(request, 'delete-book.html', {'book': book})
+    return redirect('/home')
+
+def borrowBook(request, book_id):
+    book = Book.objects.get(id=book_id)
+    book.isAvailable = False
+    book.save()
+    BorrowedBook.objects.create(book=book, user=request.user)
+    return redirect(f'/book/{book_id}/')
+
+def borrowBooksList(request):
+    borrowedBooks = BorrowedBook.objects.filter(user=request.user).order_by('returnDate')
+    return render(request, 'borrowed-books.html', {'borrowedBooks': borrowedBooks})
+
+def returnBook(request, borrowed_book_id):
+    borrowedBook = BorrowedBook.objects.get(id=borrowed_book_id)
+    borrowedBook.book.isAvailable = True
+    borrowedBook.book.save()
+    borrowedBook.delete()
+    return redirect('/borrowed-books/')
+
+def review(request, book_id):
+    book = Book.objects.get(id=book_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.book = book
+            review.user = request.user
+            review.save()
+            return redirect(f'/book/{book_id}/') 
+    else:
+        form = ReviewForm()
+    data = {'book': book, 'form': form}
+    return render(request, 'review-book.html', data)

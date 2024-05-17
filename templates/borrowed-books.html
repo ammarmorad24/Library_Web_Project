@@ -11,5 +11,38 @@
 
 {% block content %}
   <h1>Borrowed Books</h1>
-  <div class="borrowed-books-container"></div>
+  <div class="borrowed-books-container">
+    {% for borrowedBook in borrowedBooks %}
+    <div class="book-card">
+      <div class="book-item">
+        <div class="book">
+          <a href="/book/{{ borrowedBook.book.id }}/">
+            <img src="{{ borrowedBook.book.cover.url }}" alt="book cover" />
+          </a>
+          <div class="book-info">
+            <a href="/book/{{ borrowedBook.book.id }}/">
+              <h2>{{ borrowedBook.book.title }}</h2>
+            </a>
+            <p>Author: {{ borrowedBook.book.author }}</p>
+            <p>Rating: {{ borrowedBook.book.rating }}/5</p>
+            <p>Data Published: {{ borrowedBook.book.datePublished|date:"Y-m-d" }}</p>
+            <ul class="book-categories-list">
+              Genre:
+              {% for category in borrowedBook.book.categories.all %}
+              <li>{{ category }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="return">
+          <form action="/return/{{ borrowedBook.id }}/" method="DELETE">
+            {% csrf_token %}
+            <button class="return-button">Return</button>
+          </form>
+          <p>Return Deadline: {{ borrowedBook.returnDate|date:"Y-m-d" }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 {% endblock %}
