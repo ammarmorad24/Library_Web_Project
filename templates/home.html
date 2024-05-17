@@ -6,11 +6,10 @@
 {% endblock %}
 
 {% block css_js %}
-  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
   {% if user.is_superuser %}
-    <link rel="stylesheet" href="{% static 'css/admin-books.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/search-results.css' %}" />
   {% else %}
-    <link rel="stylesheet" href="{% static 'css/user-books.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
   {% endif %}
   <script src="{% static 'js/display-books.js' %}" is-admin="{{ user.is_superuser }}" defer></script>
 {% endblock %}
