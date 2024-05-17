@@ -61,6 +61,19 @@ function deleteBook() {
     })
 }
 
+function createDeleteButton(book) {
+    let deleteButton = "";
+    if (book.isAvailable) {
+        deleteButton = `<form id="delete-form" action="/delete/${book.id}" onsubmit='deleteBook()' method='DELETE'>
+                            < button class="book-button delete-button">Delete</button> 
+                        </form>`;
+    }
+    else {
+        deleteButton = `<button class="book-button disabled-delete-button">Delete</button>`;
+    }
+    return deleteButton;
+}
+
 function createBookCard(book) {
     const bookCard = document.createElement("div");
     bookCard.className = "book-card";
@@ -107,9 +120,7 @@ function createBookCard(book) {
                         </a>
                     </li>
                     <li>
-                        <form id="delete-form" action="/delete-book/${book.id}" onsubmit = 'deleteBook()' method='DELETE'>
-                            <button class="book-button delete-button">Delete</button>
-                        </form>
+                        ${deleteButton}
                     </li>
                 </ul>
             </div>

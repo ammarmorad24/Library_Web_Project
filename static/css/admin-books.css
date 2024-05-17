@@ -74,6 +74,13 @@
     background-color: #a80027;
 }
 
+.disabled-delete-button {
+    border: 1px solid black;
+    background-color: transparent;
+    box-shadow: none;
+    color: black;
+}
+
 .delete-button:active {
     box-shadow: none;
     background-color: #a80027;
