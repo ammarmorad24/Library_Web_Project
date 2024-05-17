@@ -1,6 +1,6 @@
 const books = document.querySelector(".books");
 
-const isAdmin = document.querySelector("script[is-admin]").getAttribute("is-admin");
+const isAdmin = document.querySelector("script[is-admin]").getAttribute("is-admin") === "True";
 
 const searchButton = document.querySelector(".fa-magnifying-glass")
 const searchBar = document.querySelector(".search-bar");
@@ -65,7 +65,7 @@ function createDeleteButton(book) {
     let deleteButton = "";
     if (book.isAvailable) {
         deleteButton = `<form id="delete-form" action="/delete/${book.id}" onsubmit='deleteBook()' method='DELETE'>
-                            < button class="book-button delete-button">Delete</button> 
+                            <button class="book-button delete-button">Delete</button> 
                         </form>`;
     }
     else {
@@ -78,6 +78,7 @@ function createBookCard(book) {
     const bookCard = document.createElement("div");
     bookCard.className = "book-card";
     const genresList = makeGenresList(book);
+    const deleteButton = createDeleteButton(book);
     if (!isAdmin) {
         bookCard.innerHTML = `
         <a href="/book/${book.id}" class="book-card-link">

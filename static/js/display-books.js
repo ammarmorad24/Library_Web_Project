@@ -1,6 +1,6 @@
 const books = document.querySelector(".books");
 
-const isAdmin = document.querySelector("script[is-admin]").getAttribute("is-admin");
+const isAdmin = document.querySelector("script[is-admin]").getAttribute("is-admin") === "True";
 
 const sortByMenu = document.querySelector(".sort-by");
 const categoriesMenu = document.querySelector(".category-menu");
