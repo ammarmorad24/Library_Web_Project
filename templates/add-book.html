@@ -17,8 +17,9 @@
 {% endblock %}
 
 {% block content %}
-  <img class="image" src="../images/background13.jpg" alt="" />
-  <form id="add-book-form">
+  <img class="image" src="{% static 'images/background13.jpg' %}" alt="" />
+  <form id="add-book-form" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
     <h1 class="add-book-header">Add Book</h1>
     <div class="form-item">
       <input class="normal-input" type="text" name="title" required />
@@ -47,78 +48,20 @@
     </div>
     <span class="categories">CATEGORIES : </span>
     <div class="category-inputs">
+      {% for category in categories %}
       <div class="category-item">
         <input
           type="checkbox"
-          id="adventure"
+          id="{{ category }}"
           class="input"
           name="options"
-          value="adventure"
+          value="{{ category }}"
         />
-        <div class="custom-checkbox" onclick="toggleCheckbox('adventure')">
-          Adventure
+        <div class="custom-checkbox" onclick="toggleCheckbox('{{ category }}')">
+          {{ category }}
         </div>
       </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="fantasy"
-          class="input"
-          name="options"
-          value="fantasy"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('fantasy')">
-          Fantasy
-        </div>
-      </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="horror"
-          class="input"
-          name="options"
-          value="horror"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('horror')">
-          Horror
-        </div>
-      </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="mystery"
-          class="input"
-          name="options"
-          value="mystery"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('mystery')">
-          Mystery
-        </div>
-      </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="self-help"
-          class="input"
-          name="options"
-          value="self-help"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('self-help')">
-          Self-help
-        </div>
-      </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="philosophy"
-          class="input"
-          name="options"
-          value="philosophy"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('philosophy')">
-          Philosophy
-        </div>
-      </div>
+      {% endfor %}
     </div>
     <textarea
       name="description"

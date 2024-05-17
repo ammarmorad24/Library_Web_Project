@@ -17,15 +17,16 @@
 {% endblock %}
 
 {% block content %}
-  <img class="image" src="../images/background15.jpg" alt="" />
-  <form id="add-book-form">
+  <img class="image" src="{% static 'images/background15.jpg' %}" alt="" />
+  <form id="add-book-form" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
     <h1 class="add-book-header">Edit Book Details</h1>
     <div class="form-item">
       <input
         class="normal-input"
         type="text"
         name="title"
-        value="Current Title"
+        value="{{ book.title }}"
       />
       <span>Title</span>
     </div>
@@ -35,12 +36,12 @@
         class="normal-input"
         type="text"
         name="author"
-        value="Current Author"
+        value="{{ book.author }}"
       />
       <span>Author</span>
     </div>
     <div class="form-item">
-      <input class="normal-input" type="date" name="date-published" />
+      <input class="normal-input" type="date" name="date-published" value="{{ book.datePublished|date:"Y-m-d" }}"/>
       <span>Publishing Date</span>
     </div>
     <div class="form-item">
@@ -51,83 +52,26 @@
         min="1"
         max="5"
         step="any"
+        value="{{ book.rating }}"
       />
       <span>Global Rating</span>
     </div>
     <span class="categories">CATEGORIES : </span>
     <div class="category-inputs">
+      {% for category in categories %}
       <div class="category-item">
         <input
           type="checkbox"
-          id="adventure"
+          id="{{ category }}"
           class="input"
           name="options"
-          value="adventure"
+          value="{{ category }}"
         />
-        <div class="custom-checkbox" onclick="toggleCheckbox('adventure')">
-          Adventure
+        <div class="custom-checkbox" onclick="toggleCheckbox('{{ category }}')">
+          {{ category }}
         </div>
       </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="fantasy"
-          class="input"
-          name="options"
-          value="fantasy"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('fantasy')">
-          Fantasy
-        </div>
-      </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="horror"
-          class="input"
-          name="options"
-          value="horror"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('horror')">
-          Horror
-        </div>
-      </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="mystery"
-          class="input"
-          name="options"
-          value="mystery"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('mystery')">
-          Mystery
-        </div>
-      </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="self-help"
-          class="input"
-          name="options"
-          value="self-help"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('self-help')">
-          Self-help
-        </div>
-      </div>
-      <div class="category-item">
-        <input
-          type="checkbox"
-          id="philosophy"
-          class="input"
-          name="options"
-          value="philosophy"
-        />
-        <div class="custom-checkbox" onclick="toggleCheckbox('philosophy')">
-          Philosophy
-        </div>
-      </div>
+      {% endfor %}
     </div>
 
     <textarea
@@ -136,9 +80,7 @@
       cols="35"
       style="resize: none"
       class="book-desc"
-    >
-      Current Book Description...
-    </textarea>
+    >{{ book.story }}</textarea>
     <div class="add-image">
       <label for="book-cover-input" class="custom-file-upload">
         Upload Book Cover
@@ -152,7 +94,7 @@
         style="display: none"
       />
       <br />
-      <img id="image-preview" class="image-preview" />
+      <img id="image-preview" class="image-preview" src={{ book.cover.url }}/>
     </div>
     <button type="submit" class="submit-button">submit</button>
   </form>
@@ -172,5 +114,8 @@
         imagePreview.src = "";
       }
     });
+    {% for category in book.categories.all %}
+      toggleCheckbox("{{ category }}")
+    {% endfor %}
   </script>
 {% endblock %}

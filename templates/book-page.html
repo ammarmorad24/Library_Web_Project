@@ -80,7 +80,7 @@ Book Page
     {% endfor %}
   </div>
   {% if user.is_superuser %}
-  <a id="edit-button" href="./edit-book.html"><button class="edit-button">Edit Book Details</button></a>
+  <a id="edit-button" href="/edit-book/{{ book.id }}"><button class="edit-button">Edit Book Details</button></a>
   {% endif %}
 </div>
 {% endblock %}

@@ -35,22 +35,52 @@ def search(request):
 
 @never_cache
 def bookDetails(request, book_id):
-    try:
-        book = Book.objects.get(id=book_id)
-        book = Book.objects.get(id=book_id)
-        reviews = Review.objects.filter(book=book)
-        data = {'book': book, 'reviews': reviews}
-        return render(request, 'book-page.html', data)
-    except:
-        return render(request, 'error.html')
+    book = Book.objects.get(id=book_id)
+    book = Book.objects.get(id=book_id)
+    reviews = Review.objects.filter(book=book)
+    data = {'book': book, 'reviews': reviews}
+    return render(request, 'book-page.html', data)
 
 def addBook(request):
-    
-    return render(request, 'add-book.html')
+    if request.method == "POST":
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        date_published = request.POST.get('date-published')
+        rating = request.POST.get('rating')
+        categories = request.POST.getlist("options")
+        desc = request.POST.get('description')
+        image = request.FILES.get('cover')
+        book = Book.objects.create(title=title, author=author, datePublished=date_published, rating=rating, cover=image, story=desc)
+        for category_name in categories:
+            category = Category.objects.get(name=category_name)
+            book.categories.add(category)
+        book.save()
+        return redirect('/home')
+    categories = Category.objects.all()
+    return render(request, 'add-book.html', {'categories': categories})
 
 def editBook(request, book_id):
     book = Book.objects.get(id=book_id)
-    return render(request, 'edit-book.html', {'book': book})
+    if request.method == "POST":
+        book.title = request.POST.get('title')
+        book.author = request.POST.get('author')
+        book.datePublished = request.POST.get('date-published')
+        book.rating = request.POST.get('rating')
+        categories = request.POST.getlist("options")
+        book.story = request.POST.get('description')
+        cover = request.FILES.get('cover')
+        if cover:
+            book.cover = cover
+        book.save()
+        book.categories.clear()
+        for category_name in categories:
+            category = Category.objects.get(name=category_name)
+            book.categories.add(category)
+        book.save()
+        return redirect('/home')
+    categories = Category.objects.all()
+    data = {'book': book, 'categories': categories}
+    return render(request, 'edit-book.html', data)
 
 
 def deleteBook(request, book_id):
