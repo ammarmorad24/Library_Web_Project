@@ -18,7 +18,8 @@
 
 {% block content %}
   <img class="image" src="../images/background13.jpg" alt="" />
-  <form id="add-book-form">
+  <form id="add-book-form" method="POST">
+    {% csrf_token %}
     <h1 class="add-book-header">Add Book</h1>
     <div class="form-item">
       <input class="normal-input" type="text" name="title" required />
