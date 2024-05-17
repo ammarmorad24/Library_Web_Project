@@ -23,21 +23,21 @@
     <header>
       <nav class="nav-bar">
         {% if user.is_authenticated %}
-            <a class="logo" href="./home.html">
+            <a class="logo" href="/home">
             <img src="{% static 'images/Logo.jpg' %}" alt="logo" />
             </a>
-            <a class="nav-item" href="./home.html">Home</a>
+            <a class="nav-item" href="/home">Home</a>
             {% if user.is_superuser %}
-                <a class="nav-item" href="./add-book.html">Add Book</a>
+                <a class="nav-item" href="/add-book">Add Book</a>
             {% else %}
-                <a class="nav-item" href="./borrowed-books.html">Borrowed Books</a>
+                <a class="nav-item" href="/borrowed-books">Borrowed Books</a>
             {% endif %}
         {% else %}
             <a class="logo" href="/">
             <img src="{% static 'images/Logo.jpg' %}" alt="logo" />
             </a>
         {% endif %}
-        <a class="nav-item" href="./about.html">About</a>
+        <a class="nav-item" href="/about">About</a>
       </nav>
 
       {% if user.is_authenticated %} {% block search %}
@@ -67,7 +67,7 @@
           {% csrf_token %} 
           <button id="sign-out">Sign Out</button>
         </form>
-        <a class="profile-pic" href="./profile.html">
+        <a class="profile-pic" href="/profile">
           <img
             src="{% static 'images/proiflePic.jpg' %}"
             class="profile-picture"
