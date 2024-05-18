@@ -35,6 +35,15 @@ function loadSpinner() {
     books.appendChild(loadingSpinner);
 }
 
+function makeGenresList(book) {
+    let genres = book["categories"];
+    let genresList = "";
+    for (let i = 0; i < genres.length; i++) {
+        genresList += `<li>${genres[i]}</li>`;
+    }
+    return genresList;
+}
+
 function deleteBook() {
     document.addEventListener("submit", (event) => {
         event.target = document.getElementById("delete-form");
@@ -62,14 +71,17 @@ function createBookCard(book) {
     const bookCard = document.createElement("div");
     bookCard.className = "book-card";
     const deleteButton = createDeleteButton(book);
+    const genresList = makeGenresList(book);
+    console.log(isAdmin);
     if (!isAdmin) {
         bookCard.innerHTML = `
-        <a href="/book/${book.id}" class="book-link">
             <div class="book">
                 <img class="book-cover-image" src=${book.cover} alt="book cover" />
                 <ul class="book-info">
                     <li>
-                        <h3>${book.title}</h3>
+                        <a href="/book/${book.id}" class="book-link">
+                            <h3>${book.title}</h3>
+                        <a>
                     </li> 
                     <li>
                         <p>${book.author}</p>
@@ -80,27 +92,24 @@ function createBookCard(book) {
                 </ul>
                 <p class="book-rating">rating: ${book.rating}/5</p>
             </div>
-        <a>
     `;
     }
     else {
         bookCard.innerHTML = `
-            <div class="book">
-                <ul class="book-info">
-                    <li>
-                        <a href="/book/${book.id}" class="book-link">
-                            <h3>${book.title}</h3>
+            <div class="book-item">
+                <div class="book">
+                    <img src=${book.cover} alt="book cover" />
+                    <div class="book-info">
+                        <a href="/book/${book.id}" class="admin-book-title">
+                            <h2>${book.title}</h2>
                         </a>
-                    </li> 
-                    <li>
-                        <p>${book.author}</p>
-                    </li> 
-                    <li>
-                        <p>${book.datePublished}</p>
-                    </li>
-                    <li>
-                        <p class="book-rating">${book.rating}/5</p>
-                    </li>
+                        <p>Author: ${book.author}</p>
+                        <p>rating: ${book.rating}/5</p>
+                        <p class='book-publishing-date'>Date Published: ${book.datePublished}</p>
+                        <ul class='book-categories-list'>Genres: ${genresList}</ul>
+                    </div>
+                </div>
+                <ul class="book-buttons-list">
                     <li>
                         <a href="/edit-book/${book.id}">
                             <button class="book-button edit-button">Edit</button>
