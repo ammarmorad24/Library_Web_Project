@@ -83,12 +83,6 @@ main .is-admin .select {
   font-size: 1.1rem;
 }
 
-.remember-forgot a {
-  display: inline-block;
-  margin: 15px 0 15px 0;
-  font-size: 1.1rem;
-}
-
 #error {
   width: 100%;
   display: none;
@@ -104,4 +98,8 @@ main .is-admin .select {
 
 .register-link {
   font-size: 1rem;
+}
+
+#id_password {
+  margin-bottom: 20px;
 }

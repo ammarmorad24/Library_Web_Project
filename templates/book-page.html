@@ -13,7 +13,7 @@ Book Page
 {% block content %}
 <div class="book-cover">
   <img src="{{ book.cover.url }}" width="236" height="363" valign="top" style="float: left" />
-  {% if user.is_superuser %}
+  {% if user.is_superuser and book.isAvailable %}
   <form id="delete-form" action="/delete/{{ book.id }}/" method="DELETE">
     {% csrf_token %}
     <button class="delete-button">Delete</button>
@@ -25,6 +25,8 @@ Book Page
     {% csrf_token %}
     <button id="borrow-button" class="borrow-button">Borrow</button>
   </form>
+  {% elif user.is_superuser %}
+  <button class="unavailable" disabled>Delete</button>
   {% else %}
   <button class="unavailable" disabled>Unavailable</button>
   {% endif %}
@@ -78,7 +80,7 @@ Book Page
     {% endfor %}
   </div>
   {% if user.is_superuser %}
-  <a id="edit-button" href="./edit-book.html"><button class="edit-button">Edit Book Details</button></a>
+  <a id="edit-button" href="/edit-book/{{ book.id }}"><button class="edit-button">Edit Book Details</button></a>
   {% endif %}
 </div>
 {% endblock %}
