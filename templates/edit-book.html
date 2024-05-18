@@ -27,6 +27,7 @@
         type="text"
         name="title"
         value="{{ book.title }}"
+        required
       />
       <span>Title</span>
     </div>
@@ -37,22 +38,24 @@
         type="text"
         name="author"
         value="{{ book.author }}"
+        required
       />
       <span>Author</span>
     </div>
     <div class="form-item">
-      <input class="normal-input" type="date" name="date-published" value="{{ book.datePublished|date:"Y-m-d" }}"/>
+      <input class="normal-input" type="date" name="date-published" value="{{ book.datePublished|date:"Y-m-d" }}" required/>
       <span>Publishing Date</span>
     </div>
     <div class="form-item">
       <input
-        class="normal-input"
+        class="normal-input rating"
         type="number"
         name="rating"
         min="1"
         max="5"
-        step="any"
+        step="0.01"
         value="{{ book.rating }}"
+        required
       />
       <span>Global Rating</span>
     </div>
@@ -101,6 +104,16 @@
   <script>
     const fileInput = document.getElementById("book-cover-input");
     const imagePreview = document.getElementById("image-preview");
+
+    const rating = document.querySelector(".rating");
+
+    const preventedCharcaters = ['+', '-', 'e', 'E'];
+
+    rating.addEventListener("keypress", (event) => {
+      if(preventedCharcaters.includes(event.key)){
+        event.preventDefault();
+      }
+    });
 
     fileInput.addEventListener("change", function () {
       const file = this.files[0];
