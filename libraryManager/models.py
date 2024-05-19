@@ -2,7 +2,6 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
 from datetime import date, timedelta
-import os
 
 # Create your models here.
 
@@ -25,12 +24,6 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
-
-    def delete(self, *args, **kwargs):
-        if self.cover:
-            if os.path.isfile(self.cover.path):
-                os.remove(self.cover.path)
-        super().delete(*args, **kwargs)
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -11,13 +11,28 @@
 
 {% block content %}
   <div class="profile-container">
-    <div class="profile-details"></div>
+    <div class="profile-details">
+      <h1 class="profile-header">Profile</h1>
+      <div class="profile-info">
+        <label for="username" class="data-titles">Username:</label>
+        <p id="username" class="data">{{ user }}</p>
+      </div>
+      <div class="profile-info">
+        <label for="email" class="data-titles">Email:</label>
+        <p id="email" class="data">{{ user.email }}</p>
+      </div>
+      {% if not user.is_superuser %}
+        <div class="profile-info">
+          <label class="data-titles" for="borrowed-books">Borrowed Books: {{ numBorrowed }}</label>
+        </div>
+      {% endif %}
+    </div>
     <div class="image-container">
-      <img class="user-profile-picture" src="../images/proiflePic.jpg" />
+      <img class="user-profile-picture" src="{% static 'images/proiflePic.jpg' %}" />
       <div class="overlay"></div>
-      <a href="./borrowed-books.html"
-        ><button class="borrowed-btn">Borrowed Books</button></a
-      >
+      {% if not user.is_superuser %}
+        <a href="/borrowed-books"><button class="borrowed-btn">Borrowed Books</button></a>
+      {% endif %}
     </div>
   </div>
 {% endblock %}
