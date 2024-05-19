@@ -14,24 +14,19 @@
   <form class="review-container" action="/review/{{ book.id }}/" method="POST">
     {% csrf_token %}
     <h2 class="title">{{ book.title }}</h2>
-    {% if form.errors %}
-      <div class="error">
-        <p>There was an error with your review:</p>
-        <ul>
-          {% for field, errors in form.errors.items %}
-            {% for error in errors %}
-              <li>{{ field }}: {{ error }}</li>
-            {% endfor %}
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
     <div class="score">
       {{ form.rating }}
     </div>
     <div class="review">
       {{ form.review }}
     </div>
+    {% if form.errors %}
+      {% for errors in form.errors.values %}
+        {% for error in errors %}
+            <p style="color: red;">{{ error }}</p>
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
     <input type="submit" class="submit" value="Submit Your Review" />
   </form>
 {% endblock %}

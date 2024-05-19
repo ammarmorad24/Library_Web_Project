@@ -37,7 +37,13 @@
       <label>Are you an Admin?</label>
       {{form.is_superuser}}
     </div>
-    <p id="error"></p>
+    {% if form.errors %}
+      {% for errors in form.errors.values %}
+        {% for error in errors %}
+            <p id="error">{{ error }}</p>
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
     <button id="submitButton" type="submit" class="btn">Register</button>
 
     <div class="have-account">

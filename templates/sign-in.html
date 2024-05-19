@@ -26,7 +26,13 @@
       {{form.password}}
     </div>
 
-    <p id="error"></p>
+    {% if form.errors %}
+      {% for errors in form.errors.values %}
+        {% for error in errors %}
+            <p id="error">{{ error }}</p>
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
     <button type="submit" class="btn" id="submitButton">Sign in</button>
 
     <div class="register-link">
