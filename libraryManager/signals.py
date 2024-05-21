@@ -6,7 +6,7 @@ from .models import Book
 @receiver(pre_delete, sender=Book)
 def delete_cover_on_delete(sender, instance, **kwargs):
     if instance.cover:
-        if instance.cover.name != 'cover/fake_cover.jpg' and os.path.isfile(instance.cover.path):
+        if instance.cover.name != 'covers/fake_cover.jpg' and os.path.isfile(instance.cover.path):
             os.remove(instance.cover.path)
 
 
@@ -21,6 +21,6 @@ def delete_cover_on_update(sender, instance, **kwargs):
         return False
 
     new_cover = instance.cover
-    if old_cover != new_cover and old_cover.name != 'cover/fake_cover.jpg':
+    if old_cover != new_cover and old_cover.name != 'covers/fake_cover.jpg':
         if os.path.isfile(old_cover.path):
             os.remove(old_cover.path)
