@@ -11,6 +11,8 @@ class ReviewForm(forms.ModelForm):
                 'class': 'input1',
                 'placeholder': 'Score: 1-5',
                 'step': 'any',
+                'min': '1',
+                'max': '5',
                 'required': True,
             }),
             'review': forms.Textarea(attrs={

@@ -18,6 +18,9 @@ class LoginForm(AuthenticationForm):
     
     username = forms.CharField(required=True, widget=forms.TextInput(attrs={ 'placeholder': 'username'}))
     password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={ 'placeholder': 'password'}))
+    error_messages = {
+        'invalid_login': "Please enter a correct username and password.",
+    }
     
 
     class Meta:

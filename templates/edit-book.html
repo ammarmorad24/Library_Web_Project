@@ -43,7 +43,7 @@
       <span>Author</span>
     </div>
     <div class="form-item">
-      <input class="normal-input" type="date" name="date-published" value="{{ book.datePublished|date:"Y-m-d" }}" required/>
+      <input class="normal-input date-picker" type="date" name="date-published" value="{{ book.datePublished|date:"Y-m-d" }}" required/>
       <span>Publishing Date</span>
     </div>
     <div class="form-item">
@@ -105,6 +105,9 @@
     const fileInput = document.getElementById("book-cover-input");
     const imagePreview = document.getElementById("image-preview");
 
+    const datePublishedPicker = document.querySelector(".date-picker");
+    const dateAdded = '{{ book.dateAdded|date:"Y-m-d H:i" }}'.slice(0, 10);
+    datePublishedPicker.setAttribute('max', dateAdded);
     const rating = document.querySelector(".rating");
 
     const preventedCharcaters = ['+', '-', 'e', 'E'];

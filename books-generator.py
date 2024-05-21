@@ -16,6 +16,7 @@ for category in categories:
 def create_fake_books(num_books):
     for _ in range(num_books):
         title = fake.sentence(nb_words=3)
+        title = title[:-1]  # Remove the last character (period)
         author = fake.name()
         rating = round(random.uniform(1.0, 5.0), 2)
         story = fake.paragraph()

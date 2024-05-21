@@ -1,7 +1,8 @@
 from django.contrib.auth import login , logout
 from django.shortcuts import redirect, render
 from .forms import RegisterForm , LoginForm
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
+from libraryManager.models import BorrowedBook
 
 # Create your views here.
 def register(request):
@@ -45,3 +46,8 @@ def signOut(request):
     # Logout user and redirect to home page
     logout(request)
     return redirect("/")
+
+
+def profile(request):
+    numBorrowed = BorrowedBook.objects.filter(user=request.user).count()
+    return render(request, "profile.html", {"numBorrowed": numBorrowed})
