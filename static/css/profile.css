@@ -1,6 +1,5 @@
 .profile-container {
   display: inline-block;
-  width: 500px;
   /* Adjust the width of the rectangle block */
   height: 500px;
   /* Adjust the height of the rectangle block */
@@ -11,14 +10,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 100px;
-  padding-left: 40px;
-  padding-top: 40px;
+  padding: 40px;
+  padding-bottom: 0;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
 }
 
 .profile-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 200px;
   grid-gap: 35px;
 }
 
@@ -73,6 +72,7 @@
 
 .borrowed-btn {
   margin-top: 135px;
+  margin-left: 6px;
   padding: 10px 30px;
   border-radius: 10px;
   border: 0;

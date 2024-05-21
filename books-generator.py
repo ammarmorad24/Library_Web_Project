@@ -40,4 +40,4 @@ def create_fake_books(num_books):
             book.categories.add(category)
 
 # Usage: Call create_fake_books function with the number of fake books you want to create
-create_fake_books(50)  # Create 50 fake books
+create_fake_books(100)  # Create 50 fake books
